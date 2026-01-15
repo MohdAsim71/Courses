@@ -1,8 +1,7 @@
 {
-  "category": "Kotlin,
-  "format": "Markdown inside JSON",
-  "questions": [
-
+"category": "Kotlin + Android Interview Questions",
+"format": "Markdown inside JSON",
+"questions": [
     {
       "id": 1,
       "section": "Kotlin Basics",
@@ -13,7 +12,6 @@
       "expectedReadTime": "1 min",
       "markdown": "### Kotlin Overview\n\nKotlin is a **modern, statically typed language** developed by JetBrains.\n\n**Why preferred over Java?**\n- Less boilerplate code\n- Built-in null safety\n- Better readability\n- Full Java interoperability\n- Official Android language by Google\n\n👉 Faster development with fewer crashes."
     },
-
     {
       "id": 2,
       "section": "Kotlin Basics",
@@ -23,7 +21,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### val vs var\n\n- `val` → Immutable (cannot be reassigned)\n- `var` → Mutable (can be reassigned)\n\n```kotlin\nval name = \"Aasim\"\nvar age = 25\nage = 26\n```\n\n👉 Prefer `val` for safer code."
     },
-
     {
       "id": 3,
       "section": "Kotlin Basics",
@@ -33,7 +30,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Null Safety\n\nKotlin avoids `NullPointerException` by separating nullable and non-nullable types.\n\n```kotlin\nvar name: String? = null\n```\n\nKey tools:\n- `?` nullable\n- `?.` safe call\n- `?:` elvis operator\n- `!!` not-null assertion"
     },
-
     {
       "id": 4,
       "section": "Kotlin Basics",
@@ -43,7 +39,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Nullable Type\n\nA type that can hold `null`.\n\n```kotlin\nvar email: String? = null\n```\n\n👉 Non-nullable types cannot hold null."
     },
-
     {
       "id": 5,
       "section": "Kotlin Basics",
@@ -53,7 +48,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Elvis Operator\n\nProvides a default value if expression is null.\n\n```kotlin\nval name = userName ?: \"Guest\"\n```"
     },
-
     {
       "id": 6,
       "section": "Kotlin Basics",
@@ -63,7 +57,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Data Classes\n\nUsed to hold data.\n\n```kotlin\ndata class User(val name: String, val age: Int)\n```\n\nAuto-generates:\n- `toString()`\n- `equals()`\n- `hashCode()`\n- `copy()`"
     },
-
     {
       "id": 7,
       "section": "Kotlin Basics",
@@ -73,7 +66,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### == vs ===\n\n- `==` → Structural equality (value)\n- `===` → Referential equality (memory reference)"
     },
-
     {
       "id": 8,
       "section": "Kotlin Basics",
@@ -83,7 +75,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### when Expression\n\nReplacement for switch.\n\n```kotlin\nwhen(x) {\n  1 -> \"One\"\n  else -> \"Other\"\n}\n```\n\n👉 More powerful than switch."
     },
-
     {
       "id": 9,
       "section": "Kotlin Basics",
@@ -93,7 +84,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Default & Named Arguments\n\n```kotlin\nfun greet(name: String = \"User\") {}\ngreet(name = \"Aasim\")\n```\n\n👉 Improves readability."
     },
-
     {
       "id": 10,
       "section": "Kotlin Basics",
@@ -103,7 +93,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Smart Casts\n\nKotlin automatically casts after type check.\n\n```kotlin\nif (obj is String) {\n  println(obj.length)\n}\n```"
     },
-
     {
       "id": 11,
       "section": "Functions & Classes",
@@ -113,7 +102,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Higher-Order Functions\n\nFunctions that take another function as parameter or return it.\n\n```kotlin\nfun operate(a:Int, b:Int, op:(Int,Int)->Int)\n```"
     },
-
     {
       "id": 12,
       "section": "Functions & Classes",
@@ -123,7 +111,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Lambda Expression\n\nAnonymous function.\n\n```kotlin\nval sum = { a:Int, b:Int -> a + b }\n```"
     },
-
     {
       "id": 13,
       "section": "Functions & Classes",
@@ -133,7 +120,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Scope Functions\n\n- `let` → null check\n- `apply` → configure object\n- `also` → side effects\n- `run` → object + result\n- `with` → operate without extension"
     },
-
     {
       "id": 14,
       "section": "Functions & Classes",
@@ -143,7 +129,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Inline Function\n\nFunction body copied at call site to reduce overhead.\n\n```kotlin\ninline fun doWork() {}\n```"
     },
-
     {
       "id": 15,
       "section": "Functions & Classes",
@@ -153,7 +138,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Sealed Class\n\nRestricts inheritance.\n\nUsed for representing states."
     },
-
     {
       "id": 16,
       "section": "Functions & Classes",
@@ -163,7 +147,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Class Types\n\n- `final` → default, cannot inherit\n- `open` → can inherit\n- `abstract` → must implement"
     },
-
     {
       "id": 17,
       "section": "Functions & Classes",
@@ -173,7 +156,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Companion Object\n\nActs like static members in Java."
     },
-
     {
       "id": 18,
       "section": "Functions & Classes",
@@ -183,7 +165,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Object Declaration vs Expression\n\n- Declaration → singleton\n- Expression → anonymous object"
     },
-
     {
       "id": 19,
       "section": "Functions & Classes",
@@ -193,7 +174,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Primary Constructor\n\nDeclared in class header."
     },
-
     {
       "id": 20,
       "section": "Functions & Classes",
@@ -203,7 +183,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Secondary Constructor\n\nUsed when additional initialization is needed."
     },
-
     {
       "id": 21,
       "section": "Coroutines",
@@ -213,7 +192,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Coroutines\n\nLightweight async programming solution."
     },
-
     {
       "id": 22,
       "section": "Coroutines",
@@ -223,7 +201,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Coroutine vs Thread\n\nCoroutines are lightweight and cheaper."
     },
-
     {
       "id": 23,
       "section": "Coroutines",
@@ -233,7 +210,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### Suspend Function\n\nCan pause and resume execution."
     },
-
     {
       "id": 24,
       "section": "Coroutines",
@@ -243,7 +219,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### viewModelScope\n\nCoroutine scope tied to ViewModel lifecycle."
     },
-
     {
       "id": 25,
       "section": "Coroutines",
@@ -253,7 +228,6 @@
       "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
       "markdown": "### launch vs async\n\n- `launch` → no result\n- `async` → returns Deferred"
     },
-
     {
       "id": 26,
       "section": "Coroutines",
@@ -488,7 +462,6 @@
         "tags": ["basics", "introduction"], "askedIn": ["Google", "Amazon"],
         "markdown": "### Compose Performance Tips\n\n- Use `remember` / `rememberSaveable`\n- Avoid unnecessary recompositions\n- Use `key()` for lists\n- Break into smaller composables\n- Use stable state objects"
       }
-
-  ]
+]
 }
 
