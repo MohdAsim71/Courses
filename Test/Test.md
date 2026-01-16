@@ -1,5 +1,5 @@
 {
-"category": "Kotlin + Android Interview Questions",
+"category": "Android",
 "format": "Markdown inside JSON",
 "questions": [
     {
@@ -464,4 +464,5 @@
       }
 ]
 }
+
 
