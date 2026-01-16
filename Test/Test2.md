@@ -6,7 +6,7 @@
       "id": 1,
       "section": "Kotlin Basics",
       "question": "What is Kotlin?",
-      "difficulty": "Easy",
+      "difficulty": "Advance",
       "tags": ["basics", "introduction"],
       "askedIn": ["Google", "Amazon"],
       "expectedReadTime": "30 sec",
