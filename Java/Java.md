@@ -1,4 +1,7 @@
-[
+{
+"category": "Java",
+"format": "Markdown inside JSON",
+"questions":[
 {
 "id": 301,
 "section": "Java Basics",
@@ -100,3 +103,4 @@
 "markdown": "### final vs finally vs finalize()\n\n- `final` → constant / no override\n- `finally` → always executes\n- `finalize()` → called before GC"
 }
 ]
+}
