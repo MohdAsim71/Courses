@@ -1,5 +1,5 @@
 {
-"category": "Android",
+"category": "Compose",
 "format": "Markdown inside JSON",
 "questions": [
 {
