@@ -1,4 +1,7 @@
-[
+{
+"category": "Kotlin",
+"format": "Markdown inside JSON",
+"questions":[
 {
 "id": 1,
 "section": "Kotlin Basics",
@@ -100,3 +103,4 @@
 "markdown": "| Keyword | Description |\n|-------|-------------|\n| `lateinit` | Used with `var`; initialized later; non-null only |\n| `lazy` | Used with `val`; initialized on first access |\n\n```kotlin\nlateinit var name: String\nval age: Int by lazy { computeAge() }\n```"
 }
 ]
+}
