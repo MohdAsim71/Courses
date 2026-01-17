@@ -1,176 +1,57 @@
-
-## **1. What are the main features of Kotlin?**
-
-**Kotlin** is a modern programming language fully interoperable with Java.
-
-**Key Features:**
-
-* Concise syntax → less boilerplate
-* Null safety → avoids NullPointerException
-* Interoperable with Java
-* Functional programming support
-* Extension functions
-* Smart casts
-* Coroutines for asynchronous programming
-
----
-
-## **2. Difference between var, val, and const**
-
-| Keyword | Description                          | Use Case                                  |
-| ------- | ------------------------------------ | ----------------------------------------- |
-| `var`   | Mutable variable                     | Can be reassigned                         |
-| `val`   | Immutable variable                   | Read-only after initialization            |
-| `const` | Compile-time constant, must be `val` | For constants at top-level or in `object` |
-
-**Example:**
-
-```kotlin
-var name = "Aasim"    // Can be reassigned
-val age = 25          // Cannot be reassigned
-const val PI = 3.14   // Compile-time constant
-```
-
----
-
-## **3. What is a Kotlin data class?**
-
-**Data class:** A class used to hold data, automatically provides `toString()`, `equals()`, `hashCode()`, and `copy()`.
-
-**Syntax:**
-
-```kotlin
-data class User(val name: String, val age: Int)
-```
-
-**Advantages:**
-
-* Reduces boilerplate
-* Provides `componentN()` functions for destructuring
-* Useful for DTOs / API models
-
----
-
-## **4. Difference between `==` and `===` in Kotlin**
-
-| Operator | Meaning                                        |
-| -------- | ---------------------------------------------- |
-| `==`     | Checks structural equality (values)            |
-| `===`    | Checks referential equality (object reference) |
-
-**Example:**
-
-```kotlin
-val a = "Hello"
-val b = "Hello"
-println(a == b)  // true (value)
-println(a === b) // true/false (reference)
-```
-
----
-
-## **5. What is Kotlin null safety?**
-
-**Null Safety:** Prevents NullPointerException by distinguishing nullable and non-nullable types.
-
-**Syntax:**
-
-* Non-nullable: `val name: String = "Aasim"` → cannot assign null
-* Nullable: `val name: String? = null` → can assign null
-
-**Safe call and Elvis operator:**
-
-```kotlin
-val length = name?.length ?: 0  // Returns 0 if name is null
-```
-
----
-
-## **6. What are Kotlin extension functions?**
-
-**Extension functions** allow adding functions to existing classes without inheritance.
-
-**Example:**
-
-```kotlin
-fun String.reverseText(): String {
-    return this.reversed()
+{
+"category": "kotlin",
+"title": "Kotlin Interview Questions",
+"level": "Beginner to Intermediate",
+"items": [
+{
+"id": 1,
+"question": "What are the main features of Kotlin?",
+"answer": "**Kotlin** is a modern programming language fully interoperable with Java.\n\n**Key Features:**\n- Concise syntax (less boilerplate)\n- Null safety (avoids NullPointerException)\n- 100% interoperable with Java\n- Functional programming support\n- Extension functions\n- Smart casts\n- Coroutines for asynchronous programming"
+},
+{
+"id": 2,
+"question": "Difference between var, val, and const",
+"answer": "| Keyword | Description | Use Case |\n|--------|-------------|----------|\n| `var` | Mutable variable | Can be reassigned |\n| `val` | Immutable variable | Read-only after initialization |\n| `const` | Compile-time constant (must be `val`) | Used at top-level or inside `object` |\n\n```kotlin\nvar name = \"Aasim\"\nval age = 25\nconst val PI = 3.14\n```"
+},
+{
+"id": 3,
+"question": "What is a Kotlin data class?",
+"answer": "**Data class:** Used to hold data and automatically generates `toString()`, `equals()`, `hashCode()`, and `copy()`.\n\n```kotlin\ndata class User(val name: String, val age: Int)\n```\n\n**Advantages:**\n- Reduces boilerplate\n- Provides `componentN()` for destructuring\n- Ideal for DTOs and API models"
+},
+{
+"id": 4,
+"question": "Difference between `==` and `===` in Kotlin",
+"answer": "| Operator | Meaning |\n|--------|---------|\n| `==` | Structural equality (value comparison) |\n| `===` | Referential equality (same object reference) |\n\n```kotlin\nval a = \"Hello\"\nval b = \"Hello\"\nprintln(a == b)\nprintln(a === b)\n```"
+},
+{
+"id": 5,
+"question": "What is Kotlin null safety?",
+"answer": "**Null Safety:** Prevents NullPointerException by distinguishing nullable and non-nullable types.\n\n- Non-nullable: `val name: String = \"Aasim\"`\n- Nullable: `val name: String? = null`\n\n```kotlin\nval length = name?.length ?: 0\n```"
+},
+{
+"id": 6,
+"question": "What are Kotlin extension functions?",
+"answer": "**Extension functions** add new functionality to existing classes without inheritance.\n\n```kotlin\nfun String.reverseText(): String = this.reversed()\n\nprintln(\"Kotlin\".reverseText())\n```\n\n**Use Case:**\n- Add utility/helper methods cleanly"
+},
+{
+"id": 7,
+"question": "Difference between open, abstract, and interface",
+"answer": "| Keyword | Description |\n|-------|-------------|\n| `open` | Allows inheritance and overriding |\n| `abstract` | Cannot be instantiated; must override abstract methods |\n| `interface` | Defines a contract; no constructor; supports default methods |\n\n```kotlin\nopen class A\nabstract class B { abstract fun work() }\ninterface C { fun doWork() }\n```"
+},
+{
+"id": 8,
+"question": "What are Kotlin coroutines?",
+"answer": "**Coroutines:** Lightweight threads for asynchronous, non-blocking programming.\n\n**Key Points:**\n- Efficient\n- Non-blocking\n- Uses `suspend` functions\n\n```kotlin\nGlobalScope.launch {\n  val data = fetchData()\n  println(data)\n}\n\nsuspend fun fetchData(): String {\n  delay(1000)\n  return \"Hello Coroutine\"\n}\n```"
+},
+{
+"id": 9,
+"question": "Difference between map, flatMap, and filter",
+"answer": "| Function | Description | Example |\n|--------|-------------|---------|\n| `map` | Transforms elements | `[1,2,3].map { it * 2 }` → `[2,4,6]` |\n| `flatMap` | Flattens nested lists | `[[1,2],[3,4]].flatMap { it }` → `[1,2,3,4]` |\n| `filter` | Filters by condition | `[1,2,3,4].filter { it > 2 }` → `[3,4]` |"
+},
+{
+"id": 10,
+"question": "Difference between lateinit and lazy",
+"answer": "| Keyword | Description |\n|-------|-------------|\n| `lateinit` | Used with `var`; initialized later; non-null only |\n| `lazy` | Used with `val`; initialized on first access |\n\n```kotlin\nlateinit var name: String\nval age: Int by lazy { computeAge() }\n```"
 }
-
-val text = "Kotlin"
-println(text.reverseText())  // "niltok"
-```
-
-**Use case:**
-
-* Add helper functions without modifying the original class
-
----
-
-## **7. Difference between `open`, `abstract`, and `interface`**
-
-| Keyword     | Description                                                        |
-| ----------- | ------------------------------------------------------------------ |
-| `open`      | Class can be inherited; methods can be overridden                  |
-| `abstract`  | Cannot instantiate; abstract methods must be overridden            |
-| `interface` | Defines contract; no constructor; can have default implementations |
-
-**Example:**
-
-```kotlin
-open class A
-abstract class B { abstract fun doSomething() }
-interface C { fun doSomethingElse() }
-```
-
----
-
-## **8. What are Kotlin coroutines?**
-
-**Coroutines:** Lightweight threads for asynchronous programming.
-
-**Key Points:**
-
-* Non-blocking
-* Efficient memory usage
-* Works with `suspend` functions
-
-**Example:**
-
-```kotlin
-GlobalScope.launch {
-    val data = fetchData()
-    println(data)
+]
 }
-
-suspend fun fetchData(): String {
-    delay(1000)
-    return "Hello Coroutine"
-}
-```
-
----
-
-## **9. Difference between `map`, `flatMap`, and `filter` in Kotlin**
-
-| Function  | Description                           | Example                                      |
-| --------- | ------------------------------------- | -------------------------------------------- |
-| `map`     | Transforms each element               | `[1,2,3].map { it * 2 }` → `[2,4,6]`         |
-| `flatMap` | Maps + flattens nested lists          | `[[1,2],[3,4]].flatMap { it }` → `[1,2,3,4]` |
-| `filter`  | Filters elements based on a condition | `[1,2,3,4].filter { it > 2 }` → `[3,4]`      |
-
----
-
-## **10. Difference between `lateinit` and `lazy`**
-
-| Keyword    | Description                                                                 |
-| ---------- | --------------------------------------------------------------------------- |
-| `lateinit` | For **var**, initialized later; cannot be used with nullable types or `val` |
-| `lazy`     | For **val**, initialized lazily on first access                             |
-
-**Example:**
-
-```kotlin
-lateinit var name: String
-val age: Int by lazy { computeAge() }
-```
