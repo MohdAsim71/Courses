@@ -3,7 +3,7 @@
 "format": "Markdown inside JSON",
 "questions":[
 {
-"id": 301,
+"id": 1,
 "section": "Java Basics",
 "question": "What are the main features of Java?",
 "difficulty": "Easy",
@@ -13,7 +13,7 @@
 "markdown": "### Main Features of Java\n\n- **Object-Oriented**: Encapsulation, Inheritance, Polymorphism, Abstraction\n- **Platform Independent**: Write Once, Run Anywhere (JVM)\n- **Robust & Secure**: Exception handling, strong memory management\n- **Multithreaded**: Built-in thread support\n- **Automatic Memory Management**: Garbage Collection\n- **Rich APIs**: Collections, I/O, Networking"
 },
 {
-"id": 302,
+"id": 2,
 "section": "Java Basics",
 "question": "Difference between JDK, JRE, and JVM",
 "difficulty": "Easy",
@@ -23,7 +23,7 @@
 "markdown": "### JDK vs JRE vs JVM\n\n- **JVM**: Executes Java bytecode\n- **JRE**: JVM + Libraries (to run Java programs)\n- **JDK**: JRE + Compiler + Development tools"
 },
 {
-"id": 303,
+"id": 3,
 "section": "Java Basics",
 "question": "Difference between == and equals()",
 "difficulty": "Easy",
@@ -33,7 +33,7 @@
 "markdown": "### == vs equals()\n\n```java\nString a = \"Hello\";\nString b = new String(\"Hello\");\n\nSystem.out.println(a == b);      // false\nSystem.out.println(a.equals(b)); // true\n```\n\n- `==` → reference comparison\n- `equals()` → value comparison"
 },
 {
-"id": 304,
+"id": 4,
 "section": "OOP",
 "question": "Difference between abstract class and interface",
 "difficulty": "Medium",
@@ -43,7 +43,7 @@
 "markdown": "### Abstract Class vs Interface\n\n- Abstract class can have constructors and variables\n- Interface supports multiple inheritance\n- Interface variables are `public static final` by default"
 },
 {
-"id": 305,
+"id": 5,
 "section": "Java Basics",
 "question": "What are Java access modifiers?",
 "difficulty": "Easy",
@@ -53,7 +53,7 @@
 "markdown": "### Java Access Modifiers\n\n- `private` → class level\n- `default` → package level\n- `protected` → package + subclass\n- `public` → everywhere"
 },
 {
-"id": 306,
+"id": 6,
 "section": "Memory Management",
 "question": "Explain Java memory model (Heap & Stack)",
 "difficulty": "Medium",
@@ -63,7 +63,7 @@
 "markdown": "### Java Memory Model\n\n- **Heap**: Stores objects, managed by GC\n- **Stack**: Stores method calls & local variables\n- **Method Area**: Static data & class metadata"
 },
 {
-"id": 307,
+"id": 7,
 "section": "Collections",
 "question": "Difference between ArrayList and LinkedList",
 "difficulty": "Medium",
@@ -73,7 +73,7 @@
 "markdown": "### ArrayList vs LinkedList\n\n- ArrayList → Fast access, slow insertion\n- LinkedList → Slow access, fast insertion\n- LinkedList uses extra memory for pointers"
 },
 {
-"id": 308,
+"id": 8,
 "section": "Multithreading",
 "question": "What is a Java thread and how to create one?",
 "difficulty": "Medium",
@@ -83,7 +83,7 @@
 "markdown": "### Creating Threads\n\n```java\nclass MyThread extends Thread {\n    public void run() {\n        System.out.println(\"Running\");\n    }\n}\n```\n\nOr using `Runnable` interface."
 },
 {
-"id": 309,
+"id": 9,
 "section": "Exception Handling",
 "question": "Difference between throw and throws",
 "difficulty": "Easy",
@@ -93,7 +93,7 @@
 "markdown": "### throw vs throws\n\n- `throw` → explicitly throw exception\n- `throws` → declare exception in method signature"
 },
 {
-"id": 310,
+"id": 10,
 "section": "Java Keywords",
 "question": "Difference between final, finally, and finalize()",
 "difficulty": "Easy",
