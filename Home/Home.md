@@ -48,10 +48,6 @@
       {
         "title": "Insta",
         "image": "https://dt4l9bx31tioh.cloudfront.net/eazymedia/banner/listing_header/Prime-banner-for-prime-listing.png"
-      },
-      {
-        "title": "Insta",
-        "image": "https://dt4l9bx31tioh.cloudfront.net/eazymedia/banner/listing_header/Prime-banner-for-prime-listing.png"
       }
     ],
     "lab":  [
