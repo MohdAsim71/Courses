@@ -1,4045 +1,6676 @@
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
+[//]: # ()
+[//]: # (## 1️⃣ What is Android?)
 
----
+[//]: # ()
+[//]: # (Android is an **open-source mobile operating system** developed by Google, based on the Linux kernel.  )
 
-## 1️⃣ What is Android?
+[//]: # (It is used to build applications for smartphones, tablets, TVs, wearables, and IoT devices.)
 
-Android is an **open-source mobile operating system** developed by Google, based on the Linux kernel.  
-It is used to build applications for smartphones, tablets, TVs, wearables, and IoT devices.
+[//]: # ()
+[//]: # (### Key Features)
 
-### Key Features
-- Open-source and customizable
-- Supports Java, Kotlin, and C++
-- Component-based architecture
-- Large app ecosystem (Google Play)
+[//]: # (- Open-source and customizable)
 
----
+[//]: # (- Supports Java, Kotlin, and C++)
 
-## 2️⃣ What is Context? How is it used?
+[//]: # (- Component-based architecture)
 
-`Context` represents the environment in which an app is running.  
-It provides access to app resources, system services, and application-level operations.
+[//]: # (- Large app ecosystem &#40;Google Play&#41;)
 
-### Uses of Context
-- Access resources (strings, colors, layouts)
-- Start Activities and Services
-- Show Toasts and Dialogs
-- Access system services
+[//]: # ()
+[//]: # (---)
 
-### Example
-```kotlin
-Toast.makeText(this, "Hello Android", Toast.LENGTH_SHORT).show()
-````
+[//]: # ()
+[//]: # (## 2️⃣ What is Context? How is it used?)
 
----
+[//]: # ()
+[//]: # (`Context` represents the environment in which an app is running.  )
 
-## 3️⃣ What is Application Context?
+[//]: # (It provides access to app resources, system services, and application-level operations.)
 
-Application Context is tied to the **lifecycle of the entire application**.
+[//]: # ()
+[//]: # (### Uses of Context)
 
-### Characteristics
+[//]: # (- Access resources &#40;strings, colors, layouts&#41;)
 
-* Exists as long as the app is running
-* Not tied to any UI component
-* Used for long-lived operations
+[//]: # (- Start Activities and Services)
 
-### Example
+[//]: # (- Show Toasts and Dialogs)
 
-```kotlin
-val context = applicationContext
-```
+[//]: # (- Access system services)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-## 4️⃣ What is Activity Context?
+[//]: # (```kotlin)
 
-Activity Context is tied to the **lifecycle of an Activity**.
+[//]: # (Toast.makeText&#40;this, "Hello Android", Toast.LENGTH_SHORT&#41;.show&#40;&#41;)
 
-### Characteristics
+[//]: # (````)
 
-* Exists only while the Activity is alive
-* Used for UI-related operations
+[//]: # ()
+[//]: # (---)
 
-### Example
+[//]: # ()
+[//]: # (## 3️⃣ What is Application Context?)
 
-```kotlin
-val context = this // inside Activity
-```
+[//]: # ()
+[//]: # (Application Context is tied to the **lifecycle of the entire application**.)
 
----
+[//]: # ()
+[//]: # (### Characteristics)
 
-## 5️⃣ Tell all Android application components.
+[//]: # ()
+[//]: # (* Exists as long as the app is running)
 
-Android has four main application components:
+[//]: # (* Not tied to any UI component)
 
-### 🔹 Activity
+[//]: # (* Used for long-lived operations)
 
-* Represents a UI screen
-* Handles user interaction
+[//]: # ()
+[//]: # (### Example)
 
-### 🔹 Service
+[//]: # ()
+[//]: # (```kotlin)
 
-* Performs background tasks
-* No UI
+[//]: # (val context = applicationContext)
 
-### 🔹 Broadcast Receiver
+[//]: # (```)
 
-* Responds to system-wide events
-* Example: network change, battery low
+[//]: # ()
+[//]: # (---)
 
-### 🔹 Content Provider
+[//]: # ()
+[//]: # (## 4️⃣ What is Activity Context?)
 
-* Manages and shares app data
-* Example: Contacts provider
+[//]: # ()
+[//]: # (Activity Context is tied to the **lifecycle of an Activity**.)
 
----
+[//]: # ()
+[//]: # (### Characteristics)
 
-## 6️⃣ What is AndroidManifest.xml?
+[//]: # ()
+[//]: # (* Exists only while the Activity is alive)
 
-`AndroidManifest.xml` is the configuration file of an Android app.
+[//]: # (* Used for UI-related operations)
 
-### It defines:
+[//]: # ()
+[//]: # (### Example)
 
-* App components (Activities, Services, Receivers)
-* Permissions
-* App entry point
-* Package name
-* SDK versions
+[//]: # ()
+[//]: # (```kotlin)
 
-### Example
+[//]: # (val context = this // inside Activity)
 
-```xml
-<manifest package="com.example.app">
+[//]: # (```)
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+[//]: # ()
+[//]: # (---)
 
-    <application>
-        <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-    </application>
+[//]: # ()
+[//]: # (## 5️⃣ Tell all Android application components.)
 
-</manifest>
-```
+[//]: # ()
+[//]: # (Android has four main application components:)
 
----
+[//]: # ()
+[//]: # (### 🔹 Activity)
 
-## 7️⃣ What is Application class?
+[//]: # ()
+[//]: # (* Represents a UI screen)
 
-The `Application` class represents the **global state of the app**.
-It is created before any Activity or Service.
+[//]: # (* Handles user interaction)
 
-### Use Cases
+[//]: # ()
+[//]: # (### 🔹 Service)
 
-* Initialize libraries (Firebase, DI, Analytics)
-* Store global data
+[//]: # ()
+[//]: # (* Performs background tasks)
 
-### Example
+[//]: # (* No UI)
 
-```kotlin
-class MyApp : Application() {
-    override fun onCreate() {
-        super.onCreate()
-    }
-}
-```
+[//]: # ()
+[//]: # (### 🔹 Broadcast Receiver)
 
----
+[//]: # ()
+[//]: # (* Responds to system-wide events)
 
-## 8️⃣ What is ADB in Android?
+[//]: # (* Example: network change, battery low)
 
-ADB (Android Debug Bridge) is a command-line tool used to communicate with Android devices.
+[//]: # ()
+[//]: # (### 🔹 Content Provider)
 
-### Uses
+[//]: # ()
+[//]: # (* Manages and shares app data)
 
-* Install/uninstall apps
-* Debug apps
-* Execute shell commands
+[//]: # (* Example: Contacts provider)
 
-### Example
+[//]: # ()
+[//]: # (---)
 
-```bash
-adb install app.apk
-```
+[//]: # ()
+[//]: # (## 6️⃣ What is AndroidManifest.xml?)
 
----
+[//]: # ()
+[//]: # (`AndroidManifest.xml` is the configuration file of an Android app.)
 
-## 9️⃣ What is AAPT (Android Asset Packaging Tool)?
+[//]: # ()
+[//]: # (### It defines:)
 
-AAPT is a build tool that compiles and packages Android app resources.
+[//]: # ()
+[//]: # (* App components &#40;Activities, Services, Receivers&#41;)
 
-### Responsibilities
+[//]: # (* Permissions)
 
-* Compile XML resources
-* Generate R.java / R.class
-* Package APK or AAB
+[//]: # (* App entry point)
 
----
+[//]: # (* Package name)
 
-## 🔟 What is DEX file?
+[//]: # (* SDK versions)
 
-DEX (Dalvik Executable) file contains compiled bytecode of Android apps.
-Java/Kotlin code is converted into DEX format for execution by Android Runtime (ART).
+[//]: # ()
+[//]: # (### Example)
 
----
+[//]: # ()
+[//]: # (```xml)
 
-## 1️⃣1️⃣ What is Multidex?
+[//]: # (<manifest package="com.example.app">)
 
-Multidex allows an app to contain multiple DEX files when method count exceeds 65,536.
+[//]: # ()
+[//]: # (    <uses-permission android:name="android.permission.INTERNET"/>)
 
-### Why needed?
+[//]: # ()
+[//]: # (    <application>)
 
-Large apps exceed the single DEX limit.
+[//]: # (        <activity android:name=".MainActivity">)
 
-### Example
+[//]: # (            <intent-filter>)
 
-```gradle
-multiDexEnabled true
-```
+[//]: # (                <action android:name="android.intent.action.MAIN"/>)
 
----
+[//]: # (                <category android:name="android.intent.category.LAUNCHER"/>)
 
-## 1️⃣2️⃣ What are processes in Android?
+[//]: # (            </intent-filter>)
 
-A process is an instance of a running application.
-Android assigns priority to processes based on their importance.
+[//]: # (        </activity>)
 
-### Process Priority Order
+[//]: # (    </application>)
 
-1. Foreground process
-2. Visible process
-3. Service process
-4. Background process
-5. Empty process
+[//]: # ()
+[//]: # (</manifest>)
 
----
+[//]: # (```)
 
-## 1️⃣3️⃣ Is it possible to run an Android app in multiple processes? How?
+[//]: # ()
+[//]: # (---)
 
-Yes ✅
+[//]: # ()
+[//]: # (## 7️⃣ What is Application class?)
 
-### How?
+[//]: # ()
+[//]: # (The `Application` class represents the **global state of the app**.)
 
-By specifying `android:process` in `AndroidManifest.xml`.
+[//]: # (It is created before any Activity or Service.)
 
-```xml
-<activity
-    android:name=".MainActivity"
-    android:process=":remote" />
-```
+[//]: # ()
+[//]: # (### Use Cases)
 
-### Use Cases
+[//]: # ()
+[//]: # (* Initialize libraries &#40;Firebase, DI, Analytics&#41;)
 
-* Isolate heavy tasks
-* Improve stability
-* IPC (Inter-Process Communication)
+[//]: # (* Store global data)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-## 1️⃣4️⃣ How is memory managed in Android OS?
+[//]: # ()
+[//]: # (```kotlin)
 
-Android uses automatic memory management through **Garbage Collection (GC)**.
+[//]: # (class MyApp : Application&#40;&#41; {)
 
-### Memory Management Features
+[//]: # (    override fun onCreate&#40;&#41; {)
 
-* Heap memory allocation
-* Garbage Collector
-* Low Memory Killer (LMK)
-* Process termination when memory is low
+[//]: # (        super.onCreate&#40;&#41;)
 
-### Best Practices
+[//]: # (    })
 
-* Avoid memory leaks
-* Use ViewBinding instead of findViewById
-* Release resources in lifecycle methods
+[//]: # (})
 
----
+[//]: # (```)
 
-## 1️⃣5️⃣ What is StrictMode?
+[//]: # ()
+[//]: # (---)
 
-StrictMode is a developer tool used to detect bad practices in Android apps.
+[//]: # ()
+[//]: # (## 8️⃣ What is ADB in Android?)
 
-### Detects
+[//]: # ()
+[//]: # (ADB &#40;Android Debug Bridge&#41; is a command-line tool used to communicate with Android devices.)
 
-* Disk I/O on main thread
-* Network calls on main thread
-* Memory leaks
+[//]: # ()
+[//]: # (### Uses)
 
-### Example
+[//]: # ()
+[//]: # (* Install/uninstall apps)
 
-```kotlin
-StrictMode.setThreadPolicy(
-    StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build()
-)
-```
+[//]: # (* Debug apps)
 
----
+[//]: # (* Execute shell commands)
 
-## 1️⃣6️⃣ What is Lint?
+[//]: # ()
+[//]: # (### Example)
 
-Lint is a static code analysis tool that checks Android code for bugs, performance issues, and best practices.
+[//]: # ()
+[//]: # (```bash)
 
-### Detects
+[//]: # (adb install app.apk)
 
-* Unused resources
-* Performance issues
-* Security vulnerabilities
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 1️⃣7️⃣ What is Support Library? Why was it introduced?
+[//]: # ()
+[//]: # (## 9️⃣ What is AAPT &#40;Android Asset Packaging Tool&#41;?)
 
-The Android Support Library (now AndroidX) provides backward-compatible features for older Android versions.
+[//]: # ()
+[//]: # (AAPT is a build tool that compiles and packages Android app resources.)
 
-### Why introduced?
+[//]: # ()
+[//]: # (### Responsibilities)
 
-* New APIs not available in old Android versions
-* Consistent behavior across devices
+[//]: # ()
+[//]: # (* Compile XML resources)
 
-### Example
+[//]: # (* Generate R.java / R.class)
 
-```gradle
-implementation "androidx.appcompat:appcompat:1.6.1"
-```
+[//]: # (* Package APK or AAB)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 1️⃣8️⃣ What is Doze Mode? What is App Standby?
+[//]: # ()
+[//]: # (## 🔟 What is DEX file?)
 
-### 🔹 Doze Mode
+[//]: # ()
+[//]: # (DEX &#40;Dalvik Executable&#41; file contains compiled bytecode of Android apps.)
 
-Introduced in Android 6.0 to save battery when the device is idle.
+[//]: # (Java/Kotlin code is converted into DEX format for execution by Android Runtime &#40;ART&#41;.)
 
-### Effects
+[//]: # ()
+[//]: # (---)
 
-* Restricts background CPU and network usage
-* Delays jobs and alarms
+[//]: # ()
+[//]: # (## 1️⃣1️⃣ What is Multidex?)
 
----
+[//]: # ()
+[//]: # (Multidex allows an app to contain multiple DEX files when method count exceeds 65,536.)
 
-### 🔹 App Standby
+[//]: # ()
+[//]: # (### Why needed?)
 
-Restricts background activities of unused apps.
+[//]: # ()
+[//]: # (Large apps exceed the single DEX limit.)
 
-### Effects
+[//]: # ()
+[//]: # (### Example)
 
-* Limits background execution
-* Saves battery
+[//]: # ()
+[//]: # (```gradle)
 
----
+[//]: # (multiDexEnabled true)
 
-## 1️⃣9️⃣ What is File, Class, and Activity in Android?
+[//]: # (```)
 
-### 🔹 File
+[//]: # ()
+[//]: # (---)
 
-A file is a physical resource stored in the project (e.g., XML, Kotlin, images).
+[//]: # ()
+[//]: # (## 1️⃣2️⃣ What are processes in Android?)
 
-Example:
+[//]: # ()
+[//]: # (A process is an instance of a running application.)
 
-* `MainActivity.kt`
-* `activity_main.xml`
+[//]: # (Android assigns priority to processes based on their importance.)
 
----
+[//]: # ()
+[//]: # (### Process Priority Order)
 
-### 🔹 Class
+[//]: # ()
+[//]: # (1. Foreground process)
 
-A class is a blueprint for objects in Java/Kotlin.
+[//]: # (2. Visible process)
 
-Example:
+[//]: # (3. Service process)
 
-```kotlin
-class User(val name: String)
-```
+[//]: # (4. Background process)
 
----
+[//]: # (5. Empty process)
 
-### 🔹 Activity
+[//]: # ()
+[//]: # (---)
 
-An Activity is a UI component representing a screen.
+[//]: # ()
+[//]: # (## 1️⃣3️⃣ Is it possible to run an Android app in multiple processes? How?)
 
-Example:
+[//]: # ()
+[//]: # (Yes ✅)
 
-```kotlin
-class MainActivity : AppCompatActivity()
-```
+[//]: # ()
+[//]: # (### How?)
 
----
+[//]: # ()
+[//]: # (By specifying `android:process` in `AndroidManifest.xml`.)
 
-## 2️⃣0️⃣ How to change parameters in an app without app update?
+[//]: # ()
+[//]: # (```xml)
 
-This can be done using **Remote Configuration techniques**.
+[//]: # (<activity)
 
-### Common Methods
+[//]: # (    android:name=".MainActivity")
 
-1. Firebase Remote Config
-2. Server API configuration
-3. Feature flags
-4. Remote JSON config
+[//]: # (    android:process=":remote" />)
 
-### Example (Firebase Remote Config)
+[//]: # (```)
 
-* Change UI text, features, or behavior without updating the app.
+[//]: # ()
+[//]: # (### Use Cases)
 
-### Benefits
+[//]: # ()
+[//]: # (* Isolate heavy tasks)
 
-* Dynamic updates
-* A/B testing
-* Feature toggling
+[//]: # (* Improve stability)
 
----
+[//]: # (* IPC &#40;Inter-Process Communication&#41;)
 
-//here is other one
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣4️⃣ How is memory managed in Android OS?)
 
-## 1️⃣ What is Activity and its lifecycle?
+[//]: # ()
+[//]: # (Android uses automatic memory management through **Garbage Collection &#40;GC&#41;**.)
 
-An **Activity** is a core Android component that represents a single screen with a user interface.
+[//]: # ()
+[//]: # (### Memory Management Features)
 
-### Activity Lifecycle Methods
+[//]: # ()
+[//]: # (* Heap memory allocation)
 
-```kotlin
-onCreate()   // Activity created
-onStart()    // Activity becomes visible
-onResume()   // Activity in foreground (interactive)
-onPause()    // Activity partially visible
-onStop()     // Activity no longer visible
-onDestroy()  // Activity destroyed
-onRestart()  // Activity restarting after stop
-````
+[//]: # (* Garbage Collector)
 
-### Lifecycle Flow
+[//]: # (* Low Memory Killer &#40;LMK&#41;)
 
-```
-onCreate → onStart → onResume
-                ↓
-            onPause → onStop → onDestroy
-```
+[//]: # (* Process termination when memory is low)
 
----
+[//]: # ()
+[//]: # (### Best Practices)
 
-## 2️⃣ Difference between onCreate() and onStart()
+[//]: # ()
+[//]: # (* Avoid memory leaks)
 
-| onCreate()                           | onStart()                                  |
-| ------------------------------------ | ------------------------------------------ |
-| Called once when Activity is created | Called every time Activity becomes visible |
-| Used for initialization              | Used to prepare UI                         |
-| Set content view                     | Register listeners                         |
+[//]: # (* Use ViewBinding instead of findViewById)
 
----
+[//]: # (* Release resources in lifecycle methods)
 
-## 3️⃣ When is only onDestroy() called without onPause() and onStop()?
+[//]: # ()
+[//]: # (---)
 
-⚠️ In normal lifecycle flow, `onDestroy()` is **not called alone**.
-However, it may be called directly when:
+[//]: # ()
+[//]: # (## 1️⃣5️⃣ What is StrictMode?)
 
-* System kills the process
-* finish() is called before Activity is fully resumed
-* App crashes
+[//]: # ()
+[//]: # (StrictMode is a developer tool used to detect bad practices in Android apps.)
 
-✅ Note: Android does not guarantee `onDestroy()` execution.
+[//]: # ()
+[//]: # (### Detects)
 
----
+[//]: # ()
+[//]: # (* Disk I/O on main thread)
 
-## 4️⃣ Activity lifecycle when launched for the first time
+[//]: # (* Network calls on main thread)
 
-```
-onCreate → onStart → onResume
-```
+[//]: # (* Memory leaks)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-## 5️⃣ Activity lifecycle when back button is pressed
+[//]: # ()
+[//]: # (```kotlin)
 
-```
-onPause → onStop → onDestroy
-```
+[//]: # (StrictMode.setThreadPolicy&#40;)
 
----
+[//]: # (    StrictMode.ThreadPolicy.Builder&#40;&#41;.detectAll&#40;&#41;.penaltyLog&#40;&#41;.build&#40;&#41;)
 
-## 6️⃣ Activity lifecycle when launched again after back press
+[//]: # (&#41;)
 
-A new instance is created:
+[//]: # (```)
 
-```
-onCreate → onStart → onResume
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣6️⃣ What is Lint?)
 
-## 7️⃣ Activity lifecycle when home button is pressed
+[//]: # ()
+[//]: # (Lint is a static code analysis tool that checks Android code for bugs, performance issues, and best practices.)
 
-```
-onPause → onStop
-```
+[//]: # ()
+[//]: # (### Detects)
 
-(Activity is kept in back stack, not destroyed)
+[//]: # ()
+[//]: # (* Unused resources)
 
----
+[//]: # (* Performance issues)
 
-## 8️⃣ Activity lifecycle when app returns from background
+[//]: # (* Security vulnerabilities)
 
-```
-onRestart → onStart → onResume
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣7️⃣ What is Support Library? Why was it introduced?)
 
-## 9️⃣ Lifecycle when navigating from Activity A → Activity B
+[//]: # ()
+[//]: # (The Android Support Library &#40;now AndroidX&#41; provides backward-compatible features for older Android versions.)
 
-```
-Activity A: onPause()
-Activity B: onCreate → onStart → onResume
-Activity A: onStop()
-```
+[//]: # ()
+[//]: # (### Why introduced?)
 
----
+[//]: # ()
+[//]: # (* New APIs not available in old Android versions)
 
-## 🔟 Lifecycle when pressing back from Activity B → Activity A
+[//]: # (* Consistent behavior across devices)
 
-```
-Activity B: onPause → onStop → onDestroy
-Activity A: onRestart → onStart → onResume
-```
+[//]: # ()
+[//]: # (### Example)
 
----
+[//]: # ()
+[//]: # (```gradle)
 
-## 1️⃣1️⃣ How to preserve activity state during screen rotation?
+[//]: # (implementation "androidx.appcompat:appcompat:1.6.1")
 
-Use:
+[//]: # (```)
 
-* `onSaveInstanceState()`
-* ViewModel
-* SavedStateHandle
+[//]: # ()
+[//]: # (---)
 
-### Example
+[//]: # ()
+[//]: # (## 1️⃣8️⃣ What is Doze Mode? What is App Standby?)
 
-```kotlin
-override fun onSaveInstanceState(outState: Bundle) {
-    outState.putString("name", "Aasim")
-    super.onSaveInstanceState(outState)
-}
-```
+[//]: # ()
+[//]: # (### 🔹 Doze Mode)
 
----
+[//]: # ()
+[//]: # (Introduced in Android 6.0 to save battery when the device is idle.)
 
-## 1️⃣2️⃣ What is savedInstanceState Bundle?
+[//]: # ()
+[//]: # (### Effects)
 
-`savedInstanceState` is a Bundle that stores UI state before Activity destruction.
+[//]: # ()
+[//]: # (* Restricts background CPU and network usage)
 
-### Example
+[//]: # (* Delays jobs and alarms)
 
-```kotlin
-override fun onCreate(savedInstanceState: Bundle?) {
-    super.onCreate(savedInstanceState)
-    val name = savedInstanceState?.getString("name")
-}
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### 🔹 App Standby)
 
-## 1️⃣3️⃣ Difference between Intent and Bundle
+[//]: # ()
+[//]: # (Restricts background activities of unused apps.)
 
-| Intent                   | Bundle                  |
-| ------------------------ | ----------------------- |
-| Used to start components | Used to pass data       |
-| Can carry Bundle         | Cannot start components |
-| Messaging object         | Key-value container     |
+[//]: # ()
+[//]: # (### Effects)
 
----
+[//]: # ()
+[//]: # (* Limits background execution)
 
-## 1️⃣4️⃣ What are launchModes?
+[//]: # (* Saves battery)
 
-Launch modes define how Activities are created and managed in the back stack.
+[//]: # ()
+[//]: # (---)
 
-### Types
+[//]: # ()
+[//]: # (## 1️⃣9️⃣ What is File, Class, and Activity in Android?)
 
-* standard (default)
-* singleTop
-* singleTask
-* singleInstance
+[//]: # ()
+[//]: # (### 🔹 File)
 
----
+[//]: # ()
+[//]: # (A file is a physical resource stored in the project &#40;e.g., XML, Kotlin, images&#41;.)
 
-## 1️⃣5️⃣ Explain standard launchMode
+[//]: # ()
+[//]: # (Example:)
 
-* Default mode
-* Always creates a new instance
+[//]: # ()
+[//]: # (* `MainActivity.kt`)
 
-### Back stack example
+[//]: # (* `activity_main.xml`)
 
-```
-A → B → C → B (new instance)
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### 🔹 Class)
 
-## 1️⃣6️⃣ Explain singleTop launchMode
+[//]: # ()
+[//]: # (A class is a blueprint for objects in Java/Kotlin.)
 
-* Reuses Activity if already on top of stack
+[//]: # ()
+[//]: # (Example:)
 
-### Example
+[//]: # ()
+[//]: # (```kotlin)
 
-```
-A → B → C → B (reuse if B is on top)
-```
+[//]: # (class User&#40;val name: String&#41;)
 
----
+[//]: # (```)
 
-## 1️⃣7️⃣ Explain singleTask launchMode
+[//]: # ()
+[//]: # (---)
 
-* Only one instance exists in a task
-* Clears above Activities
+[//]: # ()
+[//]: # (### 🔹 Activity)
 
-### Example
+[//]: # ()
+[//]: # (An Activity is a UI component representing a screen.)
 
-```
-A → B → C → D → B
-Result: A → B
-```
+[//]: # ()
+[//]: # (Example:)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-## 1️⃣8️⃣ Explain singleInstance launchMode
+[//]: # (class MainActivity : AppCompatActivity&#40;&#41;)
 
-* Activity runs in a separate task
-* No other Activity in the same task
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 1️⃣9️⃣ What are tasks and back stack?
+[//]: # ()
+[//]: # (## 2️⃣0️⃣ How to change parameters in an app without app update?)
 
-### Task
+[//]: # ()
+[//]: # (This can be done using **Remote Configuration techniques**.)
 
-A task is a collection of Activities that users interact with.
+[//]: # ()
+[//]: # (### Common Methods)
 
-### Back Stack
+[//]: # ()
+[//]: # (1. Firebase Remote Config)
 
-A stack of Activities in LIFO order.
+[//]: # (2. Server API configuration)
 
----
+[//]: # (3. Feature flags)
 
-## 2️⃣0️⃣ What is taskAffinity?
+[//]: # (4. Remote JSON config)
 
-taskAffinity defines which task an Activity prefers to belong to.
+[//]: # ()
+[//]: # (### Example &#40;Firebase Remote Config&#41;)
 
-### Example
+[//]: # ()
+[//]: # (* Change UI text, features, or behavior without updating the app.)
 
-```xml
-<activity
-    android:name=".MainActivity"
-    android:taskAffinity="com.example.newtask" />
-```
+[//]: # ()
+[//]: # (### Benefits)
 
----
+[//]: # ()
+[//]: # (* Dynamic updates)
 
-## 2️⃣1️⃣ What is installLocation tag?
+[//]: # (* A/B testing)
 
-Specifies where the app can be installed.
+[//]: # (* Feature toggling)
 
-### Values
+[//]: # ()
+[//]: # (---)
 
-* auto
-* internalOnly
-* preferExternal
+[//]: # ()
+[//]: # (//here is other one)
 
-```xml
-<manifest android:installLocation="auto">
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣ What is Activity and its lifecycle?)
 
-## 2️⃣2️⃣ Relationship between Activity and Fragment lifecycle
+[//]: # ()
+[//]: # (An **Activity** is a core Android component that represents a single screen with a user interface.)
 
-Fragments have their own lifecycle but depend on Activity.
+[//]: # ()
+[//]: # (### Activity Lifecycle Methods)
 
-### Example mapping
+[//]: # ()
+[//]: # (```kotlin)
 
-| Activity    | Fragment                      |
-| ----------- | ----------------------------- |
-| onCreate()  | onAttach() → onCreate()       |
-| onStart()   | onStart()                     |
-| onResume()  | onResume()                    |
-| onPause()   | onPause()                     |
-| onStop()    | onStop()                      |
-| onDestroy() | onDestroyView() → onDestroy() |
+[//]: # (onCreate&#40;&#41;   // Activity created)
 
----
+[//]: # (onStart&#40;&#41;    // Activity becomes visible)
 
-## 2️⃣3️⃣ How do we save and restore an activity's state during screen rotation?
+[//]: # (onResume&#40;&#41;   // Activity in foreground &#40;interactive&#41;)
 
-### Steps
+[//]: # (onPause&#40;&#41;    // Activity partially visible)
 
-1. Save state in `onSaveInstanceState()`
-2. Restore state in `onCreate()` or `onRestoreInstanceState()`
+[//]: # (onStop&#40;&#41;     // Activity no longer visible)
 
----
+[//]: # (onDestroy&#40;&#41;  // Activity destroyed)
 
-## 2️⃣4️⃣ What is a Bundle?
+[//]: # (onRestart&#40;&#41;  // Activity restarting after stop)
 
-A Bundle is a key-value pair data structure used to pass data between Android components.
+[//]: # (````)
 
-### Example
+[//]: # ()
+[//]: # (### Lifecycle Flow)
 
-```kotlin
-val bundle = Bundle()
-bundle.putInt("age", 25)
-```
+[//]: # ()
+[//]: # (```)
 
----
+[//]: # (onCreate → onStart → onResume)
 
-## 2️⃣5️⃣ When Activity A starts Activity B, explain the lifecycle order
+[//]: # (                ↓)
 
-```
-Activity A: onPause()
-Activity B: onCreate → onStart → onResume
-Activity A: onStop()
-```
+[//]: # (            onPause → onStop → onDestroy)
 
----
+[//]: # (```)
 
-## 2️⃣6️⃣ How do you declare the launch mode in your application?
+[//]: # ()
+[//]: # (---)
 
-### In AndroidManifest.xml
+[//]: # ()
+[//]: # (## 2️⃣ Difference between onCreate&#40;&#41; and onStart&#40;&#41;)
 
-```xml
-<activity
-    android:name=".MainActivity"
-    android:launchMode="singleTask" />
-```
+[//]: # ()
+[//]: # (| onCreate&#40;&#41;                           | onStart&#40;&#41;                                  |)
 
-### In Intent
+[//]: # (| ------------------------------------ | ------------------------------------------ |)
 
-```kotlin
-intent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
-```
+[//]: # (| Called once when Activity is created | Called every time Activity becomes visible |)
 
----
+[//]: # (| Used for initialization              | Used to prepare UI                         |)
 
-## 2️⃣7️⃣ How to know configChange happens in onDestroy?
+[//]: # (| Set content view                     | Register listeners                         |)
 
-Use `isChangingConfigurations`.
+[//]: # ()
+[//]: # (---)
 
-### Example
+[//]: # ()
+[//]: # (## 3️⃣ When is only onDestroy&#40;&#41; called without onPause&#40;&#41; and onStop&#40;&#41;?)
 
-```kotlin
-override fun onDestroy() {
-    super.onDestroy()
-    if (isChangingConfigurations) {
-        Log.d("ConfigChange", "Activity destroyed due to configuration change")
-    }
-}
-```
+[//]: # ()
+[//]: # (⚠️ In normal lifecycle flow, `onDestroy&#40;&#41;` is **not called alone**.)
 
----
+[//]: # (However, it may be called directly when:)
 
+[//]: # ()
+[//]: # (* System kills the process)
 
-//fragment
+[//]: # (* finish&#40;&#41; is called before Activity is fully resumed)
 
+[//]: # (* App crashes)
 
----
+[//]: # ()
+[//]: # (✅ Note: Android does not guarantee `onDestroy&#40;&#41;` execution.)
 
-## 1️⃣ What is Fragment?
+[//]: # ()
+[//]: # (---)
 
-A **Fragment** is a reusable portion of UI that represents a part of an Activity’s interface and behavior.
+[//]: # ()
+[//]: # (## 4️⃣ Activity lifecycle when launched for the first time)
 
-### Key Points
-- Fragment cannot exist without an Activity.
-- It has its own lifecycle.
-- Used for modular and reusable UI.
-- Supports multi-pane layouts (tablet, foldables).
+[//]: # ()
+[//]: # (```)
 
-### Example
-```kotlin
-class HomeFragment : Fragment(R.layout.fragment_home)
-````
+[//]: # (onCreate → onStart → onResume)
 
----
+[//]: # (```)
 
-## 2️⃣ Fragment Lifecycle
+[//]: # ()
+[//]: # (---)
 
-Fragments have a lifecycle similar to Activities but with additional callbacks.
+[//]: # ()
+[//]: # (## 5️⃣ Activity lifecycle when back button is pressed)
 
-### Lifecycle Methods
+[//]: # ()
+[//]: # (```)
 
-```kotlin
-onAttach()        // Fragment attached to Activity
-onCreate()        // Fragment created
-onCreateView()    // UI created
-onViewCreated()   // View ready
-onStart()         // Fragment visible
-onResume()        // Fragment active
-onPause()         // Fragment partially visible
-onStop()          // Fragment hidden
-onDestroyView()   // View destroyed
-onDestroy()       // Fragment destroyed
-onDetach()        // Fragment detached from Activity
-```
+[//]: # (onPause → onStop → onDestroy)
 
----
+[//]: # (```)
 
-## 3️⃣ Why is it recommended to use only the default constructor in Fragment?
+[//]: # ()
+[//]: # (---)
 
-Fragments must have a **public empty constructor** because Android may recreate them during configuration changes or process death.
+[//]: # ()
+[//]: # (## 6️⃣ Activity lifecycle when launched again after back press)
 
-### ❌ Wrong Approach
+[//]: # ()
+[//]: # (A new instance is created:)
 
-```kotlin
-class MyFragment(val name: String) : Fragment()
-```
+[//]: # ()
+[//]: # (```)
 
-### ✅ Correct Approach
+[//]: # (onCreate → onStart → onResume)
 
-Use `newInstance()` with Bundle.
+[//]: # (```)
 
-```kotlin
-class MyFragment : Fragment() {
+[//]: # ()
+[//]: # (---)
 
-    companion object {
-        fun newInstance(name: String): MyFragment {
-            val fragment = MyFragment()
-            val bundle = Bundle()
-            bundle.putString("name", name)
-            fragment.arguments = bundle
-            return fragment
-        }
-    }
-}
-```
+[//]: # ()
+[//]: # (## 7️⃣ Activity lifecycle when home button is pressed)
 
----
+[//]: # ()
+[//]: # (```)
 
-## 4️⃣ Fragment lifecycle when launched
+[//]: # (onPause → onStop)
 
-```
-onAttach → onCreate → onCreateView → onViewCreated → onStart → onResume
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (&#40;Activity is kept in back stack, not destroyed&#41;)
 
-## 5️⃣ Fragment lifecycle when back button is pressed
+[//]: # ()
+[//]: # (---)
 
-If Fragment is in back stack:
+[//]: # ()
+[//]: # (## 8️⃣ Activity lifecycle when app returns from background)
 
-```
-onPause → onStop → onDestroyView
-```
+[//]: # ()
+[//]: # (```)
 
-If Fragment is removed completely:
+[//]: # (onRestart → onStart → onResume)
 
-```
-onPause → onStop → onDestroyView → onDestroy → onDetach
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 6️⃣ Fragment lifecycle when home button is pressed
+[//]: # ()
+[//]: # (## 9️⃣ Lifecycle when navigating from Activity A → Activity B)
 
-```
-onPause → onStop
-```
+[//]: # ()
+[//]: # (```)
 
-(Fragment remains in memory)
+[//]: # (Activity A: onPause&#40;&#41;)
 
----
+[//]: # (Activity B: onCreate → onStart → onResume)
 
-## 7️⃣ Fragment lifecycle when returning from background
+[//]: # (Activity A: onStop&#40;&#41;)
 
-```
-onStart → onResume
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 8️⃣ Difference between Fragment and Activity
+[//]: # ()
+[//]: # (## 🔟 Lifecycle when pressing back from Activity B → Activity A)
 
-| Fragment            | Activity                |
-| ------------------- | ----------------------- |
-| Part of an Activity | Independent component   |
-| Cannot exist alone  | Can exist independently |
-| Lightweight         | Heavy component         |
-| Reusable UI         | Full screen UI          |
-| Child of Activity   | Parent container        |
+[//]: # ()
+[//]: # (```)
 
----
+[//]: # (Activity B: onPause → onStop → onDestroy)
 
-## 9️⃣ When should you use Fragment instead of Activity?
+[//]: # (Activity A: onRestart → onStart → onResume)
 
-Use Fragment when:
+[//]: # (```)
 
-* Building modular UI
-* Supporting multiple screen sizes
-* Implementing single-activity architecture
-* Reusing UI components
-* Using ViewPager / Navigation Component
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣1️⃣ How to preserve activity state during screen rotation?)
 
-## 🔟 Difference between add and replace Fragment in back stack
+[//]: # ()
+[//]: # (Use:)
 
-### add()
+[//]: # ()
+[//]: # (* `onSaveInstanceState&#40;&#41;`)
 
-* Adds Fragment on top of existing Fragment
-* Previous Fragment remains in memory and visible (if not hidden)
+[//]: # (* ViewModel)
 
-### replace()
+[//]: # (* SavedStateHandle)
 
-* Removes current Fragment and adds new Fragment
-* Previous Fragment is destroyed (view)
+[//]: # ()
+[//]: # (### Example)
 
-| add()                      | replace()                   |
-| -------------------------- | --------------------------- |
-| Multiple fragments coexist | Only one fragment at a time |
-| Faster UI switching        | Cleaner UI                  |
-| More memory usage          | Less memory usage           |
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (override fun onSaveInstanceState&#40;outState: Bundle&#41; {)
 
-## 1️⃣1️⃣ What is Retained Fragment / Headless Fragment?
+[//]: # (    outState.putString&#40;"name", "Aasim"&#41;)
 
-A **Retained Fragment** is a Fragment that survives configuration changes.
+[//]: # (    super.onSaveInstanceState&#40;outState&#41;)
 
-### Characteristics
+[//]: # (})
 
-* No UI (Headless Fragment)
-* Used to retain data across configuration changes
+[//]: # (```)
 
-### Example
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-setRetainInstance(true)
-```
+[//]: # ()
+[//]: # (## 1️⃣2️⃣ What is savedInstanceState Bundle?)
 
-⚠️ Deprecated in modern Android → replaced by ViewModel.
+[//]: # ()
+[//]: # (`savedInstanceState` is a Bundle that stores UI state before Activity destruction.)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-## 1️⃣2️⃣ Purpose of addToBackStack() in FragmentTransaction
+[//]: # ()
+[//]: # (```kotlin)
 
-`addToBackStack()` adds a Fragment transaction to the back stack, allowing users to navigate back.
+[//]: # (override fun onCreate&#40;savedInstanceState: Bundle?&#41; {)
 
-### Example
+[//]: # (    super.onCreate&#40;savedInstanceState&#41;)
 
-```kotlin
-supportFragmentManager.beginTransaction()
-    .replace(R.id.container, SecondFragment())
-    .addToBackStack(null)
-    .commit()
-```
+[//]: # (    val name = savedInstanceState?.getString&#40;"name"&#41;)
 
-### Without addToBackStack()
+[//]: # (})
 
-* Back button closes Activity.
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 1️⃣3️⃣ How to communicate between two Fragments?
+[//]: # ()
+[//]: # (## 1️⃣3️⃣ Difference between Intent and Bundle)
 
-### ✅ Best Approaches
+[//]: # ()
+[//]: # (| Intent                   | Bundle                  |)
 
-#### 1. Shared ViewModel (Recommended)
+[//]: # (| ------------------------ | ----------------------- |)
 
-* Both fragments share same ViewModel.
+[//]: # (| Used to start components | Used to pass data       |)
 
-#### 2. Interface Callback
+[//]: # (| Can carry Bundle         | Cannot start components |)
 
-* Fragment communicates via Activity.
+[//]: # (| Messaging object         | Key-value container     |)
 
-#### 3. Fragment Result API
+[//]: # ()
+[//]: # (---)
 
-* Modern solution.
+[//]: # ()
+[//]: # (## 1️⃣4️⃣ What are launchModes?)
 
-### Example (Fragment Result API)
+[//]: # ()
+[//]: # (Launch modes define how Activities are created and managed in the back stack.)
 
-```kotlin
-parentFragmentManager.setFragmentResult("key", bundleOf("data" to "Hello"))
-```
+[//]: # ()
+[//]: # (### Types)
 
----
+[//]: # ()
+[//]: # (* standard &#40;default&#41;)
 
-## 1️⃣4️⃣ How to share ViewModel between fragments?
+[//]: # (* singleTop)
 
-Use `activityViewModels()`.
+[//]: # (* singleTask)
 
-### Example
+[//]: # (* singleInstance)
 
-```kotlin
-class SharedViewModel : ViewModel() {
-    val data = MutableLiveData<String>()
-}
-```
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-val viewModel: SharedViewModel by activityViewModels()
-```
+[//]: # ()
+[//]: # (## 1️⃣5️⃣ Explain standard launchMode)
 
----
+[//]: # ()
+[//]: # (* Default mode)
 
-## 1️⃣5️⃣ Difference between Dialog and DialogFragment
+[//]: # (* Always creates a new instance)
 
-| Dialog               | DialogFragment                 |
-| -------------------- | ------------------------------ |
-| UI popup component   | Fragment wrapper around Dialog |
-| Not lifecycle-aware  | Lifecycle-aware                |
-| Manual management    | Managed by FragmentManager     |
-| Risk of memory leaks | Safer                          |
+[//]: # ()
+[//]: # (### Back stack example)
 
-### Example DialogFragment
+[//]: # ()
+[//]: # (```)
 
-```kotlin
-class MyDialogFragment : DialogFragment()
-```
+[//]: # (A → B → C → B &#40;new instance&#41;)
 
----
+[//]: # (```)
 
+[//]: # ()
+[//]: # (---)
 
+[//]: # ()
+[//]: # (## 1️⃣6️⃣ Explain singleTop launchMode)
 
-///intent
+[//]: # ()
+[//]: # (* Reuses Activity if already on top of stack)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-# ✅ Android Intent & Broadcast – Explained with Tags + Examples
+[//]: # ()
+[//]: # (```)
 
----
+[//]: # (A → B → C → B &#40;reuse if B is on top&#41;)
 
-## 1) What is Intent?
+[//]: # (```)
 
-✅ **Definition:**
-Intent is a messaging object used to request an action from another component (Activity, Service, BroadcastReceiver).
+[//]: # ()
+[//]: # (---)
 
-✅ **Used Class / Tag:**
-`android.content.Intent`
+[//]: # ()
+[//]: # (## 1️⃣7️⃣ Explain singleTask launchMode)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (* Only one instance exists in a task)
 
-```kotlin
-val intent = Intent(this, SecondActivity::class.java)
-startActivity(intent)
-```
+[//]: # (* Clears above Activities)
 
----
+[//]: # ()
+[//]: # (### Example)
 
-## 2) What is Explicit Intent?
+[//]: # ()
+[//]: # (```)
 
-✅ **Definition:**
-Intent where you specify the exact target component (class name).
+[//]: # (A → B → C → D → B)
 
-✅ **Used Class:**
-`Intent(Context, TargetClass::class.java)`
+[//]: # (Result: A → B)
 
-✅ **Example:**
+[//]: # (```)
 
-```kotlin
-val intent = Intent(this, ProfileActivity::class.java)
-startActivity(intent)
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1️⃣8️⃣ Explain singleInstance launchMode)
 
-## 3) What is Implicit Intent?
+[//]: # ()
+[//]: # (* Activity runs in a separate task)
 
-✅ **Definition:**
-Intent where the target component is not specified, but the action is defined.
+[//]: # (* No other Activity in the same task)
 
-✅ **Used Tags / Actions:**
-`Intent.ACTION_VIEW`, `Intent.ACTION_SEND`
+[//]: # ()
+[//]: # (---)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (## 1️⃣9️⃣ What are tasks and back stack?)
 
-```kotlin
-val intent = Intent(Intent.ACTION_VIEW)
-intent.data = Uri.parse("https://google.com")
-startActivity(intent)
-```
+[//]: # ()
+[//]: # (### Task)
 
----
+[//]: # ()
+[//]: # (A task is a collection of Activities that users interact with.)
 
-## 4) What is Sticky Intent?
+[//]: # ()
+[//]: # (### Back Stack)
 
-✅ **Definition:**
-Sticky Intent remains in the system after being broadcast, so future receivers can access it.
+[//]: # ()
+[//]: # (A stack of Activities in LIFO order.)
 
-⚠️ Deprecated in modern Android.
+[//]: # ()
+[//]: # (---)
 
-✅ **Used Method:**
-`sendStickyBroadcast()`
+[//]: # ()
+[//]: # (## 2️⃣0️⃣ What is taskAffinity?)
 
-✅ **Example (Not recommended):**
+[//]: # ()
+[//]: # (taskAffinity defines which task an Activity prefers to belong to.)
 
-```kotlin
-val intent = Intent("MY_ACTION")
-sendStickyBroadcast(intent)
-```
+[//]: # ()
+[//]: # (### Example)
 
----
+[//]: # ()
+[//]: # (```xml)
 
-## 5) What is PendingIntent?
+[//]: # (<activity)
 
-✅ **Definition:**
-A token that allows another app or system to execute your Intent later on your behalf.
+[//]: # (    android:name=".MainActivity")
 
-✅ **Used Class:**
-`android.app.PendingIntent`
+[//]: # (    android:taskAffinity="com.example.newtask" />)
 
-✅ **Example:**
+[//]: # (```)
 
-```kotlin
-val intent = Intent(this, MainActivity::class.java)
-val pendingIntent = PendingIntent.getActivity(
-    this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT
-)
-```
+[//]: # ()
+[//]: # (---)
 
-📌 Used in: Notifications, Alarms, Widgets.
+[//]: # ()
+[//]: # (## 2️⃣1️⃣ What is installLocation tag?)
 
----
+[//]: # ()
+[//]: # (Specifies where the app can be installed.)
 
-## 6) What is IntentFilter?
+[//]: # ()
+[//]: # (### Values)
 
-✅ **Definition:**
-Declares which Intents a component can respond to.
+[//]: # ()
+[//]: # (* auto)
 
-✅ **Used Tag (Manifest):**
-`<intent-filter>`
+[//]: # (* internalOnly)
 
-✅ **Example (AndroidManifest.xml):**
+[//]: # (* preferExternal)
 
-```xml
-<activity android:name=".MainActivity">
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-    </intent-filter>
-</activity>
-```
+[//]: # ()
+[//]: # (```xml)
 
----
+[//]: # (<manifest android:installLocation="auto">)
 
-## 7) What is BroadcastReceiver?
+[//]: # (```)
 
-✅ **Definition:**
-A component that listens for system-wide or app-specific broadcast messages.
+[//]: # ()
+[//]: # (---)
 
-✅ **Used Class:**
-`BroadcastReceiver`
+[//]: # ()
+[//]: # (## 2️⃣2️⃣ Relationship between Activity and Fragment lifecycle)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (Fragments have their own lifecycle but depend on Activity.)
 
-```kotlin
-class MyReceiver : BroadcastReceiver() {
-    override fun onReceive(context: Context, intent: Intent) {
-        Log.d("Receiver", "Broadcast received")
-    }
-}
-```
+[//]: # ()
+[//]: # (### Example mapping)
 
-Register in Manifest:
+[//]: # ()
+[//]: # (| Activity    | Fragment                      |)
 
-```xml
-<receiver android:name=".MyReceiver"/>
-```
+[//]: # (| ----------- | ----------------------------- |)
 
----
+[//]: # (| onCreate&#40;&#41;  | onAttach&#40;&#41; → onCreate&#40;&#41;       |)
 
-## 8) What is LocalBroadcastManager?
+[//]: # (| onStart&#40;&#41;   | onStart&#40;&#41;                     |)
 
-✅ **Definition:**
-Used to send broadcasts within the same app only (more secure & efficient).
+[//]: # (| onResume&#40;&#41;  | onResume&#40;&#41;                    |)
 
-⚠️ Deprecated → Use Flow / LiveData / SharedViewModel instead.
+[//]: # (| onPause&#40;&#41;   | onPause&#40;&#41;                     |)
 
-✅ **Used Class:**
-`LocalBroadcastManager`
+[//]: # (| onStop&#40;&#41;    | onStop&#40;&#41;                      |)
 
-✅ **Example:**
+[//]: # (| onDestroy&#40;&#41; | onDestroyView&#40;&#41; → onDestroy&#40;&#41; |)
 
-```kotlin
-LocalBroadcastManager.getInstance(this)
-    .sendBroadcast(Intent("MY_LOCAL_ACTION"))
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 2️⃣3️⃣ How do we save and restore an activity's state during screen rotation?)
 
-## 9) Types of Broadcasts in Android
+[//]: # ()
+[//]: # (### Steps)
 
-### ✅ a) Normal Broadcast
+[//]: # ()
+[//]: # (1. Save state in `onSaveInstanceState&#40;&#41;`)
 
-* Delivered to all receivers simultaneously.
+[//]: # (2. Restore state in `onCreate&#40;&#41;` or `onRestoreInstanceState&#40;&#41;`)
 
-### ✅ b) Ordered Broadcast
+[//]: # ()
+[//]: # (---)
 
-* Delivered one by one based on priority.
+[//]: # ()
+[//]: # (## 2️⃣4️⃣ What is a Bundle?)
 
-### ✅ c) Sticky Broadcast
+[//]: # ()
+[//]: # (A Bundle is a key-value pair data structure used to pass data between Android components.)
 
-* Remains in system memory.
+[//]: # ()
+[//]: # (### Example)
 
-### ✅ d) Local Broadcast
+[//]: # ()
+[//]: # (```kotlin)
 
-* Inside the same app only.
+[//]: # (val bundle = Bundle&#40;&#41;)
 
----
+[//]: # (bundle.putInt&#40;"age", 25&#41;)
 
-## 10) Difference between Normal vs Ordered Broadcast
+[//]: # (```)
 
-| Feature              | Normal Broadcast | Ordered Broadcast      |
-| -------------------- | ---------------- | ---------------------- |
-| Delivery             | Simultaneous     | Sequential             |
-| Priority             | No               | Yes                    |
-| Can stop propagation | ❌ No             | ✅ Yes                  |
-| Method               | sendBroadcast()  | sendOrderedBroadcast() |
+[//]: # ()
+[//]: # (---)
 
-✅ Example:
+[//]: # ()
+[//]: # (## 2️⃣5️⃣ When Activity A starts Activity B, explain the lifecycle order)
 
-```kotlin
-sendBroadcast(Intent("ACTION_NORMAL"))
-sendOrderedBroadcast(Intent("ACTION_ORDERED"), null)
-```
+[//]: # ()
+[//]: # (```)
 
----
+[//]: # (Activity A: onPause&#40;&#41;)
 
-## 11) How can two Android apps interact?
+[//]: # (Activity B: onCreate → onStart → onResume)
 
-✅ Methods:
+[//]: # (Activity A: onStop&#40;&#41;)
 
-### ✅ a) Implicit Intent
+[//]: # (```)
 
-```kotlin
-val intent = Intent(Intent.ACTION_SEND)
-intent.type = "text/plain"
-startActivity(intent)
-```
+[//]: # ()
+[//]: # (---)
 
-### ✅ b) Content Provider
+[//]: # ()
+[//]: # (## 2️⃣6️⃣ How do you declare the launch mode in your application?)
 
-* Share data using URI.
+[//]: # ()
+[//]: # (### In AndroidManifest.xml)
 
-### ✅ c) BroadcastReceiver
+[//]: # ()
+[//]: # (```xml)
 
-* App-to-app communication.
+[//]: # (<activity)
 
-### ✅ d) Deep Links
+[//]: # (    android:name=".MainActivity")
 
-* Open another app using URL.
+[//]: # (    android:launchMode="singleTask" />)
 
----
+[//]: # (```)
 
-## 12) What is Deeplink?
+[//]: # ()
+[//]: # (### In Intent)
 
-✅ **Definition:**
-A URL that opens a specific screen inside an app instead of the browser.
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Used Tags:**
-`<data>`, `<intent-filter>`
+[//]: # (intent.addFlags&#40;Intent.FLAG_ACTIVITY_SINGLE_TOP&#41;)
 
-✅ **Example (Manifest):**
+[//]: # (```)
 
-```xml
-<activity android:name=".ProductActivity">
-    <intent-filter>
-        <action android:name="android.intent.action.VIEW"/>
-        <category android:name="android.intent.category.DEFAULT"/>
-        <category android:name="android.intent.category.BROWSABLE"/>
+[//]: # ()
+[//]: # (---)
 
-        <data
-            android:scheme="https"
-            android:host="myapp.com"
-            android:pathPrefix="/product"/>
-    </intent-filter>
-</activity>
-```
+[//]: # ()
+[//]: # (## 2️⃣7️⃣ How to know configChange happens in onDestroy?)
 
-✅ Open link:
+[//]: # ()
+[//]: # (Use `isChangingConfigurations`.)
 
-```
-https://myapp.com/product/123
-```
+[//]: # ()
+[//]: # (### Example)
 
----
-//service
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (override fun onDestroy&#40;&#41; {)
 
-# ✅ Android Service & Background Processing – Explained with Tags + Examples
+[//]: # (    super.onDestroy&#40;&#41;)
 
----
+[//]: # (    if &#40;isChangingConfigurations&#41; {)
 
-## 1) What is Service?
+[//]: # (        Log.d&#40;"ConfigChange", "Activity destroyed due to configuration change"&#41;)
 
-✅ **Definition:**
-A Service is an Android component that performs long-running operations in the background without UI.
+[//]: # (    })
 
-✅ **Used Class:**
-`android.app.Service`
+[//]: # (})
 
-✅ **Example:**
+[//]: # (```)
 
-```kotlin
-class MyService : Service() {
-    override fun onBind(intent: Intent?): IBinder? = null
+[//]: # ()
+[//]: # (---)
 
-    override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        Log.d("Service", "Service Started")
-        return START_STICKY
-    }
-}
-```
+[//]: # ()
+[//]: # ()
+[//]: # (//fragment)
 
-Start Service:
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-startService(Intent(this, MyService::class.java))
-```
+[//]: # ()
+[//]: # (## 1️⃣ What is Fragment?)
 
----
+[//]: # ()
+[//]: # (A **Fragment** is a reusable portion of UI that represents a part of an Activity’s interface and behavior.)
 
-## 2) Types of Services in Android
+[//]: # ()
+[//]: # (### Key Points)
 
-### ✅ a) Foreground Service
+[//]: # (- Fragment cannot exist without an Activity.)
 
-### ✅ b) Background Service (Deprecated / Restricted)
+[//]: # (- It has its own lifecycle.)
 
-### ✅ c) Bound Service
+[//]: # (- Used for modular and reusable UI.)
 
----
+[//]: # (- Supports multi-pane layouts &#40;tablet, foldables&#41;.)
 
-## 3) What is Foreground Service?
+[//]: # ()
+[//]: # (### Example)
 
-✅ **Definition:**
-A service that runs in the foreground with a visible notification.
+[//]: # (```kotlin)
 
-✅ **Used Methods:**
-`startForeground()`
+[//]: # (class HomeFragment : Fragment&#40;R.layout.fragment_home&#41;)
 
-✅ **Example:**
+[//]: # (````)
 
-```kotlin
-startForeground(1, notification)
-```
+[//]: # ()
+[//]: # (---)
 
-📌 Use cases:
-Music player, navigation, fitness tracking, location tracking.
+[//]: # ()
+[//]: # (## 2️⃣ Fragment Lifecycle)
 
----
+[//]: # ()
+[//]: # (Fragments have a lifecycle similar to Activities but with additional callbacks.)
 
-## 4) What is Background Service?
+[//]: # ()
+[//]: # (### Lifecycle Methods)
 
-✅ **Definition:**
-A service running in the background without user interaction.
+[//]: # ()
+[//]: # (```kotlin)
 
-⚠️ Restricted from Android 8+ (Oreo).
+[//]: # (onAttach&#40;&#41;        // Fragment attached to Activity)
 
-📌 Reason: Battery optimization & security.
+[//]: # (onCreate&#40;&#41;        // Fragment created)
 
----
+[//]: # (onCreateView&#40;&#41;    // UI created)
 
-## 5) What is Bound Service?
+[//]: # (onViewCreated&#40;&#41;   // View ready)
 
-✅ **Definition:**
-A service that allows components to bind and interact with it.
+[//]: # (onStart&#40;&#41;         // Fragment visible)
 
-✅ **Used Method:**
-`bindService()`
+[//]: # (onResume&#40;&#41;        // Fragment active)
 
-✅ **Example:**
+[//]: # (onPause&#40;&#41;         // Fragment partially visible)
 
-```kotlin
-bindService(Intent(this, MyService::class.java), connection, Context.BIND_AUTO_CREATE)
-```
+[//]: # (onStop&#40;&#41;          // Fragment hidden)
 
----
+[//]: # (onDestroyView&#40;&#41;   // View destroyed)
 
-## 6) Difference between Service and IntentService
+[//]: # (onDestroy&#40;&#41;       // Fragment destroyed)
 
-| Feature            | Service            | IntentService     |
-| ------------------ | ------------------ | ----------------- |
-| Thread             | Main thread        | Background thread |
-| Queue              | ❌ No               | ✅ Yes             |
-| Stop automatically | ❌ No               | ✅ Yes             |
-| Use case           | Long-running tasks | Sequential tasks  |
+[//]: # (onDetach&#40;&#41;        // Fragment detached from Activity)
 
----
+[//]: # (```)
 
-## 7) Why IntentService is deprecated?
+[//]: # ()
+[//]: # (---)
 
-✅ Reasons:
+[//]: # ()
+[//]: # (## 3️⃣ Why is it recommended to use only the default constructor in Fragment?)
 
-* Not lifecycle-aware
-* No support for modern background limits
-* Replaced by WorkManager / JobIntentService / Coroutines
+[//]: # ()
+[//]: # (Fragments must have a **public empty constructor** because Android may recreate them during configuration changes or process death.)
 
-⚠️ Deprecated since Android API 30.
+[//]: # ()
+[//]: # (### ❌ Wrong Approach)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-## 8) What is JobIntentService?
+[//]: # (class MyFragment&#40;val name: String&#41; : Fragment&#40;&#41;)
 
-✅ **Definition:**
-A backward-compatible alternative to IntentService using JobScheduler.
+[//]: # (```)
 
-✅ **Used Class:**
-`androidx.core.app.JobIntentService`
+[//]: # ()
+[//]: # (### ✅ Correct Approach)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (Use `newInstance&#40;&#41;` with Bundle.)
 
-```kotlin
-class MyJobIntentService : JobIntentService() {
-    override fun onHandleWork(intent: Intent) {
-        Log.d("JobIntentService", "Task executed")
-    }
-}
-```
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (class MyFragment : Fragment&#40;&#41; {)
 
-## 9) What is JobScheduler?
+[//]: # ()
+[//]: # (    companion object {)
 
-✅ **Definition:**
-API to schedule background jobs based on conditions (network, charging, idle).
+[//]: # (        fun newInstance&#40;name: String&#41;: MyFragment {)
 
-✅ **Used Class:**
-`android.app.job.JobScheduler`
+[//]: # (            val fragment = MyFragment&#40;&#41;)
 
-✅ **Example:**
+[//]: # (            val bundle = Bundle&#40;&#41;)
 
-```kotlin
-val jobInfo = JobInfo.Builder(1, ComponentName(this, MyJobService::class.java))
-    .setRequiredNetworkType(JobInfo.NETWORK_TYPE_ANY)
-    .build()
-```
+[//]: # (            bundle.putString&#40;"name", name&#41;)
 
----
+[//]: # (            fragment.arguments = bundle)
 
-## 10) What is WorkManager?
+[//]: # (            return fragment)
 
-✅ **Definition:**
-A modern Android library for guaranteed background work execution.
+[//]: # (        })
 
-✅ **Used Class:**
-`androidx.work.WorkManager`
+[//]: # (    })
 
-✅ **Example:**
+[//]: # (})
 
-```kotlin
-val workRequest = OneTimeWorkRequestBuilder<MyWorker>().build()
-WorkManager.getInstance(this).enqueue(workRequest)
-```
+[//]: # (```)
 
-📌 Best for:
+[//]: # ()
+[//]: # (---)
 
-* Guaranteed execution
-* Deferrable tasks
-* Background sync
+[//]: # ()
+[//]: # (## 4️⃣ Fragment lifecycle when launched)
 
----
+[//]: # ()
+[//]: # (```)
 
-## 11) Foreground Service vs WorkManager
+[//]: # (onAttach → onCreate → onCreateView → onViewCreated → onStart → onResume)
 
-| Feature              | Foreground Service | WorkManager |
-| -------------------- | ------------------ | ----------- |
-| Runs immediately     | ✅ Yes              | ❌ No        |
-| Visible notification | ✅ Yes              | ❌ No        |
-| Guaranteed execution | ❌ No               | ✅ Yes       |
-| Long-running task    | ✅ Yes              | ⚠️ Limited  |
-| Battery-friendly     | ❌ No               | ✅ Yes       |
+[//]: # (```)
 
-✅ Rule:
+[//]: # ()
+[//]: # (---)
 
-* Real-time task → Foreground Service
-* Deferred task → WorkManager
+[//]: # ()
+[//]: # (## 5️⃣ Fragment lifecycle when back button is pressed)
 
----
+[//]: # ()
+[//]: # (If Fragment is in back stack:)
 
-## 12) How to get continuous location updates?
+[//]: # ()
+[//]: # (```)
 
-✅ Best approaches:
+[//]: # (onPause → onStop → onDestroyView)
 
-### ✅ a) Foreground Service + FusedLocationProvider
+[//]: # (```)
 
-```kotlin
-val locationRequest = LocationRequest.create()
-    .setInterval(5000)
-    .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
-```
+[//]: # ()
+[//]: # (If Fragment is removed completely:)
 
-### ✅ b) WorkManager (not real-time)
+[//]: # ()
+[//]: # (```)
 
-### ✅ c) Callback-based Location API
+[//]: # (onPause → onStop → onDestroyView → onDestroy → onDetach)
 
-📌 Recommended: Foreground Service.
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 13) What can be used for background processing in Android?
+[//]: # ()
+[//]: # (## 6️⃣ Fragment lifecycle when home button is pressed)
 
-✅ Options:
+[//]: # ()
+[//]: # (```)
 
-| Tool                     | Use Case             |
-| ------------------------ | -------------------- |
-| Thread / ExecutorService | Short tasks          |
-| Coroutine                | Modern async tasks   |
-| HandlerThread            | Background thread    |
-| Service                  | Long-running tasks   |
-| Foreground Service       | Real-time tasks      |
-| WorkManager              | Guaranteed tasks     |
-| JobScheduler             | System-managed jobs  |
-| AlarmManager             | Scheduled tasks      |
-| RxJava                   | Reactive async tasks |
+[//]: # (onPause → onStop)
 
----
+[//]: # (```)
 
+[//]: # ()
+[//]: # (&#40;Fragment remains in memory&#41;)
 
+[//]: # ()
+[//]: # (---)
 
+[//]: # ()
+[//]: # (## 7️⃣ Fragment lifecycle when returning from background)
 
----
+[//]: # ()
+[//]: # (```)
 
-# 🧵 Threads & Concurrency in Android
+[//]: # (onStart → onResume)
 
----
+[//]: # (```)
 
-## 1) What is a Background Thread?
+[//]: # ()
+[//]: # (---)
 
-✅ **Definition:**
-A background thread is a thread that runs tasks without blocking the main (UI) thread.
+[//]: # ()
+[//]: # (## 8️⃣ Difference between Fragment and Activity)
 
-✅ **Why needed?**
+[//]: # ()
+[//]: # (| Fragment            | Activity                |)
 
-* Network calls
-* Database operations
-* File I/O
-* Heavy computations
+[//]: # (| ------------------- | ----------------------- |)
 
-✅ **Examples of background threads:**
+[//]: # (| Part of an Activity | Independent component   |)
 
-* Thread
-* ExecutorService
-* Coroutine
-* WorkManager
-* Service
+[//]: # (| Cannot exist alone  | Can exist independently |)
 
-✅ **Example:**
+[//]: # (| Lightweight         | Heavy component         |)
 
-```kotlin
-Thread {
-    // background work
-}.start()
-```
+[//]: # (| Reusable UI         | Full screen UI          |)
 
----
+[//]: # (| Child of Activity   | Parent container        |)
 
-## 2) Why should non-UI work not run on the main thread?
+[//]: # ()
+[//]: # (---)
 
-✅ **Reason:**
-The main thread is responsible for UI rendering and user interactions.
+[//]: # ()
+[//]: # (## 9️⃣ When should you use Fragment instead of Activity?)
 
-❌ If heavy work runs on main thread:
+[//]: # ()
+[//]: # (Use Fragment when:)
 
-* UI freezes
-* App becomes unresponsive
-* ANR occurs
+[//]: # ()
+[//]: # (* Building modular UI)
 
-✅ **Android Rule:**
+[//]: # (* Supporting multiple screen sizes)
 
-> Network and heavy operations must not run on the main thread.
+[//]: # (* Implementing single-activity architecture)
 
----
+[//]: # (* Reusing UI components)
 
-## 3) What is ANR? How can it be prevented?
+[//]: # (* Using ViewPager / Navigation Component)
 
-✅ **Definition:**
-ANR (Application Not Responding) occurs when the main thread is blocked for too long.
+[//]: # ()
+[//]: # (---)
 
-⏱️ Time limits:
+[//]: # ()
+[//]: # (## 🔟 Difference between add and replace Fragment in back stack)
 
-* Activity: 5 seconds
-* BroadcastReceiver: 10 seconds
+[//]: # ()
+[//]: # (### add&#40;&#41;)
 
-### ✅ Common Causes:
+[//]: # ()
+[//]: # (* Adds Fragment on top of existing Fragment)
 
-* Long operations on main thread
-* Infinite loops
-* Deadlocks
-* Heavy UI rendering
-* Network calls on main thread
+[//]: # (* Previous Fragment remains in memory and visible &#40;if not hidden&#41;)
 
-### ✅ Prevention:
+[//]: # ()
+[//]: # (### replace&#40;&#41;)
 
-* Use background threads
-* Use coroutines / WorkManager
-* Optimize UI
-* Avoid blocking calls
+[//]: # ()
+[//]: # (* Removes current Fragment and adds new Fragment)
 
----
+[//]: # (* Previous Fragment is destroyed &#40;view&#41;)
 
-## 4) What is AsyncTask?
+[//]: # ()
+[//]: # (| add&#40;&#41;                      | replace&#40;&#41;                   |)
 
-✅ **Definition:**
-AsyncTask was used to perform background tasks and update UI easily.
+[//]: # (| -------------------------- | --------------------------- |)
 
-⚠️ Deprecated since API 30.
+[//]: # (| Multiple fragments coexist | Only one fragment at a time |)
 
-✅ **Methods:**
+[//]: # (| Faster UI switching        | Cleaner UI                  |)
 
-* onPreExecute()
-* doInBackground()
-* onPostExecute()
+[//]: # (| More memory usage          | Less memory usage           |)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-class MyTask : AsyncTask<Void, Void, String>() {
-    override fun doInBackground(vararg params: Void?): String {
-        return "Result"
-    }
+[//]: # ()
+[//]: # (## 1️⃣1️⃣ What is Retained Fragment / Headless Fragment?)
 
-    override fun onPostExecute(result: String) {
-        println(result)
-    }
-}
-```
+[//]: # ()
+[//]: # (A **Retained Fragment** is a Fragment that survives configuration changes.)
 
----
+[//]: # ()
+[//]: # (### Characteristics)
 
-## 5) Problems with AsyncTask
+[//]: # ()
+[//]: # (* No UI &#40;Headless Fragment&#41;)
 
-❌ Memory leaks
-❌ Lifecycle issues
-❌ Not cancellation-safe
-❌ Poor error handling
-❌ Not scalable
-❌ Deprecated
+[//]: # (* Used to retain data across configuration changes)
 
-✅ Replacement:
+[//]: # ()
+[//]: # (### Example)
 
-* Kotlin Coroutines
-* WorkManager
-* ExecutorService
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (setRetainInstance&#40;true&#41;)
 
-## 6) What is Loader?
+[//]: # (```)
 
-✅ **Definition:**
-Loader was used to load data asynchronously in Activities/Fragments.
+[//]: # ()
+[//]: # (⚠️ Deprecated in modern Android → replaced by ViewModel.)
 
-⚠️ Deprecated in AndroidX.
+[//]: # ()
+[//]: # (---)
 
-✅ **Types:**
+[//]: # ()
+[//]: # (## 1️⃣2️⃣ Purpose of addToBackStack&#40;&#41; in FragmentTransaction)
 
-* CursorLoader
-* AsyncTaskLoader
+[//]: # ()
+[//]: # (`addToBackStack&#40;&#41;` adds a Fragment transaction to the back stack, allowing users to navigate back.)
 
-❌ Issues:
+[//]: # ()
+[//]: # (### Example)
 
-* Complex API
-* Lifecycle problems
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ Replacement:
+[//]: # (supportFragmentManager.beginTransaction&#40;&#41;)
 
-* ViewModel + LiveData + Coroutines
+[//]: # (    .replace&#40;R.id.container, SecondFragment&#40;&#41;&#41;)
 
----
+[//]: # (    .addToBackStack&#40;null&#41;)
 
-## 7) Explain Looper, Handler, and HandlerThread
+[//]: # (    .commit&#40;&#41;)
 
-### 🌀 Looper
+[//]: # (```)
 
-✅ **Definition:**
-Looper manages a message queue for a thread.
+[//]: # ()
+[//]: # (### Without addToBackStack&#40;&#41;)
 
-📌 Main thread has a Looper by default.
+[//]: # ()
+[//]: # (* Back button closes Activity.)
 
----
+[//]: # ()
+[//]: # (---)
 
-### 📨 Handler
+[//]: # ()
+[//]: # (## 1️⃣3️⃣ How to communicate between two Fragments?)
 
-✅ **Definition:**
-Handler posts tasks/messages to a thread’s Looper.
+[//]: # ()
+[//]: # (### ✅ Best Approaches)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (#### 1. Shared ViewModel &#40;Recommended&#41;)
 
-```kotlin
-val handler = Handler(Looper.getMainLooper())
-handler.post {
-    // update UI
-}
-```
+[//]: # ()
+[//]: # (* Both fragments share same ViewModel.)
 
----
+[//]: # ()
+[//]: # (#### 2. Interface Callback)
 
-### 🧵 HandlerThread
+[//]: # ()
+[//]: # (* Fragment communicates via Activity.)
 
-✅ **Definition:**
-A background thread with its own Looper.
+[//]: # ()
+[//]: # (#### 3. Fragment Result API)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (* Modern solution.)
 
-```kotlin
-val handlerThread = HandlerThread("MyThread")
-handlerThread.start()
-val handler = Handler(handlerThread.looper)
-```
+[//]: # ()
+[//]: # (### Example &#40;Fragment Result API&#41;)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-## 8) Different types of threads in Android
+[//]: # (parentFragmentManager.setFragmentResult&#40;"key", bundleOf&#40;"data" to "Hello"&#41;&#41;)
 
-| Type              | Description        |
-| ----------------- | ------------------ |
-| Main Thread       | UI thread          |
-| Worker Thread     | Background tasks   |
-| HandlerThread     | Thread with Looper |
-| Thread Pool       | ExecutorService    |
-| Coroutine Threads | Dispatchers        |
-| Binder Thread     | IPC communication  |
-| Render Thread     | UI rendering       |
-| GC Thread         | Garbage Collection |
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 9) Which thread does Dispatchers.Default use?
+[//]: # ()
+[//]: # (## 1️⃣4️⃣ How to share ViewModel between fragments?)
 
-✅ **Answer:**
-`Dispatchers.Default` uses a shared pool of background threads optimized for CPU-intensive tasks.
+[//]: # ()
+[//]: # (Use `activityViewModels&#40;&#41;`.)
 
-📌 Backed by:
+[//]: # ()
+[//]: # (### Example)
 
-* ForkJoinPool (JVM)
-* CPU core-based thread pool
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ Use cases:
+[//]: # (class SharedViewModel : ViewModel&#40;&#41; {)
 
-* Heavy computations
-* Sorting
-* JSON parsing
+[//]: # (    val data = MutableLiveData<String>&#40;&#41;)
 
----
+[//]: # (})
 
-## 10) Best way to update UI periodically
+[//]: # (```)
 
-✅ Recommended approaches:
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ a) Coroutine + delay()
+[//]: # (val viewModel: SharedViewModel by activityViewModels&#40;&#41;)
 
-```kotlin
-lifecycleScope.launch {
-    while (true) {
-        delay(1000)
-        updateUI()
-    }
-}
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ b) Handler
+[//]: # ()
+[//]: # (## 1️⃣5️⃣ Difference between Dialog and DialogFragment)
 
-```kotlin
-val handler = Handler(Looper.getMainLooper())
-val runnable = object : Runnable {
-    override fun run() {
-        updateUI()
-        handler.postDelayed(this, 1000)
-    }
-}
-handler.post(runnable)
-```
+[//]: # ()
+[//]: # (| Dialog               | DialogFragment                 |)
 
----
+[//]: # (| -------------------- | ------------------------------ |)
 
-### ✅ c) Flow / LiveData (Best practice)
+[//]: # (| UI popup component   | Fragment wrapper around Dialog |)
 
-```kotlin
-flow.collect {
-    updateUI()
-}
-```
+[//]: # (| Not lifecycle-aware  | Lifecycle-aware                |)
 
----
+[//]: # (| Manual management    | Managed by FragmentManager     |)
 
-## 11) How to detect blocking UI thread?
+[//]: # (| Risk of memory leaks | Safer                          |)
 
-✅ Tools & Techniques:
+[//]: # ()
+[//]: # (### Example DialogFragment)
 
-### ✅ a) StrictMode
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-StrictMode.setThreadPolicy(
-    StrictMode.ThreadPolicy.Builder()
-        .detectAll()
-        .penaltyLog()
-        .build()
-)
-```
+[//]: # (class MyDialogFragment : DialogFragment&#40;&#41;)
 
----
+[//]: # (```)
 
-### ✅ b) Android Profiler
+[//]: # ()
+[//]: # (---)
 
-* CPU Profiler
-* Main thread monitoring
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (///intent)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ c) ANR Reports
+[//]: # ()
+[//]: # (# ✅ Android Intent & Broadcast – Explained with Tags + Examples)
 
-* Play Console
-* Logcat
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 1&#41; What is Intent?)
 
-### ✅ d) Systrace / Perfetto
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-* System-level tracing
+[//]: # (Intent is a messaging object used to request an action from another component &#40;Activity, Service, BroadcastReceiver&#41;.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class / Tag:**)
 
-### ✅ e) Choreographer / Frame drops
+[//]: # (`android.content.Intent`)
 
-* Detect UI jank
+[//]: # ()
+[//]: # (✅ **Example:**)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
+[//]: # (val intent = Intent&#40;this, SecondActivity::class.java&#41;)
 
----
+[//]: # (startActivity&#40;intent&#41;)
 
-# ♻️ RecyclerView in Android
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 1) What is RecyclerView?
+[//]: # ()
+[//]: # (## 2&#41; What is Explicit Intent?)
 
-✅ **Definition:**
-RecyclerView is an advanced and flexible version of ListView used to display large sets of data efficiently.
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-✅ **Package:**
+[//]: # (Intent where you specify the exact target component &#40;class name&#41;.)
 
-```text
-androidx.recyclerview.widget.RecyclerView
-```
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-✅ **Key Components:**
+[//]: # (`Intent&#40;Context, TargetClass::class.java&#41;`)
 
-* Adapter
-* ViewHolder
-* LayoutManager
-* ItemAnimator
-* ItemDecoration
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-recyclerView.layoutManager = LinearLayoutManager(this)
-recyclerView.adapter = MyAdapter(list)
-```
+[//]: # (val intent = Intent&#40;this, ProfileActivity::class.java&#41;)
 
----
+[//]: # (startActivity&#40;intent&#41;)
 
-## 2) Difference between RecyclerView and ListView
+[//]: # (```)
 
-| Feature            | RecyclerView | ListView      |
-| ------------------ | ------------ | ------------- |
-| ViewHolder pattern | Mandatory    | Optional      |
-| Layout types       | Multiple     | Only vertical |
-| Performance        | High         | Low           |
-| Animations         | Built-in     | Limited       |
-| Flexibility        | Very high    | Low           |
-| Optimization       | Advanced     | Basic         |
-| Nested scrolling   | Better       | Poor          |
+[//]: # ()
+[//]: # (---)
 
-✅ Interview Line:
+[//]: # ()
+[//]: # (## 3&#41; What is Implicit Intent?)
 
-> RecyclerView is more flexible, efficient, and extensible than ListView.
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (Intent where the target component is not specified, but the action is defined.)
 
-## 3) What is ViewHolder Pattern?
+[//]: # ()
+[//]: # (✅ **Used Tags / Actions:**)
 
-✅ **Definition:**
-ViewHolder pattern caches item views to avoid repeated `findViewById()` calls.
+[//]: # (`Intent.ACTION_VIEW`, `Intent.ACTION_SEND`)
 
-✅ **Purpose:**
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-* Improve performance
-* Reduce view inflation cost
-* Faster scrolling
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Example:**
+[//]: # (val intent = Intent&#40;Intent.ACTION_VIEW&#41;)
 
-```kotlin
-class MyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-    val title = view.findViewById<TextView>(R.id.title)
-}
-```
+[//]: # (intent.data = Uri.parse&#40;"https://google.com"&#41;)
 
----
+[//]: # (startActivity&#40;intent&#41;)
 
-## 4) How does RecyclerView work internally?
+[//]: # (```)
 
-### ♻️ Core Concept: View Recycling
+[//]: # ()
+[//]: # (---)
 
-RecyclerView reuses item views instead of creating new ones.
+[//]: # ()
+[//]: # (## 4&#41; What is Sticky Intent?)
 
-### 🔄 Steps:
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-1. LayoutManager requests views.
-2. Adapter binds data to ViewHolder.
-3. Off-screen views are recycled.
-4. Recycled views are reused for new items.
+[//]: # (Sticky Intent remains in the system after being broadcast, so future receivers can access it.)
 
-### 🧠 Internal Components:
+[//]: # ()
+[//]: # (⚠️ Deprecated in modern Android.)
 
-* Recycler (view cache pool)
-* Adapter
-* LayoutManager
-* ItemAnimator
+[//]: # ()
+[//]: # (✅ **Used Method:**)
 
-### 📊 View Cache Levels:
+[//]: # (`sendStickyBroadcast&#40;&#41;`)
 
-| Cache Type           | Description             |
-| -------------------- | ----------------------- |
-| Attached Scrap       | Currently visible views |
-| Cached Views         | Recently detached views |
-| Recycled View Pool   | Shared recycled views   |
-| View Cache Extension | Custom cache            |
+[//]: # ()
+[//]: # (✅ **Example &#40;Not recommended&#41;:**)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-## 5) RecyclerView Scrolling Optimization Techniques
+[//]: # (val intent = Intent&#40;"MY_ACTION"&#41;)
 
-### ✅ 1) Use ViewHolder properly
+[//]: # (sendStickyBroadcast&#40;intent&#41;)
 
-Avoid expensive operations in `onBindViewHolder()`.
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ 2) Use DiffUtil instead of notifyDataSetChanged()
+[//]: # ()
+[//]: # (## 5&#41; What is PendingIntent?)
 
-```kotlin
-DiffUtil.calculateDiff(callback)
-```
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-✔ Efficient updates
-✔ Avoid full redraw
+[//]: # (A token that allows another app or system to execute your Intent later on your behalf.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-### ✅ 3) Enable stable IDs
+[//]: # (`android.app.PendingIntent`)
 
-```kotlin
-setHasStableIds(true)
-```
+[//]: # ()
+[//]: # (✅ **Example:**)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ 4) Avoid nested layouts (ConstraintLayout recommended)
+[//]: # (val intent = Intent&#40;this, MainActivity::class.java&#41;)
 
-❌ LinearLayout inside LinearLayout
-✅ ConstraintLayout
+[//]: # (val pendingIntent = PendingIntent.getActivity&#40;)
 
----
+[//]: # (    this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
 
-### ✅ 5) Use ListAdapter instead of RecyclerView.Adapter
+[//]: # (&#41;)
 
-```kotlin
-class MyAdapter : ListAdapter<Item, VH>(DiffCallback())
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (📌 Used in: Notifications, Alarms, Widgets.)
 
-### ✅ 6) Disable unnecessary animations
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-recyclerView.itemAnimator = null
-```
+[//]: # ()
+[//]: # (## 6&#41; What is IntentFilter?)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-### ✅ 7) Increase RecyclerView cache size
+[//]: # (Declares which Intents a component can respond to.)
 
-```kotlin
-recyclerView.setItemViewCacheSize(20)
-```
+[//]: # ()
+[//]: # (✅ **Used Tag &#40;Manifest&#41;:**)
 
----
+[//]: # (`<intent-filter>`)
 
-### ✅ 8) Use ViewBinding instead of findViewById()
+[//]: # ()
+[//]: # (✅ **Example &#40;AndroidManifest.xml&#41;:**)
 
----
+[//]: # ()
+[//]: # (```xml)
 
-### ✅ 9) Avoid heavy operations in onBindViewHolder()
+[//]: # (<activity android:name=".MainActivity">)
 
-❌ Network calls
-❌ Image decoding
-❌ Complex calculations
+[//]: # (    <intent-filter>)
 
----
+[//]: # (        <action android:name="android.intent.action.MAIN"/>)
 
-## 6) How to optimize Nested RecyclerView?
+[//]: # (        <category android:name="android.intent.category.LAUNCHER"/>)
 
-Nested RecyclerView = RecyclerView inside RecyclerView
-(e.g., horizontal list inside vertical list)
+[//]: # (    </intent-filter>)
 
-### 🚨 Problems:
+[//]: # (</activity>)
 
-* Laggy scrolling
-* High memory usage
-* View inflation overhead
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ Optimization Techniques:
+[//]: # ()
+[//]: # (## 7&#41; What is BroadcastReceiver?)
 
-### ✅ 1) Share RecycledViewPool
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-```kotlin
-val pool = RecyclerView.RecycledViewPool()
-parentRecyclerView.setRecycledViewPool(pool)
-childRecyclerView.setRecycledViewPool(pool)
-```
+[//]: # (A component that listens for system-wide or app-specific broadcast messages.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-### ✅ 2) Use setHasFixedSize(true)
+[//]: # (`BroadcastReceiver`)
 
-```kotlin
-recyclerView.setHasFixedSize(true)
-```
+[//]: # ()
+[//]: # (✅ **Example:**)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ 3) Disable nested scrolling
+[//]: # (class MyReceiver : BroadcastReceiver&#40;&#41; {)
 
-```kotlin
-childRecyclerView.isNestedScrollingEnabled = false
-```
+[//]: # (    override fun onReceive&#40;context: Context, intent: Intent&#41; {)
 
----
+[//]: # (        Log.d&#40;"Receiver", "Broadcast received"&#41;)
 
-### ✅ 4) Use ViewPager2 instead of nested RecyclerView (if possible)
+[//]: # (    })
 
----
+[//]: # (})
 
-### ✅ 5) Preload items (Prefetch)
+[//]: # (```)
 
-```kotlin
-LinearLayoutManager(context).apply {
-    initialPrefetchItemCount = 4
-}
-```
+[//]: # ()
+[//]: # (Register in Manifest:)
 
----
+[//]: # ()
+[//]: # (```xml)
 
-### ✅ 6) Use Paging 3 library for large data
+[//]: # (<receiver android:name=".MyReceiver"/>)
 
----
+[//]: # (```)
 
-### ✅ 7) Avoid deep view hierarchy
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 8&#41; What is LocalBroadcastManager?)
 
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
+[//]: # (Used to send broadcasts within the same app only &#40;more secure & efficient&#41;.)
 
+[//]: # ()
+[//]: # (⚠️ Deprecated → Use Flow / LiveData / SharedViewModel instead.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-## 1) What is View?
+[//]: # (`LocalBroadcastManager`)
 
-✅ **Definition:**
-`View` is the basic building block of UI in Android. It represents a single UI component.
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-✅ **Class:**
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-android.view.View
-```
+[//]: # (LocalBroadcastManager.getInstance&#40;this&#41;)
 
-✅ **Examples of View:**
+[//]: # (    .sendBroadcast&#40;Intent&#40;"MY_LOCAL_ACTION"&#41;&#41;)
 
-* TextView
-* Button
-* ImageView
-* EditText
+[//]: # (```)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (---)
 
-```xml
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hello"/>
-```
+[//]: # ()
+[//]: # (## 9&#41; Types of Broadcasts in Android)
 
----
+[//]: # ()
+[//]: # (### ✅ a&#41; Normal Broadcast)
 
-## 2) What is ViewGroup?
+[//]: # ()
+[//]: # (* Delivered to all receivers simultaneously.)
 
-✅ **Definition:**
-ViewGroup is a special type of View that can contain other Views (child views).
+[//]: # ()
+[//]: # (### ✅ b&#41; Ordered Broadcast)
 
-✅ **Class:**
+[//]: # ()
+[//]: # (* Delivered one by one based on priority.)
 
-```kotlin
-android.view.ViewGroup
-```
+[//]: # ()
+[//]: # (### ✅ c&#41; Sticky Broadcast)
 
-✅ **Examples:**
+[//]: # ()
+[//]: # (* Remains in system memory.)
 
-* LinearLayout
-* ConstraintLayout
-* RelativeLayout
-* FrameLayout
+[//]: # ()
+[//]: # (### ✅ d&#41; Local Broadcast)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (* Inside the same app only.)
 
-```xml
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+[//]: # ()
+[//]: # (---)
 
-    <TextView
-        android:text="Child View"/>
-</LinearLayout>
-```
+[//]: # ()
+[//]: # (## 10&#41; Difference between Normal vs Ordered Broadcast)
 
----
+[//]: # ()
+[//]: # (| Feature              | Normal Broadcast | Ordered Broadcast      |)
 
-## 3) Difference between View.GONE and View.INVISIBLE
+[//]: # (| -------------------- | ---------------- | ---------------------- |)
 
-| Property       | View.GONE           | View.INVISIBLE       |
-| -------------- | ------------------- | -------------------- |
-| Visibility     | Hidden              | Hidden               |
-| Space occupied | ❌ No                | ✅ Yes                |
-| Layout impact  | Removed from layout | Layout space remains |
+[//]: # (| Delivery             | Simultaneous     | Sequential             |)
 
-✅ Example:
+[//]: # (| Priority             | No               | Yes                    |)
 
-```kotlin
-view.visibility = View.GONE
-view.visibility = View.INVISIBLE
-```
+[//]: # (| Can stop propagation | ❌ No             | ✅ Yes                  |)
 
----
+[//]: # (| Method               | sendBroadcast&#40;&#41;  | sendOrderedBroadcast&#40;&#41; |)
 
-## 4) What is SurfaceView?
+[//]: # ()
+[//]: # (✅ Example:)
 
-✅ **Definition:**
-SurfaceView is a View that provides a dedicated drawing surface for rendering graphics in a separate thread.
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Use Cases:**
+[//]: # (sendBroadcast&#40;Intent&#40;"ACTION_NORMAL"&#41;&#41;)
 
-* Games
-* Video playback
-* Camera preview
-* OpenGL rendering
+[//]: # (sendOrderedBroadcast&#40;Intent&#40;"ACTION_ORDERED"&#41;, null&#41;)
 
-✅ **Difference from View:**
+[//]: # (```)
 
-* Runs on separate thread
-* Better performance for heavy rendering
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 11&#41; How can two Android apps interact?)
 
-## 5) What is Spannable?
+[//]: # ()
+[//]: # (✅ Methods:)
 
-✅ **Definition:**
-Spannable is used to apply multiple styles to parts of a text.
+[//]: # ()
+[//]: # (### ✅ a&#41; Implicit Intent)
 
-✅ **Class:**
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-SpannableString
-```
+[//]: # (val intent = Intent&#40;Intent.ACTION_SEND&#41;)
 
-✅ **Example:**
+[//]: # (intent.type = "text/plain")
 
-```kotlin
-val text = SpannableString("Hello Android")
-text.setSpan(ForegroundColorSpan(Color.RED), 0, 5, Spanned.SPAN_EXCLUSIVE)
-textView.text = text
-```
+[//]: # (startActivity&#40;intent&#41;)
 
-📌 Use cases:
+[//]: # (```)
 
-* Rich text
-* Highlighting text
-* Clickable links
+[//]: # ()
+[//]: # (### ✅ b&#41; Content Provider)
 
----
+[//]: # ()
+[//]: # (* Share data using URI.)
 
-## 6) What is Overdraw?
+[//]: # ()
+[//]: # (### ✅ c&#41; BroadcastReceiver)
 
-✅ **Definition:**
-Overdraw happens when the system draws the same pixel multiple times in a single frame.
+[//]: # ()
+[//]: # (* App-to-app communication.)
 
-❌ Causes:
+[//]: # ()
+[//]: # (### ✅ d&#41; Deep Links)
 
-* Deep layout hierarchy
-* Backgrounds on multiple views
-* Overlapping views
+[//]: # ()
+[//]: # (* Open another app using URL.)
 
-✅ **Impact:**
+[//]: # ()
+[//]: # (---)
 
-* UI lag
-* Battery drain
+[//]: # ()
+[//]: # (## 12&#41; What is Deeplink?)
 
-✅ **Detection:**
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-* Developer Options → Debug GPU Overdraw
+[//]: # (A URL that opens a specific screen inside an app instead of the browser.)
 
-✅ **Solution:**
+[//]: # ()
+[//]: # (✅ **Used Tags:**)
 
-* Remove unnecessary backgrounds
-* Use ConstraintLayout
-* Flatten layouts
+[//]: # (`<data>`, `<intent-filter>`)
 
----
+[//]: # ()
+[//]: # (✅ **Example &#40;Manifest&#41;:**)
 
-## 7) Difference between @id and @+id
+[//]: # ()
+[//]: # (```xml)
 
-| Syntax          | Meaning                  |
-| --------------- | ------------------------ |
-| `@+id/viewName` | Create a new ID          |
-| `@id/viewName`  | Reference an existing ID |
+[//]: # (<activity android:name=".ProductActivity">)
 
-✅ Example:
+[//]: # (    <intent-filter>)
 
-```xml
-<TextView
-    android:id="@+id/title"/>
-```
+[//]: # (        <action android:name="android.intent.action.VIEW"/>)
 
-```xml
-<Button
-    android:layout_toRightOf="@id/title"/>
-```
+[//]: # (        <category android:name="android.intent.category.DEFAULT"/>)
 
----
+[//]: # (        <category android:name="android.intent.category.BROWSABLE"/>)
 
-## 8) What is Widget?
+[//]: # ()
+[//]: # (        <data)
 
-✅ **Definition:**
-A Widget is a reusable UI component that allows user interaction.
+[//]: # (            android:scheme="https")
 
-✅ **Examples:**
+[//]: # (            android:host="myapp.com")
 
-* Button
-* EditText
-* Switch
-* RecyclerView
+[//]: # (            android:pathPrefix="/product"/>)
 
-📌 Also:
-App Widgets = Home screen widgets.
+[//]: # (    </intent-filter>)
 
----
+[//]: # (</activity>)
 
-## 9) How to support different screen sizes?
+[//]: # (```)
 
-### ✅ Techniques:
+[//]: # ()
+[//]: # (✅ Open link:)
 
-### ✅ a) Responsive Layouts
+[//]: # ()
+[//]: # (```)
 
-* ConstraintLayout
-* FlexboxLayout
+[//]: # (https://myapp.com/product/123)
 
----
+[//]: # (```)
 
-### ✅ b) Resource qualifiers
+[//]: # ()
+[//]: # (---)
 
-| Folder         | Purpose        |
-| -------------- | -------------- |
-| layout-sw600dp | Tablets        |
-| layout-land    | Landscape      |
-| drawable-hdpi  | Screen density |
-| values-night   | Dark mode      |
+[//]: # (//service)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ c) Use dp & sp instead of px
+[//]: # ()
+[//]: # (# ✅ Android Service & Background Processing – Explained with Tags + Examples)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ d) Vector Drawables
+[//]: # ()
+[//]: # (## 1&#41; What is Service?)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-### ✅ e) Jetpack Compose responsive UI
+[//]: # (A Service is an Android component that performs long-running operations in the background without UI.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-## 10) Difference between raw and assets folder
+[//]: # (`android.app.Service`)
 
-| Feature       | raw            | assets       |
-| ------------- | -------------- | ------------ |
-| Folder path   | res/raw        | assets/      |
-| Resource ID   | Yes            | No           |
-| Access method | R.raw.filename | AssetManager |
-| File types    | Limited        | Any file     |
-| Subfolders    | ❌ No           | ✅ Yes        |
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-✅ Example:
+[//]: # ()
+[//]: # (```kotlin)
 
-### raw:
+[//]: # (class MyService : Service&#40;&#41; {)
 
-```kotlin
-val inputStream = resources.openRawResource(R.raw.file)
-```
+[//]: # (    override fun onBind&#40;intent: Intent?&#41;: IBinder? = null)
 
-### assets:
+[//]: # ()
+[//]: # (    override fun onStartCommand&#40;intent: Intent?, flags: Int, startId: Int&#41;: Int {)
 
-```kotlin
-val inputStream = assets.open("file.txt")
-```
+[//]: # (        Log.d&#40;"Service", "Service Started"&#41;)
 
----
+[//]: # (        return START_STICKY)
 
-## 11) What is Dark Theme?
+[//]: # (    })
 
-✅ **Definition:**
-Dark Theme is a UI mode where the app uses dark colors to reduce eye strain and battery consumption.
+[//]: # (})
 
-✅ **Implementation:**
+[//]: # (```)
 
-### ✅ a) Theme XML
+[//]: # ()
+[//]: # (Start Service:)
 
-```xml
-<style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight">
-```
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ b) Resource folder:
+[//]: # (startService&#40;Intent&#40;this, MyService::class.java&#41;&#41;)
 
-```
-values-night/colors.xml
-```
+[//]: # (```)
 
-### ✅ c) Enable dark mode:
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-```
+[//]: # ()
+[//]: # (## 2&#41; Types of Services in Android)
 
----
+[//]: # ()
+[//]: # (### ✅ a&#41; Foreground Service)
 
+[//]: # ()
+[//]: # (### ✅ b&#41; Background Service &#40;Deprecated / Restricted&#41;)
 
+[//]: # ()
+[//]: # (### ✅ c&#41; Bound Service)
 
-Here you go 💾
-Below is **Data Storage in Android** explained in **clean Markdown format** (interview-ready + GitHub-friendly).
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 3&#41; What is Foreground Service?)
 
-# 💾 Data Storage in Android
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (A service that runs in the foreground with a visible notification.)
 
-## 1) Ways to store data in Android
+[//]: # ()
+[//]: # (✅ **Used Methods:**)
 
-Android provides multiple ways to store data depending on size, security, and use case.
+[//]: # (`startForeground&#40;&#41;`)
 
-### ✅ Types of Data Storage
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-| Storage Type        | Use Case                                |
-| ------------------- | --------------------------------------- |
-| SharedPreferences   | Small key-value data                    |
-| DataStore (Jetpack) | Modern replacement of SharedPreferences |
-| Internal Storage    | Private app files                       |
-| External Storage    | Public/shared files                     |
-| SQLite Database     | Structured relational data              |
-| Room Database       | ORM over SQLite                         |
-| ContentProvider     | Data sharing between apps               |
-| Network Storage     | Cloud / API                             |
-| Cache               | Temporary data                          |
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (startForeground&#40;1, notification&#41;)
 
-## 2) What is SharedPreferences?
+[//]: # (```)
 
-✅ **Definition:**
-SharedPreferences is a lightweight storage mechanism to store key-value pairs.
+[//]: # ()
+[//]: # (📌 Use cases:)
 
-✅ **Used for:**
+[//]: # (Music player, navigation, fitness tracking, location tracking.)
 
-* User settings
-* Login state
-* Theme preferences
-* Tokens
+[//]: # ()
+[//]: # (---)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (## 4&#41; What is Background Service?)
 
-```kotlin
-val prefs = getSharedPreferences("MyPrefs", Context.MODE_PRIVATE)
-prefs.edit().putString("username", "Aasim").apply()
-```
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-Read data:
+[//]: # (A service running in the background without user interaction.)
 
-```kotlin
-val name = prefs.getString("username", "")
-```
+[//]: # ()
+[//]: # (⚠️ Restricted from Android 8+ &#40;Oreo&#41;.)
 
----
+[//]: # ()
+[//]: # (📌 Reason: Battery optimization & security.)
 
-## 3) Difference between commit() and apply()
+[//]: # ()
+[//]: # (---)
 
-| Feature     | commit()                | apply()           |
-| ----------- | ----------------------- | ----------------- |
-| Thread      | Main thread             | Background thread |
-| Return type | boolean                 | void              |
-| Blocking    | Yes                     | No                |
-| Performance | Slower                  | Faster            |
-| Use case    | Immediate result needed | Preferred         |
+[//]: # ()
+[//]: # (## 5&#41; What is Bound Service?)
 
-✅ Example:
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-```kotlin
-prefs.edit().putString("key", "value").commit()
-prefs.edit().putString("key", "value").apply()
-```
+[//]: # (A service that allows components to bind and interact with it.)
 
-📌 Interview Line:
+[//]: # ()
+[//]: # (✅ **Used Method:**)
 
-> apply() is asynchronous and recommended, while commit() is synchronous.
+[//]: # (`bindService&#40;&#41;`)
 
----
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-## 4) What is ContentProvider?
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-ContentProvider is an Android component used to share data between different applications.
+[//]: # (bindService&#40;Intent&#40;this, MyService::class.java&#41;, connection, Context.BIND_AUTO_CREATE&#41;)
 
-✅ **Class:**
+[//]: # (```)
 
-```kotlin
-android.content.ContentProvider
-```
+[//]: # ()
+[//]: # (---)
 
-✅ **Examples:**
+[//]: # ()
+[//]: # (## 6&#41; Difference between Service and IntentService)
 
-* Contacts Provider
-* Media Provider
-* Calendar Provider
+[//]: # ()
+[//]: # (| Feature            | Service            | IntentService     |)
 
-✅ **Use Case:**
+[//]: # (| ------------------ | ------------------ | ----------------- |)
 
-* Inter-app data sharing
-* Secure data access
+[//]: # (| Thread             | Main thread        | Background thread |)
 
----
+[//]: # (| Queue              | ❌ No               | ✅ Yes             |)
 
-## 5) What is Content URI?
+[//]: # (| Stop automatically | ❌ No               | ✅ Yes             |)
 
-✅ **Definition:**
-Content URI is the unique identifier used to access data from a ContentProvider.
+[//]: # (| Use case           | Long-running tasks | Sequential tasks  |)
 
-✅ **Format:**
+[//]: # ()
+[//]: # (---)
 
-```text
-content://authority/path/id
-```
+[//]: # ()
+[//]: # (## 7&#41; Why IntentService is deprecated?)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (✅ Reasons:)
 
-```kotlin
-content://com.example.app.provider/users/1
-```
+[//]: # ()
+[//]: # (* Not lifecycle-aware)
 
----
+[//]: # (* No support for modern background limits)
 
-## 6) CRUD operations in ContentProvider
+[//]: # (* Replaced by WorkManager / JobIntentService / Coroutines)
 
-CRUD = Create, Read, Update, Delete
+[//]: # ()
+[//]: # (⚠️ Deprecated since Android API 30.)
 
-### ✅ a) Insert (Create)
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-contentResolver.insert(uri, values)
-```
+[//]: # ()
+[//]: # (## 8&#41; What is JobIntentService?)
 
-### ✅ b) Query (Read)
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-```kotlin
-contentResolver.query(uri, null, null, null, null)
-```
+[//]: # (A backward-compatible alternative to IntentService using JobScheduler.)
 
-### ✅ c) Update
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-```kotlin
-contentResolver.update(uri, values, null, null)
-```
+[//]: # (`androidx.core.app.JobIntentService`)
 
-### ✅ d) Delete
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-```kotlin
-contentResolver.delete(uri, null, null)
-```
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (class MyJobIntentService : JobIntentService&#40;&#41; {)
 
-## 7) Can SQLite DB be accessed for debugging?
+[//]: # (    override fun onHandleWork&#40;intent: Intent&#41; {)
 
-✅ **Yes, SQLite DB can be accessed for debugging.**
+[//]: # (        Log.d&#40;"JobIntentService", "Task executed"&#41;)
 
-### ✅ Methods:
+[//]: # (    })
 
-### ✅ a) Android Studio Device File Explorer
+[//]: # (})
 
-Path:
+[//]: # (```)
 
-```
-/data/data/<package_name>/databases/
-```
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 9&#41; What is JobScheduler?)
 
-### ✅ b) adb shell
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-```bash
-adb shell
-cd /data/data/com.example.app/databases/
-sqlite3 mydb.db
-```
+[//]: # (API to schedule background jobs based on conditions &#40;network, charging, idle&#41;.)
 
----
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-### ✅ c) Stetho / Debug DB / Flipper
+[//]: # (`android.app.job.JobScheduler`)
 
-Libraries:
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-* Facebook Stetho
-* DebugDB
-* Flipper
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (val jobInfo = JobInfo.Builder&#40;1, ComponentName&#40;this, MyJobService::class.java&#41;&#41;)
 
-### ✅ d) Room Database Inspector (Android Studio)
+[//]: # (    .setRequiredNetworkType&#40;JobInfo.NETWORK_TYPE_ANY&#41;)
 
----
+[//]: # (    .build&#40;&#41;)
 
-Here you go 🌐
-Below is **Networking in Android (Retrofit, OkHttp, HTTP, REST)** explained in **clean Markdown format** — perfect for interviews, GitHub, and notes.
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-# 🌐 Networking in Android (Retrofit, OkHttp, REST, HTTP)
+[//]: # ()
+[//]: # (## 10&#41; What is WorkManager?)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-## 1) What is Retrofit?
+[//]: # (A modern Android library for guaranteed background work execution.)
 
-✅ **Definition:**
-Retrofit is a type-safe HTTP client library for Android used to call REST APIs.
+[//]: # ()
+[//]: # (✅ **Used Class:**)
 
-✅ **Developed by:** Square
+[//]: # (`androidx.work.WorkManager`)
 
-✅ **Built on:** OkHttp
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-✅ **Features:**
+[//]: # ()
+[//]: # (```kotlin)
 
-* REST API support
-* JSON parsing (Gson, Moshi)
-* Annotations-based API
-* Coroutine support
+[//]: # (val workRequest = OneTimeWorkRequestBuilder<MyWorker>&#40;&#41;.build&#40;&#41;)
 
-✅ **Example:**
+[//]: # (WorkManager.getInstance&#40;this&#41;.enqueue&#40;workRequest&#41;)
 
-```kotlin
-interface ApiService {
-    @GET("users")
-    suspend fun getUsers(): List<User>
-}
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (📌 Best for:)
 
-## 2) How to handle multiple network calls using Retrofit?
+[//]: # ()
+[//]: # (* Guaranteed execution)
 
-### ✅ a) Sequential calls (Coroutines)
+[//]: # (* Deferrable tasks)
 
-```kotlin
-val user = api.getUser()
-val posts = api.getPosts(user.id)
-```
+[//]: # (* Background sync)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ b) Parallel calls (Coroutines async)
+[//]: # ()
+[//]: # (## 11&#41; Foreground Service vs WorkManager)
 
-```kotlin
-coroutineScope {
-    val user = async { api.getUser() }
-    val posts = async { api.getPosts() }
-}
-```
+[//]: # ()
+[//]: # (| Feature              | Foreground Service | WorkManager |)
 
----
+[//]: # (| -------------------- | ------------------ | ----------- |)
 
-### ✅ c) RxJava
+[//]: # (| Runs immediately     | ✅ Yes              | ❌ No        |)
 
-```kotlin
-Observable.zip(api.getUser(), api.getPosts(), ...)
-```
+[//]: # (| Visible notification | ✅ Yes              | ❌ No        |)
 
----
+[//]: # (| Guaranteed execution | ❌ No               | ✅ Yes       |)
 
-### ✅ d) Callback-based
+[//]: # (| Long-running task    | ✅ Yes              | ⚠️ Limited  |)
 
-```kotlin
-Call.enqueue()
-```
+[//]: # (| Battery-friendly     | ❌ No               | ✅ Yes       |)
 
----
+[//]: # ()
+[//]: # (✅ Rule:)
 
-## 3) What is OkHttp Interceptor?
+[//]: # ()
+[//]: # (* Real-time task → Foreground Service)
 
-✅ **Definition:**
-Interceptor is a mechanism in OkHttp to intercept, modify, or log HTTP requests and responses.
+[//]: # (* Deferred task → WorkManager)
 
-✅ **Use cases:**
+[//]: # ()
+[//]: # (---)
 
-* Logging
-* Authentication
-* Headers
-* Caching
-* Retry logic
+[//]: # ()
+[//]: # (## 12&#41; How to get continuous location updates?)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (✅ Best approaches:)
 
-```kotlin
-val interceptor = Interceptor { chain ->
-    val request = chain.request().newBuilder()
-        .addHeader("Authorization", "Bearer token")
-        .build()
-    chain.proceed(request)
-}
-```
+[//]: # ()
+[//]: # (### ✅ a&#41; Foreground Service + FusedLocationProvider)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-## 4) Types of OkHttp Interceptors
+[//]: # (val locationRequest = LocationRequest.create&#40;&#41;)
 
-| Type                    | Description                               |
-| ----------------------- | ----------------------------------------- |
-| Application Interceptor | Intercepts before request reaches network |
-| Network Interceptor     | Intercepts after network response         |
+[//]: # (    .setInterval&#40;5000&#41;)
 
-### ✅ Examples:
+[//]: # (    .setPriority&#40;LocationRequest.PRIORITY_HIGH_ACCURACY&#41;)
 
-* LoggingInterceptor
-* HeaderInterceptor
-* AuthInterceptor
-* CacheInterceptor
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (### ✅ b&#41; WorkManager &#40;not real-time&#41;)
 
-## 5) HTTP caching in OkHttp
+[//]: # ()
+[//]: # (### ✅ c&#41; Callback-based Location API)
 
-✅ **Definition:**
-OkHttp supports HTTP response caching using cache headers.
+[//]: # ()
+[//]: # (📌 Recommended: Foreground Service.)
 
-### ✅ Setup Cache:
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-val cacheSize = 10 * 1024 * 1024 // 10 MB
-val cache = Cache(File(context.cacheDir, "http_cache"), cacheSize)
+[//]: # ()
+[//]: # (## 13&#41; What can be used for background processing in Android?)
 
-val client = OkHttpClient.Builder()
-    .cache(cache)
-    .build()
-```
+[//]: # ()
+[//]: # (✅ Options:)
 
-### ✅ Cache Control:
+[//]: # ()
+[//]: # (| Tool                     | Use Case             |)
 
-```kotlin
-CacheControl.Builder()
-    .maxAge(1, TimeUnit.HOURS)
-    .build()
-```
+[//]: # (| ------------------------ | -------------------- |)
 
----
+[//]: # (| Thread / ExecutorService | Short tasks          |)
 
-## 6) HTTP libraries used and why (12.1)
+[//]: # (| Coroutine                | Modern async tasks   |)
 
-| Library           | Why used                 |
-| ----------------- | ------------------------ |
-| Retrofit          | REST API calls           |
-| OkHttp            | Low-level HTTP client    |
-| Volley            | Fast request handling    |
-| Ktor              | Kotlin-first HTTP client |
-| Fuel              | Lightweight HTTP         |
-| HttpURLConnection | Native Java API          |
+[//]: # (| HandlerThread            | Background thread    |)
 
----
+[//]: # (| Service                  | Long-running tasks   |)
 
-## 7) How REST APIs work (12.2)
+[//]: # (| Foreground Service       | Real-time tasks      |)
 
-✅ **REST (Representational State Transfer)** is an architectural style for communication between client and server.
+[//]: # (| WorkManager              | Guaranteed tasks     |)
 
-### ✅ Flow:
+[//]: # (| JobScheduler             | System-managed jobs  |)
 
-1. Client sends HTTP request.
-2. Server processes request.
-3. Server returns response (JSON/XML).
-4. Client consumes data.
+[//]: # (| AlarmManager             | Scheduled tasks      |)
 
-### ✅ Key Principles:
+[//]: # (| RxJava                   | Reactive async tasks |)
 
-* Stateless
-* Client-server architecture
-* Resource-based URLs
-* HTTP methods
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
-## 8) HTTP Methods (12.3)
+[//]: # ()
+[//]: # (# 🧵 Threads & Concurrency in Android)
 
-| Method | Purpose                 |
-| ------ | ----------------------- |
-| GET    | Fetch data              |
-| POST   | Create data             |
-| PUT    | Update entire resource  |
-| PATCH  | Update partial resource |
-| DELETE | Delete data             |
+[//]: # ()
+[//]: # (---)
 
-✅ Example:
+[//]: # ()
+[//]: # (## 1&#41; What is a Background Thread?)
 
-```http
-GET /users
-POST /users
-PUT /users/1
-PATCH /users/1
-DELETE /users/1
-```
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (A background thread is a thread that runs tasks without blocking the main &#40;UI&#41; thread.)
 
-## 9) Advantage of Retrofit over Volley (12.4)
+[//]: # ()
+[//]: # (✅ **Why needed?**)
 
-✅ Advantages:
+[//]: # ()
+[//]: # (* Network calls)
 
-* Type-safe API
-* Better REST support
-* Annotation-based
-* Coroutine & RxJava support
-* Cleaner architecture
-* Easy testing
+[//]: # (* Database operations)
 
-📌 Interview line:
+[//]: # (* File I/O)
 
-> Retrofit is better for structured REST APIs.
+[//]: # (* Heavy computations)
 
----
+[//]: # ()
+[//]: # (✅ **Examples of background threads:**)
 
-## 10) Advantage of Volley over Retrofit (12.5)
+[//]: # ()
+[//]: # (* Thread)
 
-✅ Advantages:
+[//]: # (* ExecutorService)
 
-* Built-in request queue
-* Automatic scheduling
-* Better for small/simple requests
-* Image loading support
-* Faster for frequent small calls
+[//]: # (* Coroutine)
 
-📌 Interview line:
+[//]: # (* WorkManager)
 
-> Volley is better for frequent lightweight requests.
+[//]: # (* Service)
 
----
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-## 11) Advantage of Retrofit over AsyncTask (12.6)
+[//]: # ()
+[//]: # (```kotlin)
 
-| Retrofit             | AsyncTask               |
-| -------------------- | ----------------------- |
-| Built for networking | Generic background task |
-| Thread-safe          | Poor thread handling    |
-| Error handling       | Weak                    |
-| Scalable             | Not scalable            |
-| Coroutine support    | ❌                       |
-| Maintained           | Deprecated              |
+[//]: # (Thread {)
 
-✅ Interview line:
+[//]: # (    // background work)
 
-> Retrofit is designed for networking, while AsyncTask is deprecated and not suitable for API calls.
+[//]: # (}.start&#40;&#41;)
 
----
+[//]: # (```)
 
+[//]: # ()
+[//]: # (---)
 
-Here you go 🔐
-Below is **Android Permissions & Security** in **clean Markdown format**, interview-ready and GitHub-friendly.
+[//]: # ()
+[//]: # (## 2&#41; Why should non-UI work not run on the main thread?)
 
----
+[//]: # ()
+[//]: # (✅ **Reason:**)
 
-# 🔐 Android Permissions & Security
+[//]: # (The main thread is responsible for UI rendering and user interactions.)
 
----
+[//]: # ()
+[//]: # (❌ If heavy work runs on main thread:)
 
-## 13.1) What are the different protection levels in permissions?
+[//]: # ()
+[//]: # (* UI freezes)
 
-Android permissions have **protection levels** that define how sensitive a permission is.
+[//]: # (* App becomes unresponsive)
 
-### ✅ Types of Protection Levels
+[//]: # (* ANR occurs)
 
-| Level             | Description                                   |
-| ----------------- | --------------------------------------------- |
-| normal            | Low-risk permissions, granted automatically   |
-| dangerous         | Sensitive permissions, require user approval  |
-| signature         | Granted only if apps share same signature     |
-| signatureOrSystem | Granted to system apps or same-signature apps |
+[//]: # ()
+[//]: # (✅ **Android Rule:**)
 
-### ✅ Examples:
+[//]: # ()
+[//]: # (> Network and heavy operations must not run on the main thread.)
 
-| Permission          | Level            |
-| ------------------- | ---------------- |
-| INTERNET            | normal           |
-| CAMERA              | dangerous        |
-| READ_CONTACTS       | dangerous        |
-| SYSTEM_ALERT_WINDOW | signature/system |
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 3&#41; What is ANR? How can it be prevented?)
 
-## 13.2) Types of permissions
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-### ✅ Based on granting method:
+[//]: # (ANR &#40;Application Not Responding&#41; occurs when the main thread is blocked for too long.)
 
-1. **Normal permissions**
-2. **Dangerous permissions**
-3. **Signature permissions**
-4. **Special permissions**
+[//]: # ()
+[//]: # (⏱️ Time limits:)
 
-### ✅ Dangerous permission groups:
+[//]: # ()
+[//]: # (* Activity: 5 seconds)
 
-| Group      | Example               |
-| ---------- | --------------------- |
-| Location   | ACCESS_FINE_LOCATION  |
-| Camera     | CAMERA                |
-| Storage    | READ_EXTERNAL_STORAGE |
-| Microphone | RECORD_AUDIO          |
-| Contacts   | READ_CONTACTS         |
+[//]: # (* BroadcastReceiver: 10 seconds)
 
----
+[//]: # ()
+[//]: # (### ✅ Common Causes:)
 
-## 13.3) How to handle runtime permissions in Android?
+[//]: # ()
+[//]: # (* Long operations on main thread)
 
-Since Android 6.0 (API 23), dangerous permissions must be requested at runtime.
+[//]: # (* Infinite loops)
 
-### ✅ Steps:
+[//]: # (* Deadlocks)
 
-1. Check permission
-2. Request permission
-3. Handle result
+[//]: # (* Heavy UI rendering)
 
-### ✅ Example (Kotlin):
+[//]: # (* Network calls on main thread)
 
-```kotlin
-if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
-    != PackageManager.PERMISSION_GRANTED) {
+[//]: # ()
+[//]: # (### ✅ Prevention:)
 
-    ActivityCompat.requestPermissions(
-        this,
-        arrayOf(Manifest.permission.CAMERA),
-        100
-    )
-}
-```
+[//]: # ()
+[//]: # (* Use background threads)
 
-Handle result:
+[//]: # (* Use coroutines / WorkManager)
 
-```kotlin
-override fun onRequestPermissionsResult(
-    requestCode: Int,
-    permissions: Array<out String>,
-    grantResults: IntArray
-) {
-    if (requestCode == 100 && grantResults.isNotEmpty()
-        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-        // Permission granted
-    }
-}
-```
+[//]: # (* Optimize UI)
 
----
+[//]: # (* Avoid blocking calls)
 
-## 13.4) Android security best practices
+[//]: # ()
+[//]: # (---)
 
-### ✅ Key Best Practices:
+[//]: # ()
+[//]: # (## 4&#41; What is AsyncTask?)
 
-* Use HTTPS instead of HTTP
-* Avoid hardcoding API keys
-* Use ProGuard / R8 obfuscation
-* Use EncryptedSharedPreferences
-* Validate SSL certificates
-* Restrict exported components
-* Use scoped storage
-* Minimize permissions
-* Secure WebView
-* Detect root / tampering
-* Use SafetyNet / Play Integrity API
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (AsyncTask was used to perform background tasks and update UI easily.)
 
-## 13.5) How do you know if the device is rooted?
+[//]: # ()
+[//]: # (⚠️ Deprecated since API 30.)
 
-### ✅ Common root detection methods:
+[//]: # ()
+[//]: # (✅ **Methods:**)
 
-1. Check su binary
-2. Check root apps
-3. Check system properties
-4. Check writable system paths
+[//]: # ()
+[//]: # (* onPreExecute&#40;&#41;)
 
-### ✅ Example:
+[//]: # (* doInBackground&#40;&#41;)
 
-```kotlin
-fun isDeviceRooted(): Boolean {
-    val paths = arrayOf(
-        "/system/bin/su",
-        "/system/xbin/su",
-        "/sbin/su",
-        "/system/app/Superuser.apk"
-    )
-    return paths.any { File(it).exists() }
-}
-```
+[//]: # (* onPostExecute&#40;&#41;)
 
----
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-## 13.6) What is Symmetric Encryption?
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-Symmetric encryption uses the same key for encryption and decryption.
+[//]: # (class MyTask : AsyncTask<Void, Void, String>&#40;&#41; {)
 
-### ✅ Examples:
+[//]: # (    override fun doInBackground&#40;vararg params: Void?&#41;: String {)
 
-* AES
-* DES
-* Triple DES
+[//]: # (        return "Result")
 
-### ✅ Diagram:
+[//]: # (    })
 
-```
-Plain Text → (Key) → Cipher Text → (Same Key) → Plain Text
-```
+[//]: # ()
+[//]: # (    override fun onPostExecute&#40;result: String&#41; {)
 
----
+[//]: # (        println&#40;result&#41;)
 
-## 13.7) What is Asymmetric Encryption?
+[//]: # (    })
 
-✅ **Definition:**
-Asymmetric encryption uses two keys:
+[//]: # (})
 
-* Public Key (encryption)
-* Private Key (decryption)
+[//]: # (```)
 
-### ✅ Examples:
+[//]: # ()
+[//]: # (---)
 
-* RSA
-* ECC
+[//]: # ()
+[//]: # (## 5&#41; Problems with AsyncTask)
 
-### ✅ Diagram:
+[//]: # ()
+[//]: # (❌ Memory leaks)
 
-```
-Plain Text → Public Key → Cipher Text → Private Key → Plain Text
-```
+[//]: # (❌ Lifecycle issues)
 
----
+[//]: # (❌ Not cancellation-safe)
 
-## 13.8) How do you encrypt data in Java?
+[//]: # (❌ Poor error handling)
 
-### ✅ Example using AES:
+[//]: # (❌ Not scalable)
 
-```kotlin
-fun encrypt(data: String, secret: String): String {
-    val key = SecretKeySpec(secret.toByteArray(), "AES")
-    val cipher = Cipher.getInstance("AES")
-    cipher.init(Cipher.ENCRYPT_MODE, key)
-    return Base64.encodeToString(cipher.doFinal(data.toByteArray()), Base64.DEFAULT)
-}
-```
+[//]: # (❌ Deprecated)
 
----
+[//]: # ()
+[//]: # (✅ Replacement:)
 
-## 13.9) What is SSL Pinning?
+[//]: # ()
+[//]: # (* Kotlin Coroutines)
 
-✅ **Definition:**
-SSL Pinning is a security technique that binds the app to a specific server certificate or public key.
+[//]: # (* WorkManager)
 
-✅ **Purpose:**
+[//]: # (* ExecutorService)
 
-* Prevent Man-in-the-Middle (MITM) attacks
-* Ensure server authenticity
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 6&#41; What is Loader?)
 
-## 13.10) How do you implement SSL pinning in Android?
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-### ✅ Method 1: OkHttp Certificate Pinning
+[//]: # (Loader was used to load data asynchronously in Activities/Fragments.)
 
-```kotlin
-val certificatePinner = CertificatePinner.Builder()
-    .add("example.com", "sha256/AAAAAAAAAAAAAAAAAAAA...")
-    .build()
+[//]: # ()
+[//]: # (⚠️ Deprecated in AndroidX.)
 
-val client = OkHttpClient.Builder()
-    .certificatePinner(certificatePinner)
-    .build()
-```
+[//]: # ()
+[//]: # (✅ **Types:**)
 
----
+[//]: # ()
+[//]: # (* CursorLoader)
 
-### ✅ Method 2: Network Security Config (Recommended)
+[//]: # (* AsyncTaskLoader)
 
-📁 res/xml/network_security_config.xml
+[//]: # ()
+[//]: # (❌ Issues:)
 
-```xml
-<network-security-config>
-    <domain-config>
-        <domain includeSubdomains="true">example.com</domain>
-        <pin-set expiration="2027-01-01">
-            <pin digest="SHA-256">AAAAAAAAAAAA...</pin>
-        </pin-set>
-    </domain-config>
-</network-security-config>
-```
+[//]: # ()
+[//]: # (* Complex API)
 
-📄 AndroidManifest.xml
+[//]: # (* Lifecycle problems)
 
-```xml
-<application
-    android:networkSecurityConfig="@xml/network_security_config">
-</application>
-```
+[//]: # ()
+[//]: # (✅ Replacement:)
 
----
+[//]: # ()
+[//]: # (* ViewModel + LiveData + Coroutines)
 
-Here you go 🧠⚡
-Below is **Memory, Performance & Battery Optimization in Android** explained in **clean Markdown format** — interview-ready and GitHub-friendly.
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 7&#41; Explain Looper, Handler, and HandlerThread)
 
-# 🧠 Android Memory, Performance & Battery Optimization
+[//]: # ()
+[//]: # (### 🌀 Looper)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-## 1) What is Memory Leak?
+[//]: # (Looper manages a message queue for a thread.)
 
-✅ **Definition:**
-A memory leak happens when objects are no longer needed but still referenced, so the Garbage Collector cannot free memory.
+[//]: # ()
+[//]: # (📌 Main thread has a Looper by default.)
 
-✅ **Result:**
+[//]: # ()
+[//]: # (---)
 
-* Increased memory usage
-* App slowdown
-* OutOfMemoryError (OOM)
-* App crash
+[//]: # ()
+[//]: # (### 📨 Handler)
 
-✅ **Example:**
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-```kotlin
-object Singleton {
-    var activity: Activity? = null // ❌ memory leak
-}
-```
+[//]: # (Handler posts tasks/messages to a thread’s Looper.)
 
----
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-## 2) Garbage Collection (GC) in Android
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-Garbage Collection is the process of automatically freeing unused memory.
+[//]: # (val handler = Handler&#40;Looper.getMainLooper&#40;&#41;&#41;)
 
-✅ **How it works:**
+[//]: # (handler.post {)
 
-1. Identifies unreachable objects.
-2. Frees heap memory.
-3. Compacts memory.
+[//]: # (    // update UI)
 
-✅ **Types of GC in Android (ART):**
+[//]: # (})
 
-* Minor GC
-* Major GC
-* Full GC
+[//]: # (```)
 
-✅ **Impact:**
+[//]: # ()
+[//]: # (---)
 
-* UI jank
-* Frame drops (if GC runs frequently)
+[//]: # ()
+[//]: # (### 🧵 HandlerThread)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-## 3) Causes of Memory Leaks
+[//]: # (A background thread with its own Looper.)
 
-### ✅ Common Causes:
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-* Static references to Activity/Context
-* Anonymous inner classes
-* Long-running threads
-* Handlers with delayed messages
-* Unclosed resources (Cursor, InputStream)
-* Bitmap memory misuse
-* Listeners not removed
-* Memory leaks in singletons
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ Example (Handler leak):
+[//]: # (val handlerThread = HandlerThread&#40;"MyThread"&#41;)
 
-```kotlin
-class MyActivity : Activity() {
-    private val handler = Handler() // ❌ leak risk
-}
-```
+[//]: # (handlerThread.start&#40;&#41;)
 
-✅ Fix:
+[//]: # (val handler = Handler&#40;handlerThread.looper&#41;)
 
-```kotlin
-private val handler = Handler(Looper.getMainLooper())
-```
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-## 4) What is Bitmap Pool?
+[//]: # ()
+[//]: # (## 8&#41; Different types of threads in Android)
 
-✅ **Definition:**
-Bitmap Pool is a memory optimization technique where bitmaps are reused instead of allocating new memory.
+[//]: # ()
+[//]: # (| Type              | Description        |)
 
-✅ **Used in libraries:**
+[//]: # (| ----------------- | ------------------ |)
 
-* Glide
-* Fresco
-* Coil
-* Picasso
+[//]: # (| Main Thread       | UI thread          |)
 
-✅ **Benefit:**
+[//]: # (| Worker Thread     | Background tasks   |)
 
-* Reduce GC pressure
-* Faster image loading
-* Lower memory usage
+[//]: # (| HandlerThread     | Thread with Looper |)
 
----
+[//]: # (| Thread Pool       | ExecutorService    |)
 
-## 5) How to handle large bitmaps efficiently?
+[//]: # (| Coroutine Threads | Dispatchers        |)
 
-### ✅ Techniques:
+[//]: # (| Binder Thread     | IPC communication  |)
 
-### ✅ a) Downsampling images
+[//]: # (| Render Thread     | UI rendering       |)
 
-```kotlin
-val options = BitmapFactory.Options().apply {
-    inSampleSize = 4
-}
-BitmapFactory.decodeResource(resources, R.drawable.image, options)
-```
+[//]: # (| GC Thread         | Garbage Collection |)
 
----
+[//]: # ()
+[//]: # (---)
 
-### ✅ b) Use image loading libraries
+[//]: # ()
+[//]: # (## 9&#41; Which thread does Dispatchers.Default use?)
 
-* Glide
-* Coil
-* Picasso
+[//]: # ()
+[//]: # (✅ **Answer:**)
 
----
+[//]: # (`Dispatchers.Default` uses a shared pool of background threads optimized for CPU-intensive tasks.)
 
-### ✅ c) Use RGB_565 instead of ARGB_8888
+[//]: # ()
+[//]: # (📌 Backed by:)
 
-```kotlin
-options.inPreferredConfig = Bitmap.Config.RGB_565
-```
+[//]: # ()
+[//]: # (* ForkJoinPool &#40;JVM&#41;)
 
----
+[//]: # (* CPU core-based thread pool)
 
-### ✅ d) Avoid loading full-size images into memory
+[//]: # ()
+[//]: # (✅ Use cases:)
 
----
+[//]: # ()
+[//]: # (* Heavy computations)
 
-### ✅ e) Use Bitmap Pool (Glide)
+[//]: # (* Sorting)
 
----
+[//]: # (* JSON parsing)
 
-## 6) How to use Android Memory Profiler?
+[//]: # ()
+[//]: # (---)
 
-✅ **Tool:** Android Studio → Profiler → Memory
+[//]: # ()
+[//]: # (## 10&#41; Best way to update UI periodically)
 
-### ✅ Steps:
+[//]: # ()
+[//]: # (✅ Recommended approaches:)
 
-1. Run app in Android Studio.
-2. Open Profiler.
-3. Select Memory tab.
-4. Monitor:
+[//]: # ()
+[//]: # (### ✅ a&#41; Coroutine + delay&#40;&#41;)
 
-   * Heap usage
-   * Object allocation
-   * GC events
-   * Leaks
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ Features:
+[//]: # (lifecycleScope.launch {)
 
-* Heap dump
-* Allocation tracking
-* Leak detection
+[//]: # (    while &#40;true&#41; {)
 
----
+[//]: # (        delay&#40;1000&#41;)
 
-## 7) How to measure method execution time?
+[//]: # (        updateUI&#40;&#41;)
 
-### ✅ a) System.currentTimeMillis()
+[//]: # (    })
 
-```kotlin
-val start = System.currentTimeMillis()
-// method call
-val end = System.currentTimeMillis()
-Log.d("Time", "Execution time = ${end - start} ms")
-```
+[//]: # (})
 
----
+[//]: # (```)
 
-### ✅ b) System.nanoTime() (more accurate)
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-val start = System.nanoTime()
-// method call
-val end = System.nanoTime()
-Log.d("Time", "Execution time = ${(end - start)/1_000_000} ms")
-```
+[//]: # ()
+[//]: # (### ✅ b&#41; Handler)
 
----
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ c) Kotlin measureTimeMillis()
+[//]: # (val handler = Handler&#40;Looper.getMainLooper&#40;&#41;&#41;)
 
-```kotlin
-val time = measureTimeMillis {
-    myMethod()
-}
-```
+[//]: # (val runnable = object : Runnable {)
 
----
+[//]: # (    override fun run&#40;&#41; {)
 
-### ✅ d) Trace API
+[//]: # (        updateUI&#40;&#41;)
 
-```kotlin
-Trace.beginSection("MyMethod")
-// code
-Trace.endSection()
-```
+[//]: # (        handler.postDelayed&#40;this, 1000&#41;)
 
----
+[//]: # (    })
 
-## 8) How to reduce battery consumption?
+[//]: # (})
 
-### ✅ Best Practices:
+[//]: # (handler.post&#40;runnable&#41;)
 
-### 🔋 a) Optimize network calls
+[//]: # (```)
 
-* Batch requests
-* Use caching
-* Avoid polling
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ c&#41; Flow / LiveData &#40;Best practice&#41;)
 
-### 🔋 b) Use WorkManager instead of background services
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (flow.collect {)
 
-### 🔋 c) Optimize location updates
+[//]: # (    updateUI&#40;&#41;)
 
-* Reduce frequency
-* Use balanced accuracy
+[//]: # (})
 
----
+[//]: # (```)
 
-### 🔋 d) Avoid wake locks
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 11&#41; How to detect blocking UI thread?)
 
-### 🔋 e) Optimize animations & UI rendering
+[//]: # ()
+[//]: # (✅ Tools & Techniques:)
 
----
+[//]: # ()
+[//]: # (### ✅ a&#41; StrictMode)
 
-### 🔋 f) Use JobScheduler / WorkManager
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (StrictMode.setThreadPolicy&#40;)
 
-### 🔋 g) Reduce overdraw
+[//]: # (    StrictMode.ThreadPolicy.Builder&#40;&#41;)
 
----
+[//]: # (        .detectAll&#40;&#41;)
 
-### 🔋 h) Avoid unnecessary background tasks
+[//]: # (        .penaltyLog&#40;&#41;)
 
----
+[//]: # (        .build&#40;&#41;)
 
-### 🔋 i) Use Doze mode & App Standby properly
+[//]: # (&#41;)
 
----
+[//]: # (```)
 
-### 🔋 j) Optimize alarms (setExact vs setInexact)
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ b&#41; Android Profiler)
 
-Here you go 🏗️
-Below is **Gradle, Build System & App Delivery in Android** explained in **clean Markdown format** — interview-ready and GitHub-friendly.
+[//]: # ()
+[//]: # (* CPU Profiler)
 
----
+[//]: # (* Main thread monitoring)
 
-# 🏗️ Android Gradle, Build System & App Delivery
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ c&#41; ANR Reports)
 
-## 14.1) What is Gradle?
+[//]: # ()
+[//]: # (* Play Console)
 
-✅ **Definition:**
-Gradle is a build automation tool used to compile, test, package, and deploy Android applications.
+[//]: # (* Logcat)
 
-✅ **Features:**
+[//]: # ()
+[//]: # (---)
 
-* Dependency management
-* Build variants
-* Plugin-based system
-* Incremental builds
+[//]: # ()
+[//]: # (### ✅ d&#41; Systrace / Perfetto)
 
-✅ **Key Files:**
+[//]: # ()
+[//]: # (* System-level tracing)
 
-* `build.gradle` / `build.gradle.kts`
-* `settings.gradle`
-* `gradle.properties`
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ e&#41; Choreographer / Frame drops)
 
-## 14.2) What do you mean by Gradle Wrapper?
+[//]: # ()
+[//]: # (* Detect UI jank)
 
-✅ **Definition:**
-Gradle Wrapper ensures that the project uses a specific Gradle version, independent of the system-installed Gradle.
+[//]: # ()
+[//]: # (---)
 
-✅ **Files:**
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
-* `gradlew`
-* `gradlew.bat`
-* `gradle/wrapper/gradle-wrapper.properties`
+[//]: # ()
+[//]: # (# ♻️ RecyclerView in Android)
 
-✅ **Benefit:**
+[//]: # ()
+[//]: # (---)
 
-* Consistent builds across environments
+[//]: # ()
+[//]: # (## 1&#41; What is RecyclerView?)
 
----
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-## 14.3) Difference between implementation and api
+[//]: # (RecyclerView is an advanced and flexible version of ListView used to display large sets of data efficiently.)
 
-| Feature           | implementation     | api                          |
-| ----------------- | ------------------ | ---------------------------- |
-| Visibility        | Internal to module | Exposed to dependent modules |
-| Compilation speed | Faster             | Slower                       |
-| Encapsulation     | Better             | Less                         |
-| Use case          | Default choice     | Library APIs                 |
+[//]: # ()
+[//]: # (✅ **Package:**)
 
-✅ Example:
+[//]: # ()
+[//]: # (```text)
 
-```gradle
-dependencies {
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    api("com.google.guava:guava:31.0")
-}
-```
+[//]: # (androidx.recyclerview.widget.RecyclerView)
 
----
+[//]: # (```)
 
-## 14.4) Difference between Build Type, Product Flavor, and Build Variant
+[//]: # ()
+[//]: # (✅ **Key Components:**)
 
-### ✅ Build Type
+[//]: # ()
+[//]: # (* Adapter)
 
-Defines how the app is built.
+[//]: # (* ViewHolder)
 
-Examples:
+[//]: # (* LayoutManager)
 
-* debug
-* release
+[//]: # (* ItemAnimator)
 
-### ✅ Product Flavor
+[//]: # (* ItemDecoration)
 
-Defines different versions of the app.
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-Examples:
+[//]: # ()
+[//]: # (```kotlin)
 
-* free / paid
-* dev / prod
+[//]: # (recyclerView.layoutManager = LinearLayoutManager&#40;this&#41;)
 
-### ✅ Build Variant
+[//]: # (recyclerView.adapter = MyAdapter&#40;list&#41;)
 
-Combination of build type + product flavor.
+[//]: # (```)
 
-Example:
+[//]: # ()
+[//]: # (---)
 
-```
-freeDebug
-paidRelease
-```
+[//]: # ()
+[//]: # (## 2&#41; Difference between RecyclerView and ListView)
 
-### ✅ Comparison Table:
+[//]: # ()
+[//]: # (| Feature            | RecyclerView | ListView      |)
 
-| Concept        | Purpose          |
-| -------------- | ---------------- |
-| Build Type     | Debug vs Release |
-| Product Flavor | App variants     |
-| Build Variant  | Combination      |
+[//]: # (| ------------------ | ------------ | ------------- |)
 
----
+[//]: # (| ViewHolder pattern | Mandatory    | Optional      |)
 
-## 14.5) What do you know about Version Catalog?
+[//]: # (| Layout types       | Multiple     | Only vertical |)
 
-✅ **Definition:**
-Version Catalog is a Gradle feature to centralize dependency versions in one place.
+[//]: # (| Performance        | High         | Low           |)
 
-✅ **File:**
+[//]: # (| Animations         | Built-in     | Limited       |)
 
-```
-gradle/libs.versions.toml
-```
+[//]: # (| Flexibility        | Very high    | Low           |)
 
-✅ Example:
+[//]: # (| Optimization       | Advanced     | Basic         |)
 
-```toml
-[versions]
-retrofit = "2.9.0"
+[//]: # (| Nested scrolling   | Better       | Poor          |)
 
-[libraries]
-retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" }
-```
+[//]: # ()
+[//]: # (✅ Interview Line:)
 
-Use in Gradle:
+[//]: # ()
+[//]: # (> RecyclerView is more flexible, efficient, and extensible than ListView.)
 
-```gradle
-implementation(libs.retrofit)
-```
+[//]: # ()
+[//]: # (---)
 
-✅ Benefits:
+[//]: # ()
+[//]: # (## 3&#41; What is ViewHolder Pattern?)
 
-* Centralized dependency management
-* Clean build.gradle
-* Easy upgrades
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (ViewHolder pattern caches item views to avoid repeated `findViewById&#40;&#41;` calls.)
 
-## 14.6) Android ProGuard
+[//]: # ()
+[//]: # (✅ **Purpose:**)
 
-✅ **Definition:**
-ProGuard is a tool used to:
+[//]: # ()
+[//]: # (* Improve performance)
 
-* Shrink code
-* Obfuscate code
-* Optimize bytecode
-* Remove unused classes
+[//]: # (* Reduce view inflation cost)
 
-⚠️ Replaced by R8 (default in modern Android).
+[//]: # (* Faster scrolling)
 
----
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-## 14.7) Android ProGuard Rules
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-Rules that define what code should be kept or removed.
+[//]: # (class MyViewHolder&#40;view: View&#41; : RecyclerView.ViewHolder&#40;view&#41; {)
 
-✅ Example:
+[//]: # (    val title = view.findViewById<TextView>&#40;R.id.title&#41;)
 
-```proguard
--keep class com.example.model.** { *; }
--dontwarn okhttp3.**
--keepattributes Signature
-```
+[//]: # (})
 
----
+[//]: # (```)
 
-## 14.8) ProGuard applied at which stage of build?
+[//]: # ()
+[//]: # (---)
 
-✅ **Answer:**
-ProGuard/R8 runs during the **release build** stage after compilation and before APK/AAB packaging.
+[//]: # ()
+[//]: # (## 4&#41; How does RecyclerView work internally?)
 
-### ✅ Build Flow:
+[//]: # ()
+[//]: # (### ♻️ Core Concept: View Recycling)
 
-```
-Kotlin/Java → DEX → R8(ProGuard) → APK/AAB → Signing → Packaging
-```
+[//]: # ()
+[//]: # (RecyclerView reuses item views instead of creating new ones.)
 
----
+[//]: # ()
+[//]: # (### 🔄 Steps:)
 
-## 14.9) Ways to reduce application size
+[//]: # ()
+[//]: # (1. LayoutManager requests views.)
 
-### ✅ Techniques:
+[//]: # (2. Adapter binds data to ViewHolder.)
 
-* Enable R8 / ProGuard
-* Use Android App Bundle (AAB)
-* Remove unused resources
-* Use vector drawables
-* Enable resource shrinking
-* Split APK by ABI, density, language
-* Optimize images (WebP)
-* Avoid heavy libraries
-* Use dynamic feature modules
+[//]: # (3. Off-screen views are recycled.)
 
----
+[//]: # (4. Recycled views are reused for new items.)
 
-## 14.10) What do you know about App Bundles?
+[//]: # ()
+[//]: # (### 🧠 Internal Components:)
 
-✅ **Definition:**
-Android App Bundle (AAB) is a publishing format that allows Google Play to generate optimized APKs for devices.
+[//]: # ()
+[//]: # (* Recycler &#40;view cache pool&#41;)
 
-✅ Benefits:
+[//]: # (* Adapter)
 
-* Smaller downloads
-* Device-specific APKs
-* Faster installs
+[//]: # (* LayoutManager)
 
-✅ Difference:
+[//]: # (* ItemAnimator)
 
-| APK            | AAB                     |
-| -------------- | ----------------------- |
-| Single package | Multiple optimized APKs |
-| Larger size    | Smaller size            |
-| Manual splits  | Automatic splits        |
+[//]: # ()
+[//]: # (### 📊 View Cache Levels:)
 
----
+[//]: # ()
+[//]: # (| Cache Type           | Description             |)
 
-## 14.11) What do you know about Play Feature Delivery?
+[//]: # (| -------------------- | ----------------------- |)
 
-✅ **Definition:**
-Play Feature Delivery allows delivering app features dynamically using dynamic feature modules.
+[//]: # (| Attached Scrap       | Currently visible views |)
 
-✅ Types:
+[//]: # (| Cached Views         | Recently detached views |)
 
-* Install-time delivery
-* On-demand delivery
-* Conditional delivery
+[//]: # (| Recycled View Pool   | Shared recycled views   |)
 
-✅ Example Use Cases:
+[//]: # (| View Cache Extension | Custom cache            |)
 
-* Games levels
-* Chat module
-* Payment module
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (## 5&#41; RecyclerView Scrolling Optimization Techniques)
 
-## 14.12) What is Play App Signing?
+[//]: # ()
+[//]: # (### ✅ 1&#41; Use ViewHolder properly)
 
-✅ **Definition:**
-Play App Signing is a Google Play service that manages and protects your app signing key.
+[//]: # ()
+[//]: # (Avoid expensive operations in `onBindViewHolder&#40;&#41;`.)
 
-✅ Benefits:
+[//]: # ()
+[//]: # (---)
 
-* Secure key storage
-* Key recovery
-* Optimized APK signing
+[//]: # ()
+[//]: # (### ✅ 2&#41; Use DiffUtil instead of notifyDataSetChanged&#40;&#41;)
 
-✅ Flow:
+[//]: # ()
+[//]: # (```kotlin)
 
-1. Developer uploads AAB.
-2. Google Play signs APK with app signing key.
-3. Users download signed APK.
+[//]: # (DiffUtil.calculateDiff&#40;callback&#41;)
 
----
+[//]: # (```)
 
-Here you go 🚀
-Below is **Android Performance, Startup & Memory** in **clean Markdown format** — interview-ready and GitHub-friendly.
+[//]: # ()
+[//]: # (✔ Efficient updates)
 
----
+[//]: # (✔ Avoid full redraw)
 
-# ⚡ Android Performance, Startup & Memory Optimization
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ 3&#41; Enable stable IDs)
 
-## 16.1) What is ANR?
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-ANR (Application Not Responding) occurs when the main thread is blocked for too long.
+[//]: # (setHasStableIds&#40;true&#41;)
 
-⏱️ Time limits:
+[//]: # (```)
 
-* Activity: 5 seconds
-* BroadcastReceiver: 10 seconds
-* Service: 20 seconds
+[//]: # ()
+[//]: # (---)
 
-### ✅ Causes:
+[//]: # ()
+[//]: # (### ✅ 4&#41; Avoid nested layouts &#40;ConstraintLayout recommended&#41;)
 
-* Long-running tasks on main thread
-* Network calls on UI thread
-* Deadlocks / infinite loops
-* Heavy layout rendering
+[//]: # ()
+[//]: # (❌ LinearLayout inside LinearLayout)
 
-### ✅ Prevention:
+[//]: # (✅ ConstraintLayout)
 
-* Use background threads / coroutines
-* Optimize UI rendering
-* Avoid blocking main thread
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ 5&#41; Use ListAdapter instead of RecyclerView.Adapter)
 
-## 16.2) App Startup Time
+[//]: # ()
+[//]: # (```kotlin)
 
-✅ **Definition:**
-App startup time is the time taken from launching the app to displaying the first screen.
+[//]: # (class MyAdapter : ListAdapter<Item, VH>&#40;DiffCallback&#40;&#41;&#41;)
 
-### ✅ Types of Startup:
+[//]: # (```)
 
-| Type       | Description             |
-| ---------- | ----------------------- |
-| Cold Start | App not in memory       |
-| Warm Start | App partially in memory |
-| Hot Start  | App already in memory   |
+[//]: # ()
+[//]: # (---)
 
-### ✅ Optimization Techniques:
+[//]: # ()
+[//]: # (### ✅ 6&#41; Disable unnecessary animations)
 
-* Lazy initialization
-* Avoid heavy work in Application/Activity `onCreate()`
-* Use SplashScreen API properly
-* Enable Baseline Profiles
-* Optimize layout
-* Use ViewBinding instead of DataBinding
-* Defer non-critical initialization
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (recyclerView.itemAnimator = null)
 
-## 16.3) Creating a Memory Leak in Android
+[//]: # (```)
 
-⚠️ Example (Bad Code):
+[//]: # ()
+[//]: # (---)
 
-```kotlin
-object MySingleton {
-    var activity: Activity? = null // ❌ Memory Leak
-}
-```
+[//]: # ()
+[//]: # (### ✅ 7&#41; Increase RecyclerView cache size)
 
-Another example:
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-class MyActivity : Activity() {
-    private val handler = Handler() // ❌ may cause leak
-}
-```
+[//]: # (recyclerView.setItemViewCacheSize&#40;20&#41;)
 
----
+[//]: # (```)
 
-## 16.4) Avoiding Memory Leak
+[//]: # ()
+[//]: # (---)
 
-### ✅ Best Practices:
+[//]: # ()
+[//]: # (### ✅ 8&#41; Use ViewBinding instead of findViewById&#40;&#41;)
 
-* Avoid static references to Activity/Context
-* Use WeakReference when needed
-* Clear listeners in onDestroy()
-* Use lifecycle-aware components
-* Use applicationContext instead of activityContext when possible
-* Cancel coroutines/jobs properly
-* Avoid anonymous inner classes
+[//]: # ()
+[//]: # (---)
 
----
+[//]: # ()
+[//]: # (### ✅ 9&#41; Avoid heavy operations in onBindViewHolder&#40;&#41;)
 
-## 16.5) Identifying Memory Leak
+[//]: # ()
+[//]: # (❌ Network calls)
 
-### ✅ Tools:
+[//]: # (❌ Image decoding)
 
-* Android Studio Memory Profiler
-* LeakCanary
-* MAT (Memory Analyzer Tool)
-* Logcat (GC logs)
+[//]: # (❌ Complex calculations)
 
-### ✅ Example with LeakCanary:
+[//]: # ()
+[//]: # (---)
 
-```gradle
-debugImplementation "com.squareup.leakcanary:leakcanary-android:2.12"
-```
+[//]: # ()
+[//]: # (## 6&#41; How to optimize Nested RecyclerView?)
 
----
+[//]: # ()
+[//]: # (Nested RecyclerView = RecyclerView inside RecyclerView)
 
-## 16.6) Reducing App Size
+[//]: # (&#40;e.g., horizontal list inside vertical list&#41;)
 
-### ✅ Techniques:
+[//]: # ()
+[//]: # (### 🚨 Problems:)
 
-* Enable R8 / ProGuard
-* Use Android App Bundle (AAB)
-* Remove unused resources
-* Enable resource shrinking
-* Use vector drawables
-* Optimize images (WebP)
-* Split APK by ABI, density, language
-* Avoid heavy libraries
-* Use dynamic feature modules
+[//]: # ()
+[//]: # (* Laggy scrolling)
 
----
+[//]: # (* High memory usage)
 
-## 16.7) Downloadable Fonts
+[//]: # (* View inflation overhead)
 
-✅ **Definition:**
-Downloadable Fonts allow apps to download fonts from Google Play services instead of bundling them.
+[//]: # ()
+[//]: # (---)
 
-### ✅ Benefits:
+[//]: # ()
+[//]: # (### ✅ Optimization Techniques:)
 
-* Reduce APK size
-* Dynamic font loading
-* Faster updates
+[//]: # ()
+[//]: # (### ✅ 1&#41; Share RecycledViewPool)
 
-### ✅ Example (XML):
+[//]: # ()
+[//]: # (```kotlin)
 
-```xml
-<TextView
-    android:fontFamily="@font/roboto" />
-```
+[//]: # (val pool = RecyclerView.RecycledViewPool&#40;&#41;)
 
-Font request:
+[//]: # (parentRecyclerView.setRecycledViewPool&#40;pool&#41;)
 
-```xml
-<font-family
-    app:fontProviderAuthority="com.google.android.gms.fonts"
-    app:fontProviderPackage="com.google.android.gms"
-    app:fontProviderQuery="Roboto" />
-```
+[//]: # (childRecyclerView.setRecycledViewPool&#40;pool&#41;)
 
----
+[//]: # (```)
 
-## 16.8) Splash Screen and SplashScreen API
+[//]: # ()
+[//]: # (---)
 
-### ✅ Traditional Splash Screen (Old Way)
+[//]: # ()
+[//]: # (### ✅ 2&#41; Use setHasFixedSize&#40;true&#41;)
 
-* Separate SplashActivity
-* Delay using Handler
-* ❌ Bad practice (slow startup)
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (recyclerView.setHasFixedSize&#40;true&#41;)
 
-### ✅ SplashScreen API (Android 12+)
+[//]: # (```)
 
-✅ Official Jetpack API for splash screen.
+[//]: # ()
+[//]: # (---)
 
-### ✅ Implementation:
+[//]: # ()
+[//]: # (### ✅ 3&#41; Disable nested scrolling)
 
-Gradle:
+[//]: # ()
+[//]: # (```kotlin)
 
-```gradle
-implementation "androidx.core:core-splashscreen:1.0.1"
-```
+[//]: # (childRecyclerView.isNestedScrollingEnabled = false)
 
-Theme:
+[//]: # (```)
 
-```xml
-<style name="Theme.MyApp" parent="Theme.SplashScreen">
-    <item name="windowSplashScreenBackground">@color/white</item>
-    <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>
-</style>
-```
+[//]: # ()
+[//]: # (---)
 
-Activity:
+[//]: # ()
+[//]: # (### ✅ 4&#41; Use ViewPager2 instead of nested RecyclerView &#40;if possible&#41;)
 
-```kotlin
-override fun onCreate(savedInstanceState: Bundle?) {
-    installSplashScreen()
-    super.onCreate(savedInstanceState)
-}
-```
+[//]: # ()
+[//]: # (---)
 
-### ✅ Benefits:
+[//]: # ()
+[//]: # (### ✅ 5&#41; Preload items &#40;Prefetch&#41;)
 
-* Faster startup
-* System-managed splash screen
-* Consistent UX
+[//]: # ()
+[//]: # (```kotlin)
 
----
+[//]: # (LinearLayoutManager&#40;context&#41;.apply {)
 
-Here are **clear, interview-ready answers** for your Android topics 👇
-(I wrote them in simple language + technical depth so you can directly use them in interviews.)
+[//]: # (    initialPrefetchItemCount = 4)
 
----
+[//]: # (})
 
-# ✅ 17.1 Android Notification System
+[//]: # (```)
 
-The Android Notification System allows apps to display messages outside the app UI in the notification bar.
+[//]: # ()
+[//]: # (---)
 
-### 🔹 Key Components
+[//]: # ()
+[//]: # (### ✅ 6&#41; Use Paging 3 library for large data)
 
-1. **NotificationManager**
+[//]: # ()
+[//]: # (---)
 
-   * System service used to show notifications.
+[//]: # ()
+[//]: # (### ✅ 7&#41; Avoid deep view hierarchy)
 
-2. **NotificationChannel (Android 8.0+)**
+[//]: # ()
+[//]: # (---)
 
-   * Required for notifications.
-   * Defines importance, sound, vibration, etc.
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (---)
 
-3. **NotificationCompat.Builder**
+[//]: # ()
+[//]: # (## 1&#41; What is View?)
 
-   * Builds the notification.
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-4. **PendingIntent**
+[//]: # (`View` is the basic building block of UI in Android. It represents a single UI component.)
 
-   * Defines action when user taps the notification.
+[//]: # ()
+[//]: # (✅ **Class:**)
 
-### 🔹 Flow
+[//]: # ()
+[//]: # (```kotlin)
 
-```
-Create Channel → Build Notification → Notify via NotificationManager
-```
+[//]: # (android.view.View)
 
-### 🔹 Example
+[//]: # (```)
 
-```kotlin
-val channelId = "my_channel"
+[//]: # ()
+[//]: # (✅ **Examples of View:**)
 
-val channel = NotificationChannel(
-    channelId,
-    "My Notifications",
-    NotificationManager.IMPORTANCE_HIGH
-)
+[//]: # ()
+[//]: # (* TextView)
 
-val manager = getSystemService(NotificationManager::class.java)
-manager.createNotificationChannel(channel)
+[//]: # (* Button)
 
-val intent = Intent(this, MainActivity::class.java)
-val pendingIntent = PendingIntent.getActivity(this, 0, intent, 0)
+[//]: # (* ImageView)
 
-val notification = NotificationCompat.Builder(this, channelId)
-    .setSmallIcon(R.drawable.ic_notification)
-    .setContentTitle("Hello")
-    .setContentText("This is a notification")
-    .setContentIntent(pendingIntent)
-    .setAutoCancel(true)
-    .build()
+[//]: # (* EditText)
 
-manager.notify(1, notification)
-```
+[//]: # ()
+[//]: # (✅ **Example:**)
 
----
+[//]: # ()
+[//]: # (```xml)
 
-# ✅ 17.2 Communication Between Notification Bar and Service
+[//]: # (<TextView)
 
-A notification often communicates with a **Service** (especially Foreground Service).
+[//]: # (    android:layout_width="wrap_content")
 
-### 🔹 Common Use Cases
+[//]: # (    android:layout_height="wrap_content")
 
-* Music player 🎵
-* Download manager ⬇️
-* Location tracking 📍
-* Background tasks
+[//]: # (    android:text="Hello"/>)
 
-### 🔹 How Communication Works
+[//]: # (```)
 
-### ✅ 1. Using Intent + Service
+[//]: # ()
+[//]: # (---)
 
-Notification triggers a Service action.
+[//]: # ()
+[//]: # (## 2&#41; What is ViewGroup?)
 
-```kotlin
-val intent = Intent(this, MyService::class.java)
-intent.action = "PLAY"
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-val pendingIntent = PendingIntent.getService(this, 0, intent, 0)
-```
+[//]: # (ViewGroup is a special type of View that can contain other Views &#40;child views&#41;.)
 
-### ✅ 2. Foreground Service with Notification
+[//]: # ()
+[//]: # (✅ **Class:**)
 
-```kotlin
-startForeground(1, notification)
-```
+[//]: # ()
+[//]: # (```kotlin)
 
-### ✅ 3. BroadcastReceiver
+[//]: # (android.view.ViewGroup)
 
-Notification button → Broadcast → Service reacts.
+[//]: # (```)
 
-### ✅ 4. ViewModel / LiveData / EventBus (advanced)
+[//]: # ()
+[//]: # (✅ **Examples:**)
 
-Used when UI and service must sync state.
+[//]: # ()
+[//]: # (* LinearLayout)
 
-### 🔹 Interview Answer (Short)
+[//]: # (* ConstraintLayout)
 
-> Notification communicates with a Service using PendingIntent, BroadcastReceiver, or Foreground Service. The notification sends actions to the service, and the service updates the notification or app state.
+[//]: # (* RelativeLayout)
 
----
+[//]: # (* FrameLayout)
 
-# ✅ 17.3 App Shortcuts
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-App Shortcuts provide quick actions from the app icon (long press).
+[//]: # ()
+[//]: # (```xml)
 
-### 🔹 Types of App Shortcuts
+[//]: # (<LinearLayout)
 
-### ✅ 1. Static Shortcuts
+[//]: # (    android:layout_width="match_parent")
 
-Defined in XML (Manifest).
+[//]: # (    android:layout_height="wrap_content">)
 
-```xml
-<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
-    <shortcut
-        android:shortcutId="compose"
-        android:shortLabel="Compose"
-        android:icon="@drawable/ic_compose"
-        android:intentAction="android.intent.action.VIEW"
-        android:targetClass="com.example.ComposeActivity" />
-</shortcuts>
-```
+[//]: # ()
+[//]: # (    <TextView)
 
-### ✅ 2. Dynamic Shortcuts
+[//]: # (        android:text="Child View"/>)
 
-Created programmatically.
+[//]: # (</LinearLayout>)
 
-```kotlin
-val shortcut = ShortcutInfo.Builder(this, "id1")
-    .setShortLabel("Profile")
-    .setIntent(Intent(this, ProfileActivity::class.java))
-    .build()
+[//]: # (```)
 
-shortcutManager.dynamicShortcuts = listOf(shortcut)
-```
+[//]: # ()
+[//]: # (---)
 
-### ✅ 3. Pinned Shortcuts
+[//]: # ()
+[//]: # (## 3&#41; Difference between View.GONE and View.INVISIBLE)
 
-Added directly to home screen.
+[//]: # ()
+[//]: # (| Property       | View.GONE           | View.INVISIBLE       |)
 
----
+[//]: # (| -------------- | ------------------- | -------------------- |)
 
-# ✅ Interview-Ready Summary (Very Useful 🔥)
+[//]: # (| Visibility     | Hidden              | Hidden               |)
 
-### 🔹 Android Notification System
+[//]: # (| Space occupied | ❌ No                | ✅ Yes                |)
 
-* Displays messages outside the app.
-* Uses NotificationManager, Channel, Builder, PendingIntent.
+[//]: # (| Layout impact  | Removed from layout | Layout space remains |)
 
-### 🔹 Notification ↔ Service Communication
+[//]: # ()
+[//]: # (✅ Example:)
 
-* PendingIntent
-* Foreground Service
-* BroadcastReceiver
-* Event-based communication
+[//]: # ()
+[//]: # (```kotlin)
 
-### 🔹 App Shortcuts
+[//]: # (view.visibility = View.GONE)
 
-* Static (XML)
-* Dynamic (Runtime)
-* Pinned (Home screen)
+[//]: # (view.visibility = View.INVISIBLE)
 
----
-Here are **clear, interview-ready explanations** of Kotlin JVM annotations 👇
-(I wrote them in a way that fits perfectly in Android interviews.)
+[//]: # (```)
 
----
+[//]: # ()
+[//]: # (---)
 
-# ✅ 18.1 `@JvmStatic`
+[//]: # ()
+[//]: # (## 4&#41; What is SurfaceView?)
 
-### 🔹 What is `@JvmStatic`?
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-`@JvmStatic` tells Kotlin to generate a **static method or field** for Java interoperability.
+[//]: # (SurfaceView is a View that provides a dedicated drawing surface for rendering graphics in a separate thread.)
 
-### 🔹 Why needed?
+[//]: # ()
+[//]: # (✅ **Use Cases:**)
 
-In Kotlin, functions inside `companion object` are not static by default.
-Java cannot call them like static methods unless we use `@JvmStatic`.
+[//]: # ()
+[//]: # (* Games)
 
-### 🔹 Example
+[//]: # (* Video playback)
 
-```kotlin
-class Utils {
-    companion object {
-        @JvmStatic
-        fun showMessage() {
-            println("Hello")
-        }
-    }
-}
-```
+[//]: # (* Camera preview)
 
-### 🔹 Java call
+[//]: # (* OpenGL rendering)
 
-```java
-Utils.showMessage();
-```
+[//]: # ()
+[//]: # (✅ **Difference from View:**)
 
-### 🔹 Without `@JvmStatic`
+[//]: # ()
+[//]: # (* Runs on separate thread)
 
-Java would call:
+[//]: # (* Better performance for heavy rendering)
 
-```java
-Utils.Companion.showMessage();
-```
+[//]: # ()
+[//]: # (---)
 
-### 🔹 Interview Answer
+[//]: # ()
+[//]: # (## 5&#41; What is Spannable?)
 
-> `@JvmStatic` makes Kotlin functions or properties behave like static members for Java interoperability.
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
----
+[//]: # (Spannable is used to apply multiple styles to parts of a text.)
 
-# ✅ 18.2 `@JvmField`
+[//]: # ()
+[//]: # (✅ **Class:**)
 
-### 🔹 What is `@JvmField`?
+[//]: # ()
+[//]: # (```kotlin)
 
-`@JvmField` exposes a Kotlin property as a **public field** instead of getter/setter.
+[//]: # (SpannableString)
 
-### 🔹 Why needed?
+[//]: # (```)
 
-By default, Kotlin generates getter/setter methods.
-Java cannot directly access fields without them.
+[//]: # ()
+[//]: # (✅ **Example:**)
 
-### 🔹 Example
+[//]: # ()
+[//]: # (```kotlin)
 
-```kotlin
-class Constants {
-    companion object {
-        @JvmField
-        val API_URL = "https://api.example.com"
-    }
-}
-```
+[//]: # (val text = SpannableString&#40;"Hello Android"&#41;)
 
-### 🔹 Java call
+[//]: # (text.setSpan&#40;ForegroundColorSpan&#40;Color.RED&#41;, 0, 5, Spanned.SPAN_EXCLUSIVE&#41;)
 
-```java
-String url = Constants.API_URL;
-```
+[//]: # (textView.text = text)
 
-### 🔹 Without `@JvmField`
+[//]: # (```)
 
-Java would call:
+[//]: # ()
+[//]: # (📌 Use cases:)
 
-```java
-Constants.Companion.getAPI_URL();
-```
+[//]: # ()
+[//]: # (* Rich text)
 
-### 🔹 Interview Answer
+[//]: # (* Highlighting text)
 
-> `@JvmField` prevents Kotlin from generating getter/setter and exposes the property as a Java field.
+[//]: # (* Clickable links)
 
----
+[//]: # ()
+[//]: # (---)
 
-# ✅ 18.3 `@JvmOverloads`
+[//]: # ()
+[//]: # (## 6&#41; What is Overdraw?)
 
-### 🔹 What is `@JvmOverloads`?
+[//]: # ()
+[//]: # (✅ **Definition:**)
 
-`@JvmOverloads` generates multiple overloaded methods for Java when Kotlin uses default parameters.
+[//]: # (Overdraw happens when the system draws the same pixel multiple times in a single frame.)
 
-### 🔹 Why needed?
+[//]: # ()
+[//]: # (❌ Causes:)
 
-Java does not support default arguments like Kotlin.
+[//]: # ()
+[//]: # (* Deep layout hierarchy)
 
-### 🔹 Example
+[//]: # (* Backgrounds on multiple views)
 
-```kotlin
-class User {
-    @JvmOverloads
-    fun greet(name: String = "Guest", age: Int = 18) {
-        println("Hello $name, age $age")
-    }
-}
-```
+[//]: # (* Overlapping views)
 
-### 🔹 Generated Java methods
+[//]: # ()
+[//]: # (✅ **Impact:**)
 
-```java
-greet();
-greet(String name);
-greet(String name, int age);
-```
+[//]: # ()
+[//]: # (* UI lag)
 
-### 🔹 Interview Answer
+[//]: # (* Battery drain)
 
-> `@JvmOverloads` generates overloaded methods for Java when Kotlin functions have default parameters.
+[//]: # ()
+[//]: # (✅ **Detection:**)
 
----
+[//]: # ()
+[//]: # (* Developer Options → Debug GPU Overdraw)
 
-# ✅ Quick Interview Comparison Table 🔥
+[//]: # ()
+[//]: # (✅ **Solution:**)
 
-| Annotation      | Purpose                        | Use Case                 |
-| --------------- | ------------------------------ | ------------------------ |
-| `@JvmStatic`    | Makes function/property static | Companion object methods |
-| `@JvmField`     | Exposes property as field      | Constants                |
-| `@JvmOverloads` | Generates overloaded methods   | Default parameters       |
+[//]: # ()
+[//]: # (* Remove unnecessary backgrounds)
 
----
+[//]: # (* Use ConstraintLayout)
+
+[//]: # (* Flatten layouts)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 7&#41; Difference between @id and @+id)
+
+[//]: # ()
+[//]: # (| Syntax          | Meaning                  |)
+
+[//]: # (| --------------- | ------------------------ |)
+
+[//]: # (| `@+id/viewName` | Create a new ID          |)
+
+[//]: # (| `@id/viewName`  | Reference an existing ID |)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<TextView)
+
+[//]: # (    android:id="@+id/title"/>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<Button)
+
+[//]: # (    android:layout_toRightOf="@id/title"/>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 8&#41; What is Widget?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (A Widget is a reusable UI component that allows user interaction.)
+
+[//]: # ()
+[//]: # (✅ **Examples:**)
+
+[//]: # ()
+[//]: # (* Button)
+
+[//]: # (* EditText)
+
+[//]: # (* Switch)
+
+[//]: # (* RecyclerView)
+
+[//]: # ()
+[//]: # (📌 Also:)
+
+[//]: # (App Widgets = Home screen widgets.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 9&#41; How to support different screen sizes?)
+
+[//]: # ()
+[//]: # (### ✅ Techniques:)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Responsive Layouts)
+
+[//]: # ()
+[//]: # (* ConstraintLayout)
+
+[//]: # (* FlexboxLayout)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; Resource qualifiers)
+
+[//]: # ()
+[//]: # (| Folder         | Purpose        |)
+
+[//]: # (| -------------- | -------------- |)
+
+[//]: # (| layout-sw600dp | Tablets        |)
+
+[//]: # (| layout-land    | Landscape      |)
+
+[//]: # (| drawable-hdpi  | Screen density |)
+
+[//]: # (| values-night   | Dark mode      |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Use dp & sp instead of px)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Vector Drawables)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ e&#41; Jetpack Compose responsive UI)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 10&#41; Difference between raw and assets folder)
+
+[//]: # ()
+[//]: # (| Feature       | raw            | assets       |)
+
+[//]: # (| ------------- | -------------- | ------------ |)
+
+[//]: # (| Folder path   | res/raw        | assets/      |)
+
+[//]: # (| Resource ID   | Yes            | No           |)
+
+[//]: # (| Access method | R.raw.filename | AssetManager |)
+
+[//]: # (| File types    | Limited        | Any file     |)
+
+[//]: # (| Subfolders    | ❌ No           | ✅ Yes        |)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (### raw:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val inputStream = resources.openRawResource&#40;R.raw.file&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### assets:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val inputStream = assets.open&#40;"file.txt"&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 11&#41; What is Dark Theme?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Dark Theme is a UI mode where the app uses dark colors to reduce eye strain and battery consumption.)
+
+[//]: # ()
+[//]: # (✅ **Implementation:**)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Theme XML)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<style name="Theme.MyApp" parent="Theme.MaterialComponents.DayNight">)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; Resource folder:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (values-night/colors.xml)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Enable dark mode:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (AppCompatDelegate.setDefaultNightMode&#40;AppCompatDelegate.MODE_NIGHT_YES&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # ()
+[//]: # ()
+[//]: # (Here you go 💾)
+
+[//]: # (Below is **Data Storage in Android** explained in **clean Markdown format** &#40;interview-ready + GitHub-friendly&#41;.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# 💾 Data Storage in Android)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 1&#41; Ways to store data in Android)
+
+[//]: # ()
+[//]: # (Android provides multiple ways to store data depending on size, security, and use case.)
+
+[//]: # ()
+[//]: # (### ✅ Types of Data Storage)
+
+[//]: # ()
+[//]: # (| Storage Type        | Use Case                                |)
+
+[//]: # (| ------------------- | --------------------------------------- |)
+
+[//]: # (| SharedPreferences   | Small key-value data                    |)
+
+[//]: # (| DataStore &#40;Jetpack&#41; | Modern replacement of SharedPreferences |)
+
+[//]: # (| Internal Storage    | Private app files                       |)
+
+[//]: # (| External Storage    | Public/shared files                     |)
+
+[//]: # (| SQLite Database     | Structured relational data              |)
+
+[//]: # (| Room Database       | ORM over SQLite                         |)
+
+[//]: # (| ContentProvider     | Data sharing between apps               |)
+
+[//]: # (| Network Storage     | Cloud / API                             |)
+
+[//]: # (| Cache               | Temporary data                          |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 2&#41; What is SharedPreferences?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (SharedPreferences is a lightweight storage mechanism to store key-value pairs.)
+
+[//]: # ()
+[//]: # (✅ **Used for:**)
+
+[//]: # ()
+[//]: # (* User settings)
+
+[//]: # (* Login state)
+
+[//]: # (* Theme preferences)
+
+[//]: # (* Tokens)
+
+[//]: # ()
+[//]: # (✅ **Example:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val prefs = getSharedPreferences&#40;"MyPrefs", Context.MODE_PRIVATE&#41;)
+
+[//]: # (prefs.edit&#40;&#41;.putString&#40;"username", "Aasim"&#41;.apply&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Read data:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val name = prefs.getString&#40;"username", ""&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 3&#41; Difference between commit&#40;&#41; and apply&#40;&#41;)
+
+[//]: # ()
+[//]: # (| Feature     | commit&#40;&#41;                | apply&#40;&#41;           |)
+
+[//]: # (| ----------- | ----------------------- | ----------------- |)
+
+[//]: # (| Thread      | Main thread             | Background thread |)
+
+[//]: # (| Return type | boolean                 | void              |)
+
+[//]: # (| Blocking    | Yes                     | No                |)
+
+[//]: # (| Performance | Slower                  | Faster            |)
+
+[//]: # (| Use case    | Immediate result needed | Preferred         |)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (prefs.edit&#40;&#41;.putString&#40;"key", "value"&#41;.commit&#40;&#41;)
+
+[//]: # (prefs.edit&#40;&#41;.putString&#40;"key", "value"&#41;.apply&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (📌 Interview Line:)
+
+[//]: # ()
+[//]: # (> apply&#40;&#41; is asynchronous and recommended, while commit&#40;&#41; is synchronous.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 4&#41; What is ContentProvider?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (ContentProvider is an Android component used to share data between different applications.)
+
+[//]: # ()
+[//]: # (✅ **Class:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (android.content.ContentProvider)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (✅ **Examples:**)
+
+[//]: # ()
+[//]: # (* Contacts Provider)
+
+[//]: # (* Media Provider)
+
+[//]: # (* Calendar Provider)
+
+[//]: # ()
+[//]: # (✅ **Use Case:**)
+
+[//]: # ()
+[//]: # (* Inter-app data sharing)
+
+[//]: # (* Secure data access)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 5&#41; What is Content URI?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Content URI is the unique identifier used to access data from a ContentProvider.)
+
+[//]: # ()
+[//]: # (✅ **Format:**)
+
+[//]: # ()
+[//]: # (```text)
+
+[//]: # (content://authority/path/id)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (✅ **Example:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (content://com.example.app.provider/users/1)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 6&#41; CRUD operations in ContentProvider)
+
+[//]: # ()
+[//]: # (CRUD = Create, Read, Update, Delete)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Insert &#40;Create&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (contentResolver.insert&#40;uri, values&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; Query &#40;Read&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (contentResolver.query&#40;uri, null, null, null, null&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Update)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (contentResolver.update&#40;uri, values, null, null&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Delete)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (contentResolver.delete&#40;uri, null, null&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 7&#41; Can SQLite DB be accessed for debugging?)
+
+[//]: # ()
+[//]: # (✅ **Yes, SQLite DB can be accessed for debugging.**)
+
+[//]: # ()
+[//]: # (### ✅ Methods:)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Android Studio Device File Explorer)
+
+[//]: # ()
+[//]: # (Path:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (/data/data/<package_name>/databases/)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; adb shell)
+
+[//]: # ()
+[//]: # (```bash)
+
+[//]: # (adb shell)
+
+[//]: # (cd /data/data/com.example.app/databases/)
+
+[//]: # (sqlite3 mydb.db)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Stetho / Debug DB / Flipper)
+
+[//]: # ()
+[//]: # (Libraries:)
+
+[//]: # ()
+[//]: # (* Facebook Stetho)
+
+[//]: # (* DebugDB)
+
+[//]: # (* Flipper)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Room Database Inspector &#40;Android Studio&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (Here you go 🌐)
+
+[//]: # (Below is **Networking in Android &#40;Retrofit, OkHttp, HTTP, REST&#41;** explained in **clean Markdown format** — perfect for interviews, GitHub, and notes.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# 🌐 Networking in Android &#40;Retrofit, OkHttp, REST, HTTP&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 1&#41; What is Retrofit?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Retrofit is a type-safe HTTP client library for Android used to call REST APIs.)
+
+[//]: # ()
+[//]: # (✅ **Developed by:** Square)
+
+[//]: # ()
+[//]: # (✅ **Built on:** OkHttp)
+
+[//]: # ()
+[//]: # (✅ **Features:**)
+
+[//]: # ()
+[//]: # (* REST API support)
+
+[//]: # (* JSON parsing &#40;Gson, Moshi&#41;)
+
+[//]: # (* Annotations-based API)
+
+[//]: # (* Coroutine support)
+
+[//]: # ()
+[//]: # (✅ **Example:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (interface ApiService {)
+
+[//]: # (    @GET&#40;"users"&#41;)
+
+[//]: # (    suspend fun getUsers&#40;&#41;: List<User>)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 2&#41; How to handle multiple network calls using Retrofit?)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Sequential calls &#40;Coroutines&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val user = api.getUser&#40;&#41;)
+
+[//]: # (val posts = api.getPosts&#40;user.id&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; Parallel calls &#40;Coroutines async&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (coroutineScope {)
+
+[//]: # (    val user = async { api.getUser&#40;&#41; })
+
+[//]: # (    val posts = async { api.getPosts&#40;&#41; })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; RxJava)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (Observable.zip&#40;api.getUser&#40;&#41;, api.getPosts&#40;&#41;, ...&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Callback-based)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (Call.enqueue&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 3&#41; What is OkHttp Interceptor?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Interceptor is a mechanism in OkHttp to intercept, modify, or log HTTP requests and responses.)
+
+[//]: # ()
+[//]: # (✅ **Use cases:**)
+
+[//]: # ()
+[//]: # (* Logging)
+
+[//]: # (* Authentication)
+
+[//]: # (* Headers)
+
+[//]: # (* Caching)
+
+[//]: # (* Retry logic)
+
+[//]: # ()
+[//]: # (✅ **Example:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val interceptor = Interceptor { chain ->)
+
+[//]: # (    val request = chain.request&#40;&#41;.newBuilder&#40;&#41;)
+
+[//]: # (        .addHeader&#40;"Authorization", "Bearer token"&#41;)
+
+[//]: # (        .build&#40;&#41;)
+
+[//]: # (    chain.proceed&#40;request&#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 4&#41; Types of OkHttp Interceptors)
+
+[//]: # ()
+[//]: # (| Type                    | Description                               |)
+
+[//]: # (| ----------------------- | ----------------------------------------- |)
+
+[//]: # (| Application Interceptor | Intercepts before request reaches network |)
+
+[//]: # (| Network Interceptor     | Intercepts after network response         |)
+
+[//]: # ()
+[//]: # (### ✅ Examples:)
+
+[//]: # ()
+[//]: # (* LoggingInterceptor)
+
+[//]: # (* HeaderInterceptor)
+
+[//]: # (* AuthInterceptor)
+
+[//]: # (* CacheInterceptor)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 5&#41; HTTP caching in OkHttp)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (OkHttp supports HTTP response caching using cache headers.)
+
+[//]: # ()
+[//]: # (### ✅ Setup Cache:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val cacheSize = 10 * 1024 * 1024 // 10 MB)
+
+[//]: # (val cache = Cache&#40;File&#40;context.cacheDir, "http_cache"&#41;, cacheSize&#41;)
+
+[//]: # ()
+[//]: # (val client = OkHttpClient.Builder&#40;&#41;)
+
+[//]: # (    .cache&#40;cache&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ Cache Control:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (CacheControl.Builder&#40;&#41;)
+
+[//]: # (    .maxAge&#40;1, TimeUnit.HOURS&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 6&#41; HTTP libraries used and why &#40;12.1&#41;)
+
+[//]: # ()
+[//]: # (| Library           | Why used                 |)
+
+[//]: # (| ----------------- | ------------------------ |)
+
+[//]: # (| Retrofit          | REST API calls           |)
+
+[//]: # (| OkHttp            | Low-level HTTP client    |)
+
+[//]: # (| Volley            | Fast request handling    |)
+
+[//]: # (| Ktor              | Kotlin-first HTTP client |)
+
+[//]: # (| Fuel              | Lightweight HTTP         |)
+
+[//]: # (| HttpURLConnection | Native Java API          |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 7&#41; How REST APIs work &#40;12.2&#41;)
+
+[//]: # ()
+[//]: # (✅ **REST &#40;Representational State Transfer&#41;** is an architectural style for communication between client and server.)
+
+[//]: # ()
+[//]: # (### ✅ Flow:)
+
+[//]: # ()
+[//]: # (1. Client sends HTTP request.)
+
+[//]: # (2. Server processes request.)
+
+[//]: # (3. Server returns response &#40;JSON/XML&#41;.)
+
+[//]: # (4. Client consumes data.)
+
+[//]: # ()
+[//]: # (### ✅ Key Principles:)
+
+[//]: # ()
+[//]: # (* Stateless)
+
+[//]: # (* Client-server architecture)
+
+[//]: # (* Resource-based URLs)
+
+[//]: # (* HTTP methods)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 8&#41; HTTP Methods &#40;12.3&#41;)
+
+[//]: # ()
+[//]: # (| Method | Purpose                 |)
+
+[//]: # (| ------ | ----------------------- |)
+
+[//]: # (| GET    | Fetch data              |)
+
+[//]: # (| POST   | Create data             |)
+
+[//]: # (| PUT    | Update entire resource  |)
+
+[//]: # (| PATCH  | Update partial resource |)
+
+[//]: # (| DELETE | Delete data             |)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```http)
+
+[//]: # (GET /users)
+
+[//]: # (POST /users)
+
+[//]: # (PUT /users/1)
+
+[//]: # (PATCH /users/1)
+
+[//]: # (DELETE /users/1)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 9&#41; Advantage of Retrofit over Volley &#40;12.4&#41;)
+
+[//]: # ()
+[//]: # (✅ Advantages:)
+
+[//]: # ()
+[//]: # (* Type-safe API)
+
+[//]: # (* Better REST support)
+
+[//]: # (* Annotation-based)
+
+[//]: # (* Coroutine & RxJava support)
+
+[//]: # (* Cleaner architecture)
+
+[//]: # (* Easy testing)
+
+[//]: # ()
+[//]: # (📌 Interview line:)
+
+[//]: # ()
+[//]: # (> Retrofit is better for structured REST APIs.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 10&#41; Advantage of Volley over Retrofit &#40;12.5&#41;)
+
+[//]: # ()
+[//]: # (✅ Advantages:)
+
+[//]: # ()
+[//]: # (* Built-in request queue)
+
+[//]: # (* Automatic scheduling)
+
+[//]: # (* Better for small/simple requests)
+
+[//]: # (* Image loading support)
+
+[//]: # (* Faster for frequent small calls)
+
+[//]: # ()
+[//]: # (📌 Interview line:)
+
+[//]: # ()
+[//]: # (> Volley is better for frequent lightweight requests.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 11&#41; Advantage of Retrofit over AsyncTask &#40;12.6&#41;)
+
+[//]: # ()
+[//]: # (| Retrofit             | AsyncTask               |)
+
+[//]: # (| -------------------- | ----------------------- |)
+
+[//]: # (| Built for networking | Generic background task |)
+
+[//]: # (| Thread-safe          | Poor thread handling    |)
+
+[//]: # (| Error handling       | Weak                    |)
+
+[//]: # (| Scalable             | Not scalable            |)
+
+[//]: # (| Coroutine support    | ❌                       |)
+
+[//]: # (| Maintained           | Deprecated              |)
+
+[//]: # ()
+[//]: # (✅ Interview line:)
+
+[//]: # ()
+[//]: # (> Retrofit is designed for networking, while AsyncTask is deprecated and not suitable for API calls.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # ()
+[//]: # (Here you go 🔐)
+
+[//]: # (Below is **Android Permissions & Security** in **clean Markdown format**, interview-ready and GitHub-friendly.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# 🔐 Android Permissions & Security)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.1&#41; What are the different protection levels in permissions?)
+
+[//]: # ()
+[//]: # (Android permissions have **protection levels** that define how sensitive a permission is.)
+
+[//]: # ()
+[//]: # (### ✅ Types of Protection Levels)
+
+[//]: # ()
+[//]: # (| Level             | Description                                   |)
+
+[//]: # (| ----------------- | --------------------------------------------- |)
+
+[//]: # (| normal            | Low-risk permissions, granted automatically   |)
+
+[//]: # (| dangerous         | Sensitive permissions, require user approval  |)
+
+[//]: # (| signature         | Granted only if apps share same signature     |)
+
+[//]: # (| signatureOrSystem | Granted to system apps or same-signature apps |)
+
+[//]: # ()
+[//]: # (### ✅ Examples:)
+
+[//]: # ()
+[//]: # (| Permission          | Level            |)
+
+[//]: # (| ------------------- | ---------------- |)
+
+[//]: # (| INTERNET            | normal           |)
+
+[//]: # (| CAMERA              | dangerous        |)
+
+[//]: # (| READ_CONTACTS       | dangerous        |)
+
+[//]: # (| SYSTEM_ALERT_WINDOW | signature/system |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.2&#41; Types of permissions)
+
+[//]: # ()
+[//]: # (### ✅ Based on granting method:)
+
+[//]: # ()
+[//]: # (1. **Normal permissions**)
+
+[//]: # (2. **Dangerous permissions**)
+
+[//]: # (3. **Signature permissions**)
+
+[//]: # (4. **Special permissions**)
+
+[//]: # ()
+[//]: # (### ✅ Dangerous permission groups:)
+
+[//]: # ()
+[//]: # (| Group      | Example               |)
+
+[//]: # (| ---------- | --------------------- |)
+
+[//]: # (| Location   | ACCESS_FINE_LOCATION  |)
+
+[//]: # (| Camera     | CAMERA                |)
+
+[//]: # (| Storage    | READ_EXTERNAL_STORAGE |)
+
+[//]: # (| Microphone | RECORD_AUDIO          |)
+
+[//]: # (| Contacts   | READ_CONTACTS         |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.3&#41; How to handle runtime permissions in Android?)
+
+[//]: # ()
+[//]: # (Since Android 6.0 &#40;API 23&#41;, dangerous permissions must be requested at runtime.)
+
+[//]: # ()
+[//]: # (### ✅ Steps:)
+
+[//]: # ()
+[//]: # (1. Check permission)
+
+[//]: # (2. Request permission)
+
+[//]: # (3. Handle result)
+
+[//]: # ()
+[//]: # (### ✅ Example &#40;Kotlin&#41;:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (if &#40;ContextCompat.checkSelfPermission&#40;this, Manifest.permission.CAMERA&#41;)
+
+[//]: # (    != PackageManager.PERMISSION_GRANTED&#41; {)
+
+[//]: # ()
+[//]: # (    ActivityCompat.requestPermissions&#40;)
+
+[//]: # (        this,)
+
+[//]: # (        arrayOf&#40;Manifest.permission.CAMERA&#41;,)
+
+[//]: # (        100)
+
+[//]: # (    &#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Handle result:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (override fun onRequestPermissionsResult&#40;)
+
+[//]: # (    requestCode: Int,)
+
+[//]: # (    permissions: Array<out String>,)
+
+[//]: # (    grantResults: IntArray)
+
+[//]: # (&#41; {)
+
+[//]: # (    if &#40;requestCode == 100 && grantResults.isNotEmpty&#40;&#41;)
+
+[//]: # (        && grantResults[0] == PackageManager.PERMISSION_GRANTED&#41; {)
+
+[//]: # (        // Permission granted)
+
+[//]: # (    })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.4&#41; Android security best practices)
+
+[//]: # ()
+[//]: # (### ✅ Key Best Practices:)
+
+[//]: # ()
+[//]: # (* Use HTTPS instead of HTTP)
+
+[//]: # (* Avoid hardcoding API keys)
+
+[//]: # (* Use ProGuard / R8 obfuscation)
+
+[//]: # (* Use EncryptedSharedPreferences)
+
+[//]: # (* Validate SSL certificates)
+
+[//]: # (* Restrict exported components)
+
+[//]: # (* Use scoped storage)
+
+[//]: # (* Minimize permissions)
+
+[//]: # (* Secure WebView)
+
+[//]: # (* Detect root / tampering)
+
+[//]: # (* Use SafetyNet / Play Integrity API)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.5&#41; How do you know if the device is rooted?)
+
+[//]: # ()
+[//]: # (### ✅ Common root detection methods:)
+
+[//]: # ()
+[//]: # (1. Check su binary)
+
+[//]: # (2. Check root apps)
+
+[//]: # (3. Check system properties)
+
+[//]: # (4. Check writable system paths)
+
+[//]: # ()
+[//]: # (### ✅ Example:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (fun isDeviceRooted&#40;&#41;: Boolean {)
+
+[//]: # (    val paths = arrayOf&#40;)
+
+[//]: # (        "/system/bin/su",)
+
+[//]: # (        "/system/xbin/su",)
+
+[//]: # (        "/sbin/su",)
+
+[//]: # (        "/system/app/Superuser.apk")
+
+[//]: # (    &#41;)
+
+[//]: # (    return paths.any { File&#40;it&#41;.exists&#40;&#41; })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.6&#41; What is Symmetric Encryption?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Symmetric encryption uses the same key for encryption and decryption.)
+
+[//]: # ()
+[//]: # (### ✅ Examples:)
+
+[//]: # ()
+[//]: # (* AES)
+
+[//]: # (* DES)
+
+[//]: # (* Triple DES)
+
+[//]: # ()
+[//]: # (### ✅ Diagram:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Plain Text → &#40;Key&#41; → Cipher Text → &#40;Same Key&#41; → Plain Text)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.7&#41; What is Asymmetric Encryption?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Asymmetric encryption uses two keys:)
+
+[//]: # ()
+[//]: # (* Public Key &#40;encryption&#41;)
+
+[//]: # (* Private Key &#40;decryption&#41;)
+
+[//]: # ()
+[//]: # (### ✅ Examples:)
+
+[//]: # ()
+[//]: # (* RSA)
+
+[//]: # (* ECC)
+
+[//]: # ()
+[//]: # (### ✅ Diagram:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Plain Text → Public Key → Cipher Text → Private Key → Plain Text)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.8&#41; How do you encrypt data in Java?)
+
+[//]: # ()
+[//]: # (### ✅ Example using AES:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (fun encrypt&#40;data: String, secret: String&#41;: String {)
+
+[//]: # (    val key = SecretKeySpec&#40;secret.toByteArray&#40;&#41;, "AES"&#41;)
+
+[//]: # (    val cipher = Cipher.getInstance&#40;"AES"&#41;)
+
+[//]: # (    cipher.init&#40;Cipher.ENCRYPT_MODE, key&#41;)
+
+[//]: # (    return Base64.encodeToString&#40;cipher.doFinal&#40;data.toByteArray&#40;&#41;&#41;, Base64.DEFAULT&#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.9&#41; What is SSL Pinning?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (SSL Pinning is a security technique that binds the app to a specific server certificate or public key.)
+
+[//]: # ()
+[//]: # (✅ **Purpose:**)
+
+[//]: # ()
+[//]: # (* Prevent Man-in-the-Middle &#40;MITM&#41; attacks)
+
+[//]: # (* Ensure server authenticity)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 13.10&#41; How do you implement SSL pinning in Android?)
+
+[//]: # ()
+[//]: # (### ✅ Method 1: OkHttp Certificate Pinning)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val certificatePinner = CertificatePinner.Builder&#40;&#41;)
+
+[//]: # (    .add&#40;"example.com", "sha256/AAAAAAAAAAAAAAAAAAAA..."&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # ()
+[//]: # (val client = OkHttpClient.Builder&#40;&#41;)
+
+[//]: # (    .certificatePinner&#40;certificatePinner&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ Method 2: Network Security Config &#40;Recommended&#41;)
+
+[//]: # ()
+[//]: # (📁 res/xml/network_security_config.xml)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<network-security-config>)
+
+[//]: # (    <domain-config>)
+
+[//]: # (        <domain includeSubdomains="true">example.com</domain>)
+
+[//]: # (        <pin-set expiration="2027-01-01">)
+
+[//]: # (            <pin digest="SHA-256">AAAAAAAAAAAA...</pin>)
+
+[//]: # (        </pin-set>)
+
+[//]: # (    </domain-config>)
+
+[//]: # (</network-security-config>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (📄 AndroidManifest.xml)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<application)
+
+[//]: # (    android:networkSecurityConfig="@xml/network_security_config">)
+
+[//]: # (</application>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (Here you go 🧠⚡)
+
+[//]: # (Below is **Memory, Performance & Battery Optimization in Android** explained in **clean Markdown format** — interview-ready and GitHub-friendly.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# 🧠 Android Memory, Performance & Battery Optimization)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 1&#41; What is Memory Leak?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (A memory leak happens when objects are no longer needed but still referenced, so the Garbage Collector cannot free memory.)
+
+[//]: # ()
+[//]: # (✅ **Result:**)
+
+[//]: # ()
+[//]: # (* Increased memory usage)
+
+[//]: # (* App slowdown)
+
+[//]: # (* OutOfMemoryError &#40;OOM&#41;)
+
+[//]: # (* App crash)
+
+[//]: # ()
+[//]: # (✅ **Example:**)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (object Singleton {)
+
+[//]: # (    var activity: Activity? = null // ❌ memory leak)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 2&#41; Garbage Collection &#40;GC&#41; in Android)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Garbage Collection is the process of automatically freeing unused memory.)
+
+[//]: # ()
+[//]: # (✅ **How it works:**)
+
+[//]: # ()
+[//]: # (1. Identifies unreachable objects.)
+
+[//]: # (2. Frees heap memory.)
+
+[//]: # (3. Compacts memory.)
+
+[//]: # ()
+[//]: # (✅ **Types of GC in Android &#40;ART&#41;:**)
+
+[//]: # ()
+[//]: # (* Minor GC)
+
+[//]: # (* Major GC)
+
+[//]: # (* Full GC)
+
+[//]: # ()
+[//]: # (✅ **Impact:**)
+
+[//]: # ()
+[//]: # (* UI jank)
+
+[//]: # (* Frame drops &#40;if GC runs frequently&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 3&#41; Causes of Memory Leaks)
+
+[//]: # ()
+[//]: # (### ✅ Common Causes:)
+
+[//]: # ()
+[//]: # (* Static references to Activity/Context)
+
+[//]: # (* Anonymous inner classes)
+
+[//]: # (* Long-running threads)
+
+[//]: # (* Handlers with delayed messages)
+
+[//]: # (* Unclosed resources &#40;Cursor, InputStream&#41;)
+
+[//]: # (* Bitmap memory misuse)
+
+[//]: # (* Listeners not removed)
+
+[//]: # (* Memory leaks in singletons)
+
+[//]: # ()
+[//]: # (### ✅ Example &#40;Handler leak&#41;:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (class MyActivity : Activity&#40;&#41; {)
+
+[//]: # (    private val handler = Handler&#40;&#41; // ❌ leak risk)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (✅ Fix:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (private val handler = Handler&#40;Looper.getMainLooper&#40;&#41;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 4&#41; What is Bitmap Pool?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Bitmap Pool is a memory optimization technique where bitmaps are reused instead of allocating new memory.)
+
+[//]: # ()
+[//]: # (✅ **Used in libraries:**)
+
+[//]: # ()
+[//]: # (* Glide)
+
+[//]: # (* Fresco)
+
+[//]: # (* Coil)
+
+[//]: # (* Picasso)
+
+[//]: # ()
+[//]: # (✅ **Benefit:**)
+
+[//]: # ()
+[//]: # (* Reduce GC pressure)
+
+[//]: # (* Faster image loading)
+
+[//]: # (* Lower memory usage)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 5&#41; How to handle large bitmaps efficiently?)
+
+[//]: # ()
+[//]: # (### ✅ Techniques:)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; Downsampling images)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val options = BitmapFactory.Options&#40;&#41;.apply {)
+
+[//]: # (    inSampleSize = 4)
+
+[//]: # (})
+
+[//]: # (BitmapFactory.decodeResource&#40;resources, R.drawable.image, options&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; Use image loading libraries)
+
+[//]: # ()
+[//]: # (* Glide)
+
+[//]: # (* Coil)
+
+[//]: # (* Picasso)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Use RGB_565 instead of ARGB_8888)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (options.inPreferredConfig = Bitmap.Config.RGB_565)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Avoid loading full-size images into memory)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ e&#41; Use Bitmap Pool &#40;Glide&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 6&#41; How to use Android Memory Profiler?)
+
+[//]: # ()
+[//]: # (✅ **Tool:** Android Studio → Profiler → Memory)
+
+[//]: # ()
+[//]: # (### ✅ Steps:)
+
+[//]: # ()
+[//]: # (1. Run app in Android Studio.)
+
+[//]: # (2. Open Profiler.)
+
+[//]: # (3. Select Memory tab.)
+
+[//]: # (4. Monitor:)
+
+[//]: # ()
+[//]: # (   * Heap usage)
+
+[//]: # (   * Object allocation)
+
+[//]: # (   * GC events)
+
+[//]: # (   * Leaks)
+
+[//]: # ()
+[//]: # (### ✅ Features:)
+
+[//]: # ()
+[//]: # (* Heap dump)
+
+[//]: # (* Allocation tracking)
+
+[//]: # (* Leak detection)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 7&#41; How to measure method execution time?)
+
+[//]: # ()
+[//]: # (### ✅ a&#41; System.currentTimeMillis&#40;&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val start = System.currentTimeMillis&#40;&#41;)
+
+[//]: # (// method call)
+
+[//]: # (val end = System.currentTimeMillis&#40;&#41;)
+
+[//]: # (Log.d&#40;"Time", "Execution time = ${end - start} ms"&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ b&#41; System.nanoTime&#40;&#41; &#40;more accurate&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val start = System.nanoTime&#40;&#41;)
+
+[//]: # (// method call)
+
+[//]: # (val end = System.nanoTime&#40;&#41;)
+
+[//]: # (Log.d&#40;"Time", "Execution time = ${&#40;end - start&#41;/1_000_000} ms"&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ c&#41; Kotlin measureTimeMillis&#40;&#41;)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val time = measureTimeMillis {)
+
+[//]: # (    myMethod&#40;&#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ d&#41; Trace API)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (Trace.beginSection&#40;"MyMethod"&#41;)
+
+[//]: # (// code)
+
+[//]: # (Trace.endSection&#40;&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 8&#41; How to reduce battery consumption?)
+
+[//]: # ()
+[//]: # (### ✅ Best Practices:)
+
+[//]: # ()
+[//]: # (### 🔋 a&#41; Optimize network calls)
+
+[//]: # ()
+[//]: # (* Batch requests)
+
+[//]: # (* Use caching)
+
+[//]: # (* Avoid polling)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 b&#41; Use WorkManager instead of background services)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 c&#41; Optimize location updates)
+
+[//]: # ()
+[//]: # (* Reduce frequency)
+
+[//]: # (* Use balanced accuracy)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 d&#41; Avoid wake locks)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 e&#41; Optimize animations & UI rendering)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 f&#41; Use JobScheduler / WorkManager)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 g&#41; Reduce overdraw)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 h&#41; Avoid unnecessary background tasks)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 i&#41; Use Doze mode & App Standby properly)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### 🔋 j&#41; Optimize alarms &#40;setExact vs setInexact&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (Here you go 🏗️)
+
+[//]: # (Below is **Gradle, Build System & App Delivery in Android** explained in **clean Markdown format** — interview-ready and GitHub-friendly.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# 🏗️ Android Gradle, Build System & App Delivery)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.1&#41; What is Gradle?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Gradle is a build automation tool used to compile, test, package, and deploy Android applications.)
+
+[//]: # ()
+[//]: # (✅ **Features:**)
+
+[//]: # ()
+[//]: # (* Dependency management)
+
+[//]: # (* Build variants)
+
+[//]: # (* Plugin-based system)
+
+[//]: # (* Incremental builds)
+
+[//]: # ()
+[//]: # (✅ **Key Files:**)
+
+[//]: # ()
+[//]: # (* `build.gradle` / `build.gradle.kts`)
+
+[//]: # (* `settings.gradle`)
+
+[//]: # (* `gradle.properties`)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.2&#41; What do you mean by Gradle Wrapper?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Gradle Wrapper ensures that the project uses a specific Gradle version, independent of the system-installed Gradle.)
+
+[//]: # ()
+[//]: # (✅ **Files:**)
+
+[//]: # ()
+[//]: # (* `gradlew`)
+
+[//]: # (* `gradlew.bat`)
+
+[//]: # (* `gradle/wrapper/gradle-wrapper.properties`)
+
+[//]: # ()
+[//]: # (✅ **Benefit:**)
+
+[//]: # ()
+[//]: # (* Consistent builds across environments)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.3&#41; Difference between implementation and api)
+
+[//]: # ()
+[//]: # (| Feature           | implementation     | api                          |)
+
+[//]: # (| ----------------- | ------------------ | ---------------------------- |)
+
+[//]: # (| Visibility        | Internal to module | Exposed to dependent modules |)
+
+[//]: # (| Compilation speed | Faster             | Slower                       |)
+
+[//]: # (| Encapsulation     | Better             | Less                         |)
+
+[//]: # (| Use case          | Default choice     | Library APIs                 |)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```gradle)
+
+[//]: # (dependencies {)
+
+[//]: # (    implementation&#40;"com.squareup.retrofit2:retrofit:2.9.0"&#41;)
+
+[//]: # (    api&#40;"com.google.guava:guava:31.0"&#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.4&#41; Difference between Build Type, Product Flavor, and Build Variant)
+
+[//]: # ()
+[//]: # (### ✅ Build Type)
+
+[//]: # ()
+[//]: # (Defines how the app is built.)
+
+[//]: # ()
+[//]: # (Examples:)
+
+[//]: # ()
+[//]: # (* debug)
+
+[//]: # (* release)
+
+[//]: # ()
+[//]: # (### ✅ Product Flavor)
+
+[//]: # ()
+[//]: # (Defines different versions of the app.)
+
+[//]: # ()
+[//]: # (Examples:)
+
+[//]: # ()
+[//]: # (* free / paid)
+
+[//]: # (* dev / prod)
+
+[//]: # ()
+[//]: # (### ✅ Build Variant)
+
+[//]: # ()
+[//]: # (Combination of build type + product flavor.)
+
+[//]: # ()
+[//]: # (Example:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (freeDebug)
+
+[//]: # (paidRelease)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ Comparison Table:)
+
+[//]: # ()
+[//]: # (| Concept        | Purpose          |)
+
+[//]: # (| -------------- | ---------------- |)
+
+[//]: # (| Build Type     | Debug vs Release |)
+
+[//]: # (| Product Flavor | App variants     |)
+
+[//]: # (| Build Variant  | Combination      |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.5&#41; What do you know about Version Catalog?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Version Catalog is a Gradle feature to centralize dependency versions in one place.)
+
+[//]: # ()
+[//]: # (✅ **File:**)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (gradle/libs.versions.toml)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```toml)
+
+[//]: # ([versions])
+
+[//]: # (retrofit = "2.9.0")
+
+[//]: # ()
+[//]: # ([libraries])
+
+[//]: # (retrofit = { module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit" })
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Use in Gradle:)
+
+[//]: # ()
+[//]: # (```gradle)
+
+[//]: # (implementation&#40;libs.retrofit&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (✅ Benefits:)
+
+[//]: # ()
+[//]: # (* Centralized dependency management)
+
+[//]: # (* Clean build.gradle)
+
+[//]: # (* Easy upgrades)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.6&#41; Android ProGuard)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (ProGuard is a tool used to:)
+
+[//]: # ()
+[//]: # (* Shrink code)
+
+[//]: # (* Obfuscate code)
+
+[//]: # (* Optimize bytecode)
+
+[//]: # (* Remove unused classes)
+
+[//]: # ()
+[//]: # (⚠️ Replaced by R8 &#40;default in modern Android&#41;.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.7&#41; Android ProGuard Rules)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Rules that define what code should be kept or removed.)
+
+[//]: # ()
+[//]: # (✅ Example:)
+
+[//]: # ()
+[//]: # (```proguard)
+
+[//]: # (-keep class com.example.model.** { *; })
+
+[//]: # (-dontwarn okhttp3.**)
+
+[//]: # (-keepattributes Signature)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.8&#41; ProGuard applied at which stage of build?)
+
+[//]: # ()
+[//]: # (✅ **Answer:**)
+
+[//]: # (ProGuard/R8 runs during the **release build** stage after compilation and before APK/AAB packaging.)
+
+[//]: # ()
+[//]: # (### ✅ Build Flow:)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Kotlin/Java → DEX → R8&#40;ProGuard&#41; → APK/AAB → Signing → Packaging)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.9&#41; Ways to reduce application size)
+
+[//]: # ()
+[//]: # (### ✅ Techniques:)
+
+[//]: # ()
+[//]: # (* Enable R8 / ProGuard)
+
+[//]: # (* Use Android App Bundle &#40;AAB&#41;)
+
+[//]: # (* Remove unused resources)
+
+[//]: # (* Use vector drawables)
+
+[//]: # (* Enable resource shrinking)
+
+[//]: # (* Split APK by ABI, density, language)
+
+[//]: # (* Optimize images &#40;WebP&#41;)
+
+[//]: # (* Avoid heavy libraries)
+
+[//]: # (* Use dynamic feature modules)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.10&#41; What do you know about App Bundles?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Android App Bundle &#40;AAB&#41; is a publishing format that allows Google Play to generate optimized APKs for devices.)
+
+[//]: # ()
+[//]: # (✅ Benefits:)
+
+[//]: # ()
+[//]: # (* Smaller downloads)
+
+[//]: # (* Device-specific APKs)
+
+[//]: # (* Faster installs)
+
+[//]: # ()
+[//]: # (✅ Difference:)
+
+[//]: # ()
+[//]: # (| APK            | AAB                     |)
+
+[//]: # (| -------------- | ----------------------- |)
+
+[//]: # (| Single package | Multiple optimized APKs |)
+
+[//]: # (| Larger size    | Smaller size            |)
+
+[//]: # (| Manual splits  | Automatic splits        |)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.11&#41; What do you know about Play Feature Delivery?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Play Feature Delivery allows delivering app features dynamically using dynamic feature modules.)
+
+[//]: # ()
+[//]: # (✅ Types:)
+
+[//]: # ()
+[//]: # (* Install-time delivery)
+
+[//]: # (* On-demand delivery)
+
+[//]: # (* Conditional delivery)
+
+[//]: # ()
+[//]: # (✅ Example Use Cases:)
+
+[//]: # ()
+[//]: # (* Games levels)
+
+[//]: # (* Chat module)
+
+[//]: # (* Payment module)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 14.12&#41; What is Play App Signing?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Play App Signing is a Google Play service that manages and protects your app signing key.)
+
+[//]: # ()
+[//]: # (✅ Benefits:)
+
+[//]: # ()
+[//]: # (* Secure key storage)
+
+[//]: # (* Key recovery)
+
+[//]: # (* Optimized APK signing)
+
+[//]: # ()
+[//]: # (✅ Flow:)
+
+[//]: # ()
+[//]: # (1. Developer uploads AAB.)
+
+[//]: # (2. Google Play signs APK with app signing key.)
+
+[//]: # (3. Users download signed APK.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (Here you go 🚀)
+
+[//]: # (Below is **Android Performance, Startup & Memory** in **clean Markdown format** — interview-ready and GitHub-friendly.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ⚡ Android Performance, Startup & Memory Optimization)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.1&#41; What is ANR?)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (ANR &#40;Application Not Responding&#41; occurs when the main thread is blocked for too long.)
+
+[//]: # ()
+[//]: # (⏱️ Time limits:)
+
+[//]: # ()
+[//]: # (* Activity: 5 seconds)
+
+[//]: # (* BroadcastReceiver: 10 seconds)
+
+[//]: # (* Service: 20 seconds)
+
+[//]: # ()
+[//]: # (### ✅ Causes:)
+
+[//]: # ()
+[//]: # (* Long-running tasks on main thread)
+
+[//]: # (* Network calls on UI thread)
+
+[//]: # (* Deadlocks / infinite loops)
+
+[//]: # (* Heavy layout rendering)
+
+[//]: # ()
+[//]: # (### ✅ Prevention:)
+
+[//]: # ()
+[//]: # (* Use background threads / coroutines)
+
+[//]: # (* Optimize UI rendering)
+
+[//]: # (* Avoid blocking main thread)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.2&#41; App Startup Time)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (App startup time is the time taken from launching the app to displaying the first screen.)
+
+[//]: # ()
+[//]: # (### ✅ Types of Startup:)
+
+[//]: # ()
+[//]: # (| Type       | Description             |)
+
+[//]: # (| ---------- | ----------------------- |)
+
+[//]: # (| Cold Start | App not in memory       |)
+
+[//]: # (| Warm Start | App partially in memory |)
+
+[//]: # (| Hot Start  | App already in memory   |)
+
+[//]: # ()
+[//]: # (### ✅ Optimization Techniques:)
+
+[//]: # ()
+[//]: # (* Lazy initialization)
+
+[//]: # (* Avoid heavy work in Application/Activity `onCreate&#40;&#41;`)
+
+[//]: # (* Use SplashScreen API properly)
+
+[//]: # (* Enable Baseline Profiles)
+
+[//]: # (* Optimize layout)
+
+[//]: # (* Use ViewBinding instead of DataBinding)
+
+[//]: # (* Defer non-critical initialization)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.3&#41; Creating a Memory Leak in Android)
+
+[//]: # ()
+[//]: # (⚠️ Example &#40;Bad Code&#41;:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (object MySingleton {)
+
+[//]: # (    var activity: Activity? = null // ❌ Memory Leak)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Another example:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (class MyActivity : Activity&#40;&#41; {)
+
+[//]: # (    private val handler = Handler&#40;&#41; // ❌ may cause leak)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.4&#41; Avoiding Memory Leak)
+
+[//]: # ()
+[//]: # (### ✅ Best Practices:)
+
+[//]: # ()
+[//]: # (* Avoid static references to Activity/Context)
+
+[//]: # (* Use WeakReference when needed)
+
+[//]: # (* Clear listeners in onDestroy&#40;&#41;)
+
+[//]: # (* Use lifecycle-aware components)
+
+[//]: # (* Use applicationContext instead of activityContext when possible)
+
+[//]: # (* Cancel coroutines/jobs properly)
+
+[//]: # (* Avoid anonymous inner classes)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.5&#41; Identifying Memory Leak)
+
+[//]: # ()
+[//]: # (### ✅ Tools:)
+
+[//]: # ()
+[//]: # (* Android Studio Memory Profiler)
+
+[//]: # (* LeakCanary)
+
+[//]: # (* MAT &#40;Memory Analyzer Tool&#41;)
+
+[//]: # (* Logcat &#40;GC logs&#41;)
+
+[//]: # ()
+[//]: # (### ✅ Example with LeakCanary:)
+
+[//]: # ()
+[//]: # (```gradle)
+
+[//]: # (debugImplementation "com.squareup.leakcanary:leakcanary-android:2.12")
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.6&#41; Reducing App Size)
+
+[//]: # ()
+[//]: # (### ✅ Techniques:)
+
+[//]: # ()
+[//]: # (* Enable R8 / ProGuard)
+
+[//]: # (* Use Android App Bundle &#40;AAB&#41;)
+
+[//]: # (* Remove unused resources)
+
+[//]: # (* Enable resource shrinking)
+
+[//]: # (* Use vector drawables)
+
+[//]: # (* Optimize images &#40;WebP&#41;)
+
+[//]: # (* Split APK by ABI, density, language)
+
+[//]: # (* Avoid heavy libraries)
+
+[//]: # (* Use dynamic feature modules)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.7&#41; Downloadable Fonts)
+
+[//]: # ()
+[//]: # (✅ **Definition:**)
+
+[//]: # (Downloadable Fonts allow apps to download fonts from Google Play services instead of bundling them.)
+
+[//]: # ()
+[//]: # (### ✅ Benefits:)
+
+[//]: # ()
+[//]: # (* Reduce APK size)
+
+[//]: # (* Dynamic font loading)
+
+[//]: # (* Faster updates)
+
+[//]: # ()
+[//]: # (### ✅ Example &#40;XML&#41;:)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<TextView)
+
+[//]: # (    android:fontFamily="@font/roboto" />)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Font request:)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<font-family)
+
+[//]: # (    app:fontProviderAuthority="com.google.android.gms.fonts")
+
+[//]: # (    app:fontProviderPackage="com.google.android.gms")
+
+[//]: # (    app:fontProviderQuery="Roboto" />)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (## 16.8&#41; Splash Screen and SplashScreen API)
+
+[//]: # ()
+[//]: # (### ✅ Traditional Splash Screen &#40;Old Way&#41;)
+
+[//]: # ()
+[//]: # (* Separate SplashActivity)
+
+[//]: # (* Delay using Handler)
+
+[//]: # (* ❌ Bad practice &#40;slow startup&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (### ✅ SplashScreen API &#40;Android 12+&#41;)
+
+[//]: # ()
+[//]: # (✅ Official Jetpack API for splash screen.)
+
+[//]: # ()
+[//]: # (### ✅ Implementation:)
+
+[//]: # ()
+[//]: # (Gradle:)
+
+[//]: # ()
+[//]: # (```gradle)
+
+[//]: # (implementation "androidx.core:core-splashscreen:1.0.1")
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Theme:)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<style name="Theme.MyApp" parent="Theme.SplashScreen">)
+
+[//]: # (    <item name="windowSplashScreenBackground">@color/white</item>)
+
+[//]: # (    <item name="windowSplashScreenAnimatedIcon">@drawable/logo</item>)
+
+[//]: # (</style>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (Activity:)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (override fun onCreate&#40;savedInstanceState: Bundle?&#41; {)
+
+[//]: # (    installSplashScreen&#40;&#41;)
+
+[//]: # (    super.onCreate&#40;savedInstanceState&#41;)
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ Benefits:)
+
+[//]: # ()
+[//]: # (* Faster startup)
+
+[//]: # (* System-managed splash screen)
+
+[//]: # (* Consistent UX)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (Here are **clear, interview-ready answers** for your Android topics 👇)
+
+[//]: # (&#40;I wrote them in simple language + technical depth so you can directly use them in interviews.&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 17.1 Android Notification System)
+
+[//]: # ()
+[//]: # (The Android Notification System allows apps to display messages outside the app UI in the notification bar.)
+
+[//]: # ()
+[//]: # (### 🔹 Key Components)
+
+[//]: # ()
+[//]: # (1. **NotificationManager**)
+
+[//]: # ()
+[//]: # (   * System service used to show notifications.)
+
+[//]: # ()
+[//]: # (2. **NotificationChannel &#40;Android 8.0+&#41;**)
+
+[//]: # ()
+[//]: # (   * Required for notifications.)
+
+[//]: # (   * Defines importance, sound, vibration, etc.)
+
+[//]: # ()
+[//]: # (3. **NotificationCompat.Builder**)
+
+[//]: # ()
+[//]: # (   * Builds the notification.)
+
+[//]: # ()
+[//]: # (4. **PendingIntent**)
+
+[//]: # ()
+[//]: # (   * Defines action when user taps the notification.)
+
+[//]: # ()
+[//]: # (### 🔹 Flow)
+
+[//]: # ()
+[//]: # (```)
+
+[//]: # (Create Channel → Build Notification → Notify via NotificationManager)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Example)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val channelId = "my_channel")
+
+[//]: # ()
+[//]: # (val channel = NotificationChannel&#40;)
+
+[//]: # (    channelId,)
+
+[//]: # (    "My Notifications",)
+
+[//]: # (    NotificationManager.IMPORTANCE_HIGH)
+
+[//]: # (&#41;)
+
+[//]: # ()
+[//]: # (val manager = getSystemService&#40;NotificationManager::class.java&#41;)
+
+[//]: # (manager.createNotificationChannel&#40;channel&#41;)
+
+[//]: # ()
+[//]: # (val intent = Intent&#40;this, MainActivity::class.java&#41;)
+
+[//]: # (val pendingIntent = PendingIntent.getActivity&#40;this, 0, intent, 0&#41;)
+
+[//]: # ()
+[//]: # (val notification = NotificationCompat.Builder&#40;this, channelId&#41;)
+
+[//]: # (    .setSmallIcon&#40;R.drawable.ic_notification&#41;)
+
+[//]: # (    .setContentTitle&#40;"Hello"&#41;)
+
+[//]: # (    .setContentText&#40;"This is a notification"&#41;)
+
+[//]: # (    .setContentIntent&#40;pendingIntent&#41;)
+
+[//]: # (    .setAutoCancel&#40;true&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # ()
+[//]: # (manager.notify&#40;1, notification&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 17.2 Communication Between Notification Bar and Service)
+
+[//]: # ()
+[//]: # (A notification often communicates with a **Service** &#40;especially Foreground Service&#41;.)
+
+[//]: # ()
+[//]: # (### 🔹 Common Use Cases)
+
+[//]: # ()
+[//]: # (* Music player 🎵)
+
+[//]: # (* Download manager ⬇️)
+
+[//]: # (* Location tracking 📍)
+
+[//]: # (* Background tasks)
+
+[//]: # ()
+[//]: # (### 🔹 How Communication Works)
+
+[//]: # ()
+[//]: # (### ✅ 1. Using Intent + Service)
+
+[//]: # ()
+[//]: # (Notification triggers a Service action.)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val intent = Intent&#40;this, MyService::class.java&#41;)
+
+[//]: # (intent.action = "PLAY")
+
+[//]: # ()
+[//]: # (val pendingIntent = PendingIntent.getService&#40;this, 0, intent, 0&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ 2. Foreground Service with Notification)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (startForeground&#40;1, notification&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ 3. BroadcastReceiver)
+
+[//]: # ()
+[//]: # (Notification button → Broadcast → Service reacts.)
+
+[//]: # ()
+[//]: # (### ✅ 4. ViewModel / LiveData / EventBus &#40;advanced&#41;)
+
+[//]: # ()
+[//]: # (Used when UI and service must sync state.)
+
+[//]: # ()
+[//]: # (### 🔹 Interview Answer &#40;Short&#41;)
+
+[//]: # ()
+[//]: # (> Notification communicates with a Service using PendingIntent, BroadcastReceiver, or Foreground Service. The notification sends actions to the service, and the service updates the notification or app state.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 17.3 App Shortcuts)
+
+[//]: # ()
+[//]: # (App Shortcuts provide quick actions from the app icon &#40;long press&#41;.)
+
+[//]: # ()
+[//]: # (### 🔹 Types of App Shortcuts)
+
+[//]: # ()
+[//]: # (### ✅ 1. Static Shortcuts)
+
+[//]: # ()
+[//]: # (Defined in XML &#40;Manifest&#41;.)
+
+[//]: # ()
+[//]: # (```xml)
+
+[//]: # (<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">)
+
+[//]: # (    <shortcut)
+
+[//]: # (        android:shortcutId="compose")
+
+[//]: # (        android:shortLabel="Compose")
+
+[//]: # (        android:icon="@drawable/ic_compose")
+
+[//]: # (        android:intentAction="android.intent.action.VIEW")
+
+[//]: # (        android:targetClass="com.example.ComposeActivity" />)
+
+[//]: # (</shortcuts>)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ 2. Dynamic Shortcuts)
+
+[//]: # ()
+[//]: # (Created programmatically.)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (val shortcut = ShortcutInfo.Builder&#40;this, "id1"&#41;)
+
+[//]: # (    .setShortLabel&#40;"Profile"&#41;)
+
+[//]: # (    .setIntent&#40;Intent&#40;this, ProfileActivity::class.java&#41;&#41;)
+
+[//]: # (    .build&#40;&#41;)
+
+[//]: # ()
+[//]: # (shortcutManager.dynamicShortcuts = listOf&#40;shortcut&#41;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### ✅ 3. Pinned Shortcuts)
+
+[//]: # ()
+[//]: # (Added directly to home screen.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ Interview-Ready Summary &#40;Very Useful 🔥&#41;)
+
+[//]: # ()
+[//]: # (### 🔹 Android Notification System)
+
+[//]: # ()
+[//]: # (* Displays messages outside the app.)
+
+[//]: # (* Uses NotificationManager, Channel, Builder, PendingIntent.)
+
+[//]: # ()
+[//]: # (### 🔹 Notification ↔ Service Communication)
+
+[//]: # ()
+[//]: # (* PendingIntent)
+
+[//]: # (* Foreground Service)
+
+[//]: # (* BroadcastReceiver)
+
+[//]: # (* Event-based communication)
+
+[//]: # ()
+[//]: # (### 🔹 App Shortcuts)
+
+[//]: # ()
+[//]: # (* Static &#40;XML&#41;)
+
+[//]: # (* Dynamic &#40;Runtime&#41;)
+
+[//]: # (* Pinned &#40;Home screen&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # (Here are **clear, interview-ready explanations** of Kotlin JVM annotations 👇)
+
+[//]: # (&#40;I wrote them in a way that fits perfectly in Android interviews.&#41;)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 18.1 `@JvmStatic`)
+
+[//]: # ()
+[//]: # (### 🔹 What is `@JvmStatic`?)
+
+[//]: # ()
+[//]: # (`@JvmStatic` tells Kotlin to generate a **static method or field** for Java interoperability.)
+
+[//]: # ()
+[//]: # (### 🔹 Why needed?)
+
+[//]: # ()
+[//]: # (In Kotlin, functions inside `companion object` are not static by default.)
+
+[//]: # (Java cannot call them like static methods unless we use `@JvmStatic`.)
+
+[//]: # ()
+[//]: # (### 🔹 Example)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (class Utils {)
+
+[//]: # (    companion object {)
+
+[//]: # (        @JvmStatic)
+
+[//]: # (        fun showMessage&#40;&#41; {)
+
+[//]: # (            println&#40;"Hello"&#41;)
+
+[//]: # (        })
+
+[//]: # (    })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Java call)
+
+[//]: # ()
+[//]: # (```java)
+
+[//]: # (Utils.showMessage&#40;&#41;;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Without `@JvmStatic`)
+
+[//]: # ()
+[//]: # (Java would call:)
+
+[//]: # ()
+[//]: # (```java)
+
+[//]: # (Utils.Companion.showMessage&#40;&#41;;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Interview Answer)
+
+[//]: # ()
+[//]: # (> `@JvmStatic` makes Kotlin functions or properties behave like static members for Java interoperability.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 18.2 `@JvmField`)
+
+[//]: # ()
+[//]: # (### 🔹 What is `@JvmField`?)
+
+[//]: # ()
+[//]: # (`@JvmField` exposes a Kotlin property as a **public field** instead of getter/setter.)
+
+[//]: # ()
+[//]: # (### 🔹 Why needed?)
+
+[//]: # ()
+[//]: # (By default, Kotlin generates getter/setter methods.)
+
+[//]: # (Java cannot directly access fields without them.)
+
+[//]: # ()
+[//]: # (### 🔹 Example)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (class Constants {)
+
+[//]: # (    companion object {)
+
+[//]: # (        @JvmField)
+
+[//]: # (        val API_URL = "https://api.example.com")
+
+[//]: # (    })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Java call)
+
+[//]: # ()
+[//]: # (```java)
+
+[//]: # (String url = Constants.API_URL;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Without `@JvmField`)
+
+[//]: # ()
+[//]: # (Java would call:)
+
+[//]: # ()
+[//]: # (```java)
+
+[//]: # (Constants.Companion.getAPI_URL&#40;&#41;;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Interview Answer)
+
+[//]: # ()
+[//]: # (> `@JvmField` prevents Kotlin from generating getter/setter and exposes the property as a Java field.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ 18.3 `@JvmOverloads`)
+
+[//]: # ()
+[//]: # (### 🔹 What is `@JvmOverloads`?)
+
+[//]: # ()
+[//]: # (`@JvmOverloads` generates multiple overloaded methods for Java when Kotlin uses default parameters.)
+
+[//]: # ()
+[//]: # (### 🔹 Why needed?)
+
+[//]: # ()
+[//]: # (Java does not support default arguments like Kotlin.)
+
+[//]: # ()
+[//]: # (### 🔹 Example)
+
+[//]: # ()
+[//]: # (```kotlin)
+
+[//]: # (class User {)
+
+[//]: # (    @JvmOverloads)
+
+[//]: # (    fun greet&#40;name: String = "Guest", age: Int = 18&#41; {)
+
+[//]: # (        println&#40;"Hello $name, age $age"&#41;)
+
+[//]: # (    })
+
+[//]: # (})
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Generated Java methods)
+
+[//]: # ()
+[//]: # (```java)
+
+[//]: # (greet&#40;&#41;;)
+
+[//]: # (greet&#40;String name&#41;;)
+
+[//]: # (greet&#40;String name, int age&#41;;)
+
+[//]: # (```)
+
+[//]: # ()
+[//]: # (### 🔹 Interview Answer)
+
+[//]: # ()
+[//]: # (> `@JvmOverloads` generates overloaded methods for Java when Kotlin functions have default parameters.)
+
+[//]: # ()
+[//]: # (---)
+
+[//]: # ()
+[//]: # (# ✅ Quick Interview Comparison Table 🔥)
+
+[//]: # ()
+[//]: # (| Annotation      | Purpose                        | Use Case                 |)
+
+[//]: # (| --------------- | ------------------------------ | ------------------------ |)
+
+[//]: # (| `@JvmStatic`    | Makes function/property static | Companion object methods |)
+
+[//]: # (| `@JvmField`     | Exposes property as field      | Constants                |)
+
+[//]: # (| `@JvmOverloads` | Generates overloaded methods   | Default parameters       |)
+
+[//]: # ()
+[//]: # (---)
 Great 👍
 Below is a **deep, senior-level explanation** of Android Architecture with **clear concepts, diagrams, examples, and interview-ready answers** in **Markdown format** (you can directly use this in GitHub `.md` files).
 
