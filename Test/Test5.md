@@ -1,912 +1,1473 @@
-## **1. What are the main components of an Android app?**
+### What is Android?
 
-An Android application is built using four main components:
+Android is an **open-source operating system** developed by **Google**, built on top of the **Linux kernel**. It is mainly designed for **mobile devices**, but is also used across a wide range of smart devices.
 
-### **Activity**
+### Where Android Is Used
+Android powers multiple types of devices, including:
+- **Smartphones and tablets**
+- **Smart TVs** (Android TV)
+- **Smartwatches** (Wear OS)
+- **Cars** (Android Auto)
+- **IoT and embedded devices** such as kiosks, POS systems, and smart displays
 
-* Represents a single screen UI.
-* Handles user interaction.
-  **Example:** Login screen, Home screen.
+### Programming Languages Supported
+Android supports application development using multiple programming languages:
+- **Kotlin** – Officially recommended by Google, modern, concise, and safe
+- **Java** – Original Android language with a large existing codebase
+- **C++** – Used via the Android NDK for performance-critical tasks like games and media processing
 
-### **Service**
 
-* Runs in the background without UI.
-* Used for long-running tasks.
-  **Example:** Music playback, file upload.
 
-### **Broadcast Receiver**
+### What is Context in Android?
 
-* Listens for system-wide events.
-* Responds to broadcasts.
-  **Example:** Battery low, network change.
+In Android, **Context** is an abstract class that provides access to **application-specific resources and system services**. It allowing components to interact with resources like layouts, strings, databases, preferences, and system-level services.
 
-### **Content Provider**
+### Context is commonly used to
 
-* Manages and shares app data.
-* Provides a standard interface for data access.
-  **Example:** Contacts, MediaStore.
+- Access application **resources** (strings, colors, dimensions)
+- Inflate **layouts** and create views
+- Start **activities** and **services**
+- Access **system services** (LocationManager, NotificationManager, etc.)
+- Show **UI elements** like Toasts, Dialogs, and Snackbars
+- Access **SharedPreferences**, files, and databases
 
-### **Other important components**
 
-* **Intent** – Used to communicate between components.
-* **Application class** – Manages global application state.
-* **AndroidManifest.xml** – App configuration file.
+### Types of Context in Android
 
----
+Android provides **three main types of Context**, each used for different purposes.
 
-## **2. Describe the Activity lifecycle**
+### 1. Application Context
+- `getApplicationContext()`
+- Lives for the **entire app lifecycle**
+- Used for **singletons, background work, and non-UI resources**
 
-The Activity lifecycle defines how an activity is created, paused, resumed, and destroyed.
+### 2. Activity Context
+- Provided by an **Activity**
+- Tied to the **Activity lifecycle**
+- Used for **UI work** like dialogs and layout inflation
 
-| **Lifecycle Method** | **Description**                                            |
-| -------------------- | ---------------------------------------------------------- |
-| **onCreate()**       | Called when activity is created; initialize UI and data.   |
-| **onStart()**        | Activity becomes visible.                                  |
-| **onResume()**       | Activity comes to foreground; user can interact.           |
-| **onPause()**        | Activity partially visible; save small state changes.      |
-| **onStop()**         | Activity not visible; release heavy resources.             |
-| **onDestroy()**      | Activity is destroyed; cleanup resources.                  |
-| **onRestart()**      | Called before onStart() when returning from stopped state. |
+### 3. Service Context
+- Provided by a **Service**
+- Used for **background operations**
+- Not suitable for UI
 
----
 
-## **3. What is a Fragment and why is it used?**
+### Android Application Components
 
-A **Fragment** is a reusable UI component that lives inside an Activity.
+Android application components are the **core building blocks** of an app. Each component has a specific role and lifecycle managed by the Android system.
 
-**Why use Fragments?**
+There are **four main Android application components**:
 
-* Modular and reusable UI.
-* Support multi-pane layouts (tablets).
-* Easier UI management.
-* Navigation without recreating activities.
+### 1. Activity
+- Represents a **single UI screen**
+- Handles user interaction
+- Manages screen lifecycle
 
-**Key Points**
 
-* Fragment has its own lifecycle.
-* Must be attached to an Activity.
-* Managed using **FragmentManager**.
+### 2. Service
+- Performs **background tasks**
+- Runs without a user interface
+- Used for long-running operations
 
----
 
-## **4. Difference between Activity and Service**
+### 3. Broadcast Receiver
+- Listens for **system or app events**
+- Responds to events like battery change or network status
+- Has no UI
 
-| Feature          | Activity         | Service         |
-| ---------------- | ---------------- | --------------- |
-| UI               | Has UI           | No UI           |
-| Purpose          | User interaction | Background work |
-| Lifecycle        | Short-lived      | Can run long    |
-| User interaction | Yes              | No              |
-| Example          | Login screen     | Music player    |
 
----
+### 4. Content Provider
+- Manages and shares **app data**
+- Supports CRUD operations
+- Ensures secure data access between apps
 
-## **5. What is the Android Manifest file?**
 
-**AndroidManifest.xml** is a configuration file providing essential info about the app to the system.
 
-**It defines:**
+### What is AndroidManifest.xml?
 
-* App components (Activity, Service, Receiver)
-* App permissions
-* Package name
-* App theme and icon
-* Minimum & target SDK version
+**AndroidManifest.xml** is a **mandatory configuration file** in every Android app. It provides essential information to the **Android system** before the app can be installed or launched.
 
-**Example:**
+### Why It Is Used
+It tells Android:
+- The app’s **package name**
+- Which **components** the app has
+- What **permissions** are required
+- The app’s **launcher (entry point)**
+- App-level settings and SDK support
 
-```xml
-<uses-permission android:name="android.permission.INTERNET"/>
 
-<activity android:name=".MainActivity">
-    <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-    </intent-filter>
-</activity>
-```
+### What It Contains
+- **Application info** (name, icon, theme)
+- **App components** (Activities, Services, Receivers, Providers)
+- **Permissions**
+- **Launcher Activity**
+- **Min & target SDK versions**
 
----
 
-## **6. What is Context? Types of Context**
+### What is Application Class?
 
-**Context** provides access to application resources and system services.
+The **Application class** in Android is a **base class** that represents the **entire application**. It is created **before any Activity, Service, or other app component** and remains alive as long as the application process exists.
 
-**Uses:**
+### Why It Is Used
+The Application class is used to:
+- Maintain **global application state**
+- Initialize **app-wide libraries** (Firebase, analytics, DI, etc.)
+- Store objects that need to live throughout the app lifecycle
+- Access a **global context**
 
-* Access resources
-* Start activities
-* Show Toast
-* Get system services
+### Key Characteristics
+- Only **one instance** exists per app
+- Created **once** when the app starts
+- Destroyed when the app process is killed
+- Has the **longest lifecycle** in the app
 
-**Types of Context:**
 
-1. **Application Context**
-
-   * `getApplicationContext()`
-   * Exists throughout app lifecycle
-   * Use for long-lived operations
-
-2. **Activity Context**
-
-   * Activity instance
-   * Tied to activity lifecycle
-   * Use for UI-related operations
-
----
-
-## **7. What is ANR? Common Causes**
-
-**ANR (Application Not Responding)** occurs when the main thread is blocked too long.
-
-**Time limits:**
-
-* UI thread blocked > 5 seconds
-* BroadcastReceiver > 10 seconds
-
-**Common causes:**
-
-* Network operations on main thread
-* Heavy computation on UI thread
-* Deadlocks or infinite loops
-* Slow database operations
-
-**Prevention:**
-
-* Use background threads
-* Use Coroutines / AsyncTask / WorkManager
-
----
-
-## **8. Difference between dp, sp, and px**
-
-| Unit | Meaning                    | Use          |
-| ---- | -------------------------- | ------------ |
-| px   | Pixels                     | Rarely used  |
-| dp   | Density-independent pixels | Layout sizes |
-| sp   | Scale-independent pixels   | Text sizes   |
-
-**Recommendation:**
-
-* Use **dp** for layouts
-* Use **sp** for text
-* Avoid **px**
-
----
-
-## **9. What is an Intent? Implicit vs Explicit**
-
-**Intent** – A messaging object used to request an action from another component.
-
-**Types:**
-
-1. **Explicit Intent**
-
-   * Specifies the target component.
-   * Used within the same app.
-
-   ```kotlin
-   Intent(this, MainActivity::class.java)
-   ```
-
-2. **Implicit Intent**
-
-   * Does not specify component.
-   * System chooses the best app.
-
-   ```kotlin
-   Intent(Intent.ACTION_VIEW, Uri.parse("https://google.com"))
-   ```
-
----
-
-## **10. Difference between View and ViewGroup**
-
-| Aspect                  | View                 | ViewGroup                      |
-| ----------------------- | -------------------- | ------------------------------ |
-| Definition              | Basic UI element     | Container for views            |
-| Can contain child views | ❌ No                 | ✅ Yes                          |
-| Purpose                 | Display/handle input | Arrange/layout child views     |
-| Example                 | TextView, Button     | LinearLayout, ConstraintLayout |
-
-**In short:**
-
-* **View** → single UI element
-* **ViewGroup** → layout that holds views
-
----
-
-## **11. What is ConstraintLayout and why is it preferred?**
-
-**ConstraintLayout**
-
-* Flexible layout allowing views to be positioned relative to each other and parent using constraints.
-
-**Why preferred:**
-
-* Flat view hierarchy → better performance
-* Reduces nested layouts
-* Easy to create complex UI
-* Supported by visual editor
-
-**Example Advantages:**
-
-* Replace multiple LinearLayouts
-* Faster UI rendering
-
----
-
-## **12. Difference between LinearLayout, RelativeLayout, and FrameLayout**
-
-| Layout         | Description                       | Use Case             |
-| -------------- | --------------------------------- | -------------------- |
-| LinearLayout   | Arranges views in row/column      | Simple UI            |
-| RelativeLayout | Position views relative to others | Medium complexity    |
-| FrameLayout    | Stacks views                      | Overlays / fragments |
-
-**Key Notes:**
-
-* LinearLayout → orientation
-* RelativeLayout → below, alignParent
-* FrameLayout → single child or overlays
-
----
-
-## **13. What is RecyclerView? Why is it better than ListView?**
-
-**RecyclerView** – A flexible, efficient view for displaying large lists.
-
-**Advantages over ListView:**
-
-* ViewHolder pattern enforced
-* Better scrolling performance
-* Supports animations, grids, staggered layouts
-* Highly customizable
-
-| Feature      | RecyclerView | ListView      |
-| ------------ | ------------ | ------------- |
-| ViewHolder   | Mandatory    | Optional      |
-| Performance  | High         | Lower         |
-| Layout types | Multiple     | Only vertical |
-| Animations   | Yes          | Limited       |
-
----
-
-## **14. ViewBinding vs DataBinding**
-
-| Feature         | ViewBinding         | DataBinding       |
-| --------------- | ------------------- | ----------------- |
-| Purpose         | Access views safely | Bind UI with data |
-| XML logic       | ❌ No                | ✅ Yes             |
-| Two-way binding | ❌ No                | ✅ Yes             |
-| Complexity      | Simple              | Complex           |
-
-**Recommendation:**
-
-* **ViewBinding** → simple apps
-* **DataBinding** → MVVM & complex UI
-
----
-
-## **15. Difference between VISIBLE, INVISIBLE, and GONE**
-
-| Visibility | Description | Takes Space |
-| ---------- | ----------- | ----------- |
-| VISIBLE    | Shown       | ✅ Yes       |
-| INVISIBLE  | Hidden      | ✅ Yes       |
-| GONE       | Removed     | ❌ No        |
-
----
-
-## **16. What is a Custom View?**
-
-**Custom View** – A view created by extending `View` or existing views to draw custom UI or behavior.
-
-**Why use custom views:**
-
-* Unique UI design
-* Custom animations
-* Better performance
-
-**Example:**
+### How It Is Used
+Create a custom Application class and register it in the manifest.
 
 ```kotlin
-class MyCustomView(context: Context) : View(context) {
-    override fun onDraw(canvas: Canvas) {
-        super.onDraw(canvas)
-        // custom drawing here
+class MyApp : Application() {
+    override fun onCreate() {
+        super.onCreate()
+        // App-level initialization
     }
 }
 ```
 
----
 
-## **17. What is Overdraw & how to reduce it?**
 
-**Overdraw** – Occurs when the same pixel is drawn multiple times in one frame.
+### What is ADB in Android?
 
-**Problems:**
+**ADB (Android Debug Bridge)** is a **command-line tool** that allows developers to **communicate with an Android device or emulator** from a computer. It is mainly used for **debugging, testing, and managing** Android applications.
 
-* Poor performance
-* Increased GPU load
+### Why It Is Used
+ADB helps developers to:
+- Install and uninstall apps
+- Run shell commands on a device
+- View logs and debug issues
+- Transfer files between device and system
+- Control devices during development
 
-**How to reduce:**
+### Key Features
+- Works with **real devices and emulators**
+- Supports app debugging and testing
+- Allows direct access to the device shell
 
-* Remove unnecessary backgrounds
-* Use ConstraintLayout
-* Avoid nested layouts
-* Use `clipToPadding=false` carefully
-* Enable GPU Overdraw in Developer Options
+### Common ADB Commands
+- `adb devices` – List connected devices
+- `adb install app.apk` – Install an app
+- `adb logcat` – View device logs
+- `adb shell` – Access device shell
 
----
 
-## **18. How does Android handle different screen sizes?**
 
-**Techniques:**
+### What is AAPT (Android Asset Packaging Tool)?
 
-* dp and sp units
-* Multiple layout folders:
+**AAPT (Android Asset Packaging Tool)** is a **build tool** used by Android to **compile, package, and manage app resources** such as layouts, images, and the AndroidManifest.xml file.
 
-  * `layout-sw600dp`
-  * `layout-land`
-* Drawable folders:
+### Why It Is Used
+AAPT is used to:
+- Compile **resource files** (XML, images, strings)
+- Generate the **R.java / R class** for resource access
+- Package resources into the **APK or AAB**
+- Validate resource references and manifest entries
 
-  * `drawable-hdpi`, `xhdpi`, `xxhdpi`
-* Use ConstraintLayout for responsive UI
 
----
+### Key Responsibilities
+- Converts resources into a **binary format**
+- Links resources with application code
+- Ensures resource IDs are correctly assigned
 
-## **19. What is LayoutInflater?**
 
-**LayoutInflater** – Converts XML layout files into View objects at runtime.
 
-**Usage:**
+### What is a DEX File?
 
-* Inflate layouts
-* Used in Activities, Fragments, Adapters
+A **DEX (Dalvik Executable) file** is a compiled file format used by Android to store an app’s **bytecode**. It is generated from Java or Kotlin code and is executed by the **Android Runtime (ART)** on the device.
 
-**Example:**
+### Why It Is Used
+DEX files are used to:
+- Convert Java/Kotlin bytecode into a format optimized for Android
+- Reduce memory usage on mobile devices
+- Allow efficient execution on Android runtime
 
-```kotlin
-val view = LayoutInflater.from(context)
-    .inflate(R.layout.item_layout, parent, false)
-```
-
----
-Perfect! I’ll continue the **full Android interview Q&A** in the same polished Markdown format. I’ll cover **all remaining questions**, grouped into **UI, Lifecycle, System, Networking, Security/Data**, with **tables, code blocks, and bullet points** for clarity.
-
-Here’s the continuation:
-
----
-
-# **Android Interview Questions & Answers (Complete Set)**
-
----
-
-## **20. What happens when the Home button is pressed?**
-
-**Lifecycle flow:**
-
-* `onPause()` is called
-* Then `onStop()` is called
-
-**Important points:**
-
-* Activity is **not destroyed**
-* App goes to background
-* Activity remains in **back stack**
-* Returning to app resumes the same state
+### Key Characteristics
+- Contains all compiled classes of an app
+- Optimized for low memory and performance
+- Generated during the build process from `.class` files
 
 ---
 
-## **21. How does Android handle configuration changes?**
 
-**Configuration changes include:**
+### What is Multidex?
 
-* Screen rotation
-* Language change
-* Screen size change
-* Dark mode
-* Keyboard availability
+**Multidex** is an Android feature that allows an application to **use more than one DEX file**. It is required when an app exceeds the **65,536 method limit** imposed on a single DEX file.
 
-**Default behavior:**
+### Why Multidex Is Needed
+Apps with many libraries (Firebase, Retrofit, Google Play Services, etc.) can cross the **65K method limit**. Multidex splits code into **multiple DEX files** so the app can build and run correctly.
 
-* Activity is destroyed and recreated
 
-**Lifecycle sequence:**
+### Example Configuration
 
-```
-onPause() → onStop() → onDestroy() → onCreate() → onStart() → onResume()
-```
+#### Enable Multidex
+```gradle
+android {
+    defaultConfig {
+        multiDexEnabled true
+    }
+}
 
-**How to handle:**
-
-* Use `onSaveInstanceState()`
-* Use `ViewModel`
-* Use `android:configChanges` (not generally recommended)
-
----
-
-## **22. What is the activity back stack?**
-
-**Activity Back Stack:**
-
-* Stack of activities managed by Android
-* Follows **LIFO** (Last In First Out)
-
-**Behavior:**
-
-* New activity → pushed on stack
-* Back button → top activity popped
-* Previous activity resumes
-
----
-
-## **23. Difference between onPause() and onStop()**
-
-| Feature       | onPause()         | onStop()          |
-| ------------- | ----------------- | ----------------- |
-| Visibility    | Partially visible | Completely hidden |
-| Time          | Short             | Longer            |
-| Heavy work    | ❌ No              | ✅ Yes             |
-| Save UI state | Light             | Heavy             |
-
-**Example:**
-
-* Incoming dialog → `onPause()`
-* New full screen activity → `onStop()`
-
----
-
-## **24. What is onSaveInstanceState()?**
-
-**onSaveInstanceState()** – Used to save temporary UI state before activity destruction.
-
-**When called:**
-
-* Screen rotation
-* System kills activity
-
-**Example:**
-
-```kotlin
-override fun onSaveInstanceState(outState: Bundle) {
-    outState.putString("name", "Aasim")
-    super.onSaveInstanceState(outState)
+dependencies {
+    implementation "androidx.multidex:multidex:2.0.1"
 }
 ```
 
-**Restore:**
 
-* `onCreate()` or `onRestoreInstanceState()`
+### What are Processes in Android?
 
----
+A **process** is a running instance of an app with its **own memory space**. Android runs each app in a **separate Linux process** to ensure security and stability.
 
-## **25. What is multitasking in Android?**
+### Why Processes Are Used
+- Keeps apps **isolated and secure**
+- Manages **memory and performance**
+- Prevents one app crash from affecting others
 
-**Multitasking:** Android allows multiple apps to run simultaneously.
+### Process Priority Types
+- **Foreground** – App in use (highest priority)
+- **Visible** – Partially visible app
+- **Service** – Background work (e.g., music)
+- **Background** – Not visible
+- **Empty** – No active components (lowest priority)
 
-**Types:**
 
-* Foreground app
-* Background app
-* Services running in background
-* Picture-in-Picture
 
-**Management:**
+### Can an Android App Run in Multiple Processes?
 
-* Android manages memory using process priority
-* Low memory → background apps killed first
+**Yes**, an Android application **can run in multiple processes**.
 
----
-
-## **26. Difference between finish() and finishAffinity()**
-
-| Method               | Description                        |
-| -------------------- | ---------------------------------- |
-| **finish()**         | Closes current activity            |
-| **finishAffinity()** | Closes all activities in same task |
-
-**Use case:**
-
-* Logout functionality
-* Exit app completely
+By default, all components of an app run in a **single process**, but Android allows you to assign **different components to different processes** using the `android:process` attribute.
 
 ---
 
-## **27. What is task and back stack?**
+### How to Run an App in Multiple Processes
 
-**Task:** Collection of activities users interact with; represents a user flow.
-**Back Stack:** Stack of activities within a task.
+You can specify a custom process name in **AndroidManifest.xml** for a component.
 
-**Example:**
+```xml
+<service
+    android:name=".MyService"
+    android:process=":background" />
+````
+
+### How It Works
+
+* The `:background` prefix creates a **private process** for the app
+* That component runs in a **separate process**
+* The rest of the app continues to run in the main process
+
+---
+
+### Use Cases
+
+* Heavy background work
+* Isolating crash-prone components
+* Improving performance for specific tasks
+
+
+## How is Memory Managed in Android OS?
+
+Android manages memory automatically to ensure smooth performance and efficient use of system resources.
+
+### Key Points:
+
+- **Linux-based Memory Management**  
+  Android runs on the Linux kernel, which handles low-level memory operations like paging and allocation.
+
+- **Garbage Collection (GC)**  
+  Android apps run on ART (Android Runtime), which automatically frees unused objects using garbage collection, so developers don’t manually manage memory.
+
+- **Process Priority & Lifecycle**  
+  Android assigns priority to apps based on their state:
+    - Foreground app (highest priority)
+    - Visible app
+    - Background app
+    - Cached app (lowest priority)
+
+- **Low Memory Killer (LMK)**  
+  When memory is low, Android kills low-priority background processes to free memory.
+
+- **Shared Resources**  
+  System resources like libraries are shared across apps to reduce memory usage.
+
+- **Developer Responsibility**  
+  Developers should:
+    - Avoid memory leaks
+    - Release resources (bitmaps, listeners)
+    - Use lifecycle-aware components
+
+
+
+### What is StrictMode in Android?
+
+**StrictMode** is a **debugging tool** that helps detect **performance issues** like disk/network calls on the main thread and **memory leaks**.
+
+### Purpose
+- Catch bad coding practices  
+- Prevent ANRs  
+- Improve app responsiveness  
+
+### How It Works
+- **Thread Policy:** Monitors main-thread operations  
+- **VM Policy:** Detects memory leaks  
+
+### Key Points
+- Used only in **development**
+- Not recommended for **production**
+
+
+
+### What is Lint in Android?
+
+**Lint** is a **static code analysis tool** in Android that helps developers **identify and fix potential bugs, performance issues, and code quality problems** in their apps before runtime.
+
+### Why It Is Used
+- Detect **common coding mistakes**
+- Identify **performance and usability issues**
+- Enforce **best practices and standards**
+- Prevent **runtime crashes**
+
+### How It Works
+- Scans **Java, Kotlin, XML, and Gradle files**
+- Provides **warnings or errors** for:
+    - Unused resources
+    - Hardcoded text (i18n issues)
+    - Missing permissions
+    - Deprecated APIs
+    - Layout performance issues
+
+### Key Points
+- Runs **at compile-time**
+- Integrated in **Android Studio**
+- Helps maintain **clean and efficient code**
+
+### What is Support Library in Android?
+
+The **Android Support Library** is a set of **code libraries** provided by Google to help developers **use newer Android features on older versions** of the platform. It provides **backward-compatible versions of APIs**, UI components, and utilities.
+
+---
+
+### Why It Was Introduced
+- **Fragmented Android versions:** Not all devices run the latest Android OS.
+- **Backward compatibility:** Allows developers to use modern features on older devices.
+- **Consistent UI and functionality:** Ensures apps behave similarly across different Android versions.
+- **Faster development:** Provides ready-to-use components like RecyclerView, CardView, ViewPager, etc.
+
+---
+
+### Key Features
+- Backward-compatible UI widgets (RecyclerView, CardView, Toolbar)
+- Support for newer APIs on older devices
+- Utility classes for tasks like notifications, media, and animations
+
+---
+
+### Doze Mode & App Standby in Android
+
+Both **Doze Mode** and **App Standby** help **save battery** by limiting background work.
+
+### Doze Mode
+- Activates when device is **idle, screen off**
+- Delays background tasks, syncs, and network
+- Allows **high-priority notifications**
+
+### App Standby
+- Applies to **unused apps**
+- Restricts background jobs and network
+- Active apps are not affected
+
+### In Short
+- **Doze Mode:** Affects the whole device  
+- **App Standby:** Affects unused apps only
+
+
+
+### File, Class, and Activity in Android
+
+### File
+- Used to **store data** on the device (internal, external, cache)
+- Examples: text files, images, databases
+
+### Class
+- A **blueprint** written in Kotlin/Java
+- Defines variables and functions
+- All Android components are classes
+
+### Activity
+- Represents **one screen with UI**
+- Handles user interaction
+- Managed by the Android lifecycle
+
+
+
+### How to Change Parameters in an App Without App Update
+
+### Changing App Parameters Without App Update
+
+You can update app behavior **without releasing a new version** using **remote configuration**.
+
+### Common Ways
+- **Firebase Remote Config:** Fetch key-value updates at runtime (UI text, feature flags)
+- **Backend API:** Load configurable values from your server
+- **Dynamic Feature Modules:** Enable or disable app features remotely
+
+### Benefits
+- No app update required
+- Easy feature toggles & A/B testing
+- Quick content or behavior changes
+
+
+
+### What is an Activity and Its Lifecycle in Android
+
+An **Activity** is a single screen in Android that handles user interaction and displays the UI.
+
+### Activity Lifecycle
+
+- **onCreate()** – Initialize UI and resources when Activity is first created.  
+- **onStart()** – Activity becomes visible.  
+- **onResume()** – Activity gains focus; user can interact.  
+- **onPause()** – Activity loses focus; pause tasks or save data.  
+- **onStop()** – Activity no longer visible; release resources.  
+- **onDestroy()** – Activity is destroyed; cleanup resources.  
+- **onRestart()** – Activity restarts after being stopped.
+
+
+
+### Key Points
+- Manages **visibility, focus, and resources**.  
+- Prevents **crashes and data loss**.  
+- Lifecycle methods guide proper handling of UI and background tasks.
+
+
+### Difference Between onCreate() and onStart() in Android
+
+- **When Called:**
+    - `onCreate()` is called **once** when the Activity is first created.
+    - `onStart()` is called **every time** the Activity becomes visible.
+---
+
+- **Purpose:**
+    - `onCreate()` is used to **initialize UI, resources, and data**.
+    - `onStart()` prepares the Activity to **interact with the user**.
+---
+
+- **Typical Tasks:**
+    - `onCreate()` → set content view, bind views, initialize variables.
+    - `onStart()` → start animations, refresh UI, resume paused tasks.
+---
+
+- **Lifecycle Position:**
+    - `onCreate()` is the **first method** called in the Activity lifecycle.
+    - `onStart()` follows `onCreate()` or `onRestart()`.
+
+
+
+### When is onDestroy() Called Without onPause() and onStop()?
+
+Normally, `onPause()` and `onStop()` run before `onDestroy()`, but they can be skipped in rare cases:
+
+- **Activity finishes early** (e.g., `finish()` during `onCreate()`)
+- **System kills the process** due to low memory
+- **App crash or fatal exception**
+
+### Key Point
+- `onDestroy()` is **not always guaranteed**
+- Do important cleanup in `onPause()` or `onStop()`, not `onDestroy()`
+
+
+### Activity Lifecycle When Launched for the First Time
+
+When an Android Activity is launched for the **first time**, it goes through the following lifecycle methods in order:
+
+1. **onCreate()**  
+   - Called when the Activity is **first created**.  
+   - Used to **initialize UI, variables, and resources**.  
+   - Example: `setContentView(R.layout.activity_main)`
+   - 
+
+2. **onStart()**  
+   - Called when the Activity **becomes visible** to the user.  
+   - Prepares the Activity to **enter the foreground**.
+
+3. **onResume()**  
+   - Called when the Activity **gains focus** and the user can interact with it.  
+   - Activity is now in the **foreground** and fully active.
+
+---
+
+### Lifecycle Flow for First Launch
+
+
+onCreate → onStart → onResume
+### Key Points
+- The Activity is **fully created and visible** after `onResume()`.  
+- `onPause()` and `onStop()` are called only when the user **leaves or navigates away** from the Activity.  
+
+
+### Activity Lifecycle When Back Button Is Pressed
+
+When the user **presses the Back button**, the current Activity is **finished** and removed from the screen. The system calls the following lifecycle methods in order:
+
+1. **onPause()**  
+   - Called first when the Activity **loses focus**.  
+   - Used to pause ongoing tasks, animations, or save unsaved data.
+
+2. **onStop()**  
+   - Called when the Activity is **no longer visible**.  
+   - Release resources that are not needed while the Activity is hidden.
+
+3. **onDestroy()**  
+   - Called when the Activity is **completely destroyed**.  
+   - Final cleanup of resources occurs here.
+
+---
+
+### Lifecycle Flow When Back Pressed
+onPause → onStop → onDestroy
+
+### Key Points
+- Pressing Back **finishes the Activity**, unlike Home button which only pauses/stops it.  
+- After `onDestroy()`, the Activity **cannot be resumed**.
+
+
+### Activity Lifecycle When Launched Again After Back Press
+
+When an Activity is **launched again after being finished with the Back button**, it is treated as a **new instance**. The previous instance was destroyed, so the lifecycle starts fresh:
+
+1. **onCreate()**  
+   - Called to **create a new Activity instance**.  
+   - Initialize UI, variables, and resources.
+
+2. **onStart()**  
+   - Called when the Activity **becomes visible** to the user.
+
+3. **onResume()**  
+   - Called when the Activity **gains focus** and the user can interact with it.  
+   - The Activity is now in the **foreground**.
+
+---
+
+### Lifecycle Flow
+
+onCreate → onStart → onResume
+
+### Key Points
+- Pressing Back **destroys the Activity**, so launching it again starts a **fresh lifecycle**.  
+- Any previous state must be **saved manually** (e.g., using `SharedPreferences` or a database) if needed.
+
+
+### Activity Lifecycle When Home Button Is Pressed
+
+When the user **presses the Home button**, the current Activity **moves to the background** but is **not destroyed**. The system calls the following lifecycle methods:
+
+1. **onPause()**  
+   - Called first as the Activity **loses focus**.  
+   - Use to **pause animations, save data, or stop CPU-intensive tasks**.
+
+2. **onStop()**  
+   - Called when the Activity is **no longer visible**.  
+   - Release resources that are not needed while in the background.
+
+> Note: The Activity **remains in memory** and can be resumed later without being recreated.
+
+### Lifecycle Flow When Home Pressed
+
+onPause → onStop
+
+### Key Points
+- Activity is **paused and stopped**, but not destroyed.  
+- Pressing **Back button** would have destroyed it, unlike Home button.  
+- When the user returns, `onRestart()` → `onStart()` → `onResume()` is called.
+
+
+
+### Activity Lifecycle When App Returns from Background
+
+When an Android app **returns from the background** (e.g., user presses the app icon or switches back from recent apps), the previously stopped Activity is **resumed** without being recreated. The following lifecycle methods are called:
+
+1. **onRestart()**  
+   - Called first when the Activity is **coming back from stopped state**.  
+   - Prepares the Activity to become visible again.
+
+2. **onStart()**  
+   - Called as the Activity **becomes visible** to the user.
+
+3. **onResume()**  
+   - Called when the Activity **gains focus** and the user can interact with it.  
+   - Activity is now in the **foreground**.
+
+---
+
+### Lifecycle Flow
+
+onRestart → onStart → onResume
+
+### Key Points
+- Activity **was not destroyed**, so `onCreate()` is **not called**.  
+- Efficient memory and resource usage, since UI and data are retained.  
+- Use `onRestart()` or `onStart()` to **refresh UI or data** if needed.
+
+
+### Activity Lifecycle When Navigating from Activity A → Activity B
+
+When the user navigates from **Activity A** to **Activity B**, the system manages the lifecycle of both Activities to ensure smooth transitions and resource management.
+
+### Activity Lifecycle: A → B
+
+**Activity A**
+- `onPause()` → loses focus
+- `onStop()` → no longer visible
+
+**Activity B**
+- `onCreate()` → created
+- `onStart()` → visible
+- `onResume()` → interactive
+
+**Flow**
+A: `onPause → onStop`  
+B: `onCreate → onStart → onResume`
+
+**Note**
+- Activity A stays in memory
+- Pressing Back destroys B and resumes A
+
+
+### Activity Lifecycle When Pressing Back from Activity B → Activity A
+
+When the user presses the **Back button** on **Activity B**, it is **finished**, and the system returns to **Activity A**. The lifecycle methods of both Activities are called as follows:
+
+
+**Activity B**
+- `onPause()` → loses focus  
+- `onStop()` → not visible  
+- `onDestroy()` → finished  
+
+**Activity A**
+- `onRestart()` → coming back  
+- `onStart()` → visible  
+- `onResume()` → interactive  
+
+**Flow**
+B: `onPause → onStop → onDestroy`  
+A: `onRestart → onStart → onResume`
+
+
+
+### How to Preserve Activity State During Screen Rotation
+
+When an Activity is rotated, it is **destroyed and recreated**. To preserve state:
+
+
+### Common Ways
+- **onSaveInstanceState():** Save small UI data (text, selections)
+- **ViewModel:** Keeps UI data across rotations
+
+### Key Points
+- `onSaveInstanceState()` → temporary UI state  
+- `ViewModel` → long-lived UI data  
+- Avoid manual config handling unless necessary
+
+
+
+### What is `savedInstanceState`?
+
+`savedInstanceState` is a **Bundle** used to **save and restore UI state** when an Activity is recreated (e.g., screen rotation).
+
+### How It’s Used
+- Save data in `onSaveInstanceState()`
+- Restore it in `onCreate()` or `onRestoreInstanceState()`
+
+### Key Points
+- `null` on first launch
+- Stores **small UI data only**
+- Helps restore state after rotation or system kill
+
+
+### Intent vs Bundle
+
+**Intent**
+- Used to **start Activities/Services** or send broadcasts
+- Can carry data and navigation info
+
+**Bundle**
+- A **key-value data container**
+- Used to pass data via Intent or save state
+
+**In Short**
+- **Intent** = navigation + data
+- **Bundle** = data only
+
+
+### What Are Launch Modes in Android?
+
+**Launch modes** define **how a new Activity is launched** and how it behaves in the **Activity back stack**. They control whether a new instance is created or an existing instance is reused.
+### Types of Launch Modes
+
+1. **standard** (Default)  
+   - Every time the Activity is started, a **new instance** is created and pushed to the stack.  
+   - Example: Multiple instances of the same Activity can exist.
+
+2. **singleTop**  
+   - If the Activity is **already at the top** of the stack, no new instance is created.  
+   - `onNewIntent()` is called instead.  
+   - Example: Clicking a notification that opens the current top Activity.
+
+3. **singleTask**  
+   - Only **one instance** exists in the entire system.  
+   - If an instance exists anywhere in the stack, it is **brought to the front**, and `onNewIntent()` is called.  
+   - Example: Main dashboard Activity.
+
+4. **singleInstance**  
+   - Similar to `singleTask` but the Activity **lives in its own separate task**.  
+   - No other Activity can be part of the same task.  
+   - Example: Launching a special Activity for multi-window scenarios.
+
+---
+
+### How to Declare Launch Mode
+In `AndroidManifest.xml`:
+```xml
+<activity android:name=".MainActivity"
+          android:launchMode="singleTop" />
+````
+
+---
+
+### Key Points
+
+* Launch modes **control Activity instance creation** and **stack behavior**.
+* Helps prevent **duplicate Activities** and manage navigation efficiently.
+
+---
+
+
+### Standard Launch Mode in Android
+
+**standard** is the **default launch mode** for all Activities in Android.  
+
+---
+
+### How It Works
+- Every time the Activity is started, a **new instance** is **created and pushed onto the back stack**.  
+- Multiple instances of the same Activity can exist simultaneously in the back stack.  
+- Does **not reuse any existing instance**.
+
+---
+
+### Example
+```kotlin
+// Start MainActivity multiple times
+val intent = Intent(this, MainActivity::class.java)
+startActivity(intent)
+startActivity(intent)
+````
+
+* Result: Two separate instances of `MainActivity` are now in the back stack.
+
+---
+
+### Key Points
+
+* Allows **multiple instances** of the same Activity.
+* Each instance is independent.
+* Useful when each Activity should maintain its **own state**.
+
+
+### singleTop Launch Mode in Android
+
+**singleTop** is a launch mode that **reuses the Activity** if it is **already at the top of the back stack**, instead of creating a new instance.
+
+---
+
+### How It Works
+- If the Activity is **not at the top**, a new instance is created (like standard mode).  
+- If the Activity **is at the top**, no new instance is created; **`onNewIntent()`** is called with the new Intent.  
+- Prevents multiple copies of the same Activity when repeatedly launching it from the top.
+
+---
+
+### Example
+```kotlin
+// Activity A is at the top of the stack
+val intent = Intent(this, ActivityA::class.java)
+startActivity(intent) // onNewIntent() is called instead of creating a new instance
+````
+
+---
+
+### Key Points
+
+* Avoids **duplicate instances** at the top of the stack.
+* Saves **memory and resources**.
+* Useful for **notification clicks** or launching an Activity multiple times from the same screen.
+
+### singleTask Launch Mode in Android
+
+**singleTask** is a launch mode that ensures **only one instance of an Activity exists** in the system, and it is **reused if it already exists** anywhere in the back stack.
+
+---
+
+### How It Works
+- If the Activity **already exists** in the back stack:
+  - The system brings that instance to the **foreground**.
+  - **All Activities above it** in the stack are **destroyed**.
+  - `onNewIntent()` is called with the new Intent.
+- If the Activity **does not exist**, a new instance is created.
+
+---
+
+### Example
+```kotlin
+// MainActivity is launched with singleTask
+val intent = Intent(this, MainActivity::class.java)
+startActivity(intent)
+````
+
+* If MainActivity exists anywhere in the stack, it is **reused**, and other Activities above it are removed.
+
+---
+
+### Key Points
+
+* Ensures **only one instance** of the Activity exists system-wide.
+* Useful for **main dashboard or launcher Activities**.
+* Helps manage navigation and prevent duplicate screens.
+
+
+
+### singleInstance Launch Mode in Android
+
+**singleInstance** is a special launch mode that ensures **only one instance of an Activity exists**, and it **resides in its own separate task**. No other Activity can be launched in the same task.
+
+
+#### How It Works
+- The Activity runs in a **separate task**, isolated from other Activities.  
+- If the Activity already exists:
+  - It is **reused**, and `onNewIntent()` is called.  
+  - No other Activities can be part of its task.  
+- Useful for **Activities that must always be standalone**, like a special media player or system-level screen.
+
+---
+
+#### Example
+```xml
+<activity
+    android:name=".SpecialActivity"
+    android:launchMode="singleInstance" />
+````
+
+* Launching SpecialActivity multiple times **reuses the same instance** in its separate task.
+
+---
+
+### Key Points
+
+* Guarantees **one instance in a separate task**.
+* Prevents **other Activities** from being launched in the same task.
+* Ideal for **system-level or always-on-top Activities**.
+
+
+### Tasks and Back Stack in Android
+
+In Android, **tasks** and the **back stack** are concepts that define how Activities are organized and navigated.
+
+---
+
+### 1. Task
+- A **task** is a collection of Activities that users interact with **to accomplish a specific goal**.  
+- Activities in a task are **organized in a stack-like structure**.  
+- Each app usually has its **own task**, but tasks can span multiple apps with certain launch modes.  
+- Example: Opening an email app, reading an email, then composing a new one—all belong to the same task.
+
+---
+
+### 2. Back Stack
+- The **back stack** is a **Last-In-First-Out (LIFO) stack** that manages the order of Activities within a task.  
+- The **top of the stack** is the **current Activity** in the foreground.  
+- Pressing the **Back button** pops the top Activity off the stack and resumes the previous one.
+
+---
+
+### Example
+1. User opens **Activity A** → pushed onto stack  
+2. Navigates to **Activity B** → pushed onto stack  
+3. Presses Back → **Activity B** popped, **Activity A** resumes  
 
 ```
-Login → Home → Profile
+Stack after opening B: [A, B]  (B on top)
+Press Back: [A]  (B removed)
 ```
 
-* All belong to one task
-* Back stack handles navigation
+
+### Key Points
+- **Task** = logical group of related Activities.  
+- **Back stack** = manages Activity order in a task.  
+- **Back button** navigates through the back stack, not tasks. 
+
+
+### What is `taskAffinity` in Android
+
+**`taskAffinity`** is an attribute of an Activity that defines **which task the Activity prefers to belong to**. It allows Activities from the same or different apps to be associated with a particular task.
 
 ---
 
-## **28. What are launch modes?**
-
-**Launch modes** define how activities are launched and placed in back stack.
-
-| Mode           | Description          |
-| -------------- | -------------------- |
-| standard       | Default behavior     |
-| singleTop      | Reuse if on top      |
-| singleTask     | One instance in task |
-| singleInstance | Own separate task    |
-
-**Defined in:**
-
-* AndroidManifest.xml
-* Intent flags
+### How It Works
+- By default, all Activities of an app share the **same taskAffinity** (usually the app package name).  
+- You can set a **custom taskAffinity** in `AndroidManifest.xml` to control task behavior.  
+- When launching an Activity, the system tries to place it in a task with the **same taskAffinity**.
 
 ---
 
-## **29. What is PendingIntent?**
+### Example
+```xml
+<activity
+    android:name=".SpecialActivity"
+    android:taskAffinity="com.example.specialtask" />
+````
 
-**PendingIntent:** A token that allows another app or system to execute an intent on your app’s behalf.
+* `SpecialActivity` will prefer to run in a task named `com.example.specialtask`.
+* Useful for creating **separate tasks for specific Activities** (e.g., for multi-window apps or notifications).
 
-**Used in:**
+---
 
-* Notifications
-* Alarms
-* Widgets
+### Key Points
 
-**Example:**
+* Controls **task association** for Activities.
+* Helps **manage multiple tasks** within the same app.
+* Does **not force** the system to create a new task; it’s a **preference**.
+
+
+### What is `installLocation` Tag in Android
+
+The **`installLocation`** tag in `AndroidManifest.xml` specifies **where the app should be installed** on the device. It helps control whether the app installs on **internal storage** or **external storage (SD card)**.
+
+---
+
+### Possible Values
+
+1. **internalOnly** (Default)  
+   - App can only be installed on **internal storage**.  
+   - Ensures the app is always available and not removable by the user.
+
+2. **preferExternal**  
+   - App **prefers external storage** (SD card), but can fall back to internal storage if needed.  
+   - Useful for large apps to save internal memory.
+
+3. **auto**  
+   - The system decides the **best location** based on available space and device configuration.
+
+---
+
+### Example
+```xml
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.app">
+    
+    <application
+        android:installLocation="preferExternal"
+        android:label="@string/app_name">
+    </application>
+</manifest>
+````
+
+---
+
+### Key Points
+
+* Helps manage **storage usage** for large apps.
+* Some features may **not work on SD card** (e.g., widgets, services).
+* Default is **internalOnly** if not specified.
+
+
+### Relationship Between Activity and Fragment Lifecycle
+
+- Fragments exist **inside an Activity**, so their lifecycle is **closely tied** to the host Activity.  
+- Fragment lifecycle events occur **alongside the Activity**, but Fragments have **extra callbacks** like `onAttach()`, `onCreateView()`, and `onDetach()` for managing UI.
+
+**Lifecycle Mapping (Simplified):**
+- Activity `onCreate()` → Fragment `onAttach()` → `onCreateView()`  
+- Activity `onStart()` → Fragment `onStart()`  
+- Activity `onResume()` → Fragment `onResume()`  
+- Activity `onPause()` → Fragment `onPause()`  
+- Activity `onStop()` → Fragment `onStop()`  
+- Activity `onDestroy()` → Fragment `onDestroyView()` → `onDestroy()` → `onDetach()`
+
+**Key Points:**  
+- Fragment depends on Activity but can manage its own UI.  
+- Proper lifecycle handling prevents **memory leaks** and ensures **smooth UI updates**.
+
+### Saving and Restoring Activity State on Rotation
+
+When an Activity rotates, it is **destroyed and recreated**. To preserve state:
+
+---
+
+### 1. `onSaveInstanceState()`
+```kotlin
+override fun onSaveInstanceState(outState: Bundle) {
+    super.onSaveInstanceState(outState)
+    outState.putString("username", editText.text.toString())
+}
+
+override fun onCreate(savedInstanceState: Bundle?) {
+    super.onCreate(savedInstanceState)
+    editText.setText(savedInstanceState?.getString("username"))
+}
+````
+
+---
+
+### 2. ViewModel
+
+* Survives rotation without recreation.
 
 ```kotlin
-val pendingIntent = PendingIntent.getActivity(
-    context,
-    0,
-    intent,
-    PendingIntent.FLAG_UPDATE_CURRENT
-)
+val viewModel = ViewModelProvider(this).get(MyViewModel::class.java)
+editText.setText(viewModel.username)
+viewModel.username = editText.text.toString()
 ```
 
----
+### What is a Bundle in Android
 
-## **30. Difference between Service, IntentService, and Foreground Service**
-
-| Feature  | Service          | IntentService     | Foreground Service    |
-| -------- | ---------------- | ----------------- | --------------------- |
-| Thread   | Main thread      | Background thread | Background            |
-| UI       | ❌ No             | ❌ No              | Notification required |
-| Lifetime | Manual           | Auto-stops        | Long-running          |
-| Use case | Background tasks | Sequential tasks  | User-visible work     |
-
-**Notes:**
-
-* `IntentService` is deprecated
-* Use **WorkManager / Coroutine + Service**
-* Foreground Service requires persistent notification
+In Android, a **Bundle** is a **key-value data container** used to pass information between components like Activities, Fragments, or Services.
 
 ---
 
-## **31. What is Handler, Looper, and MessageQueue?**
-
-**Handler:** Posts tasks to a thread’s message queue
-**Looper:** Runs a loop to process messages
-**MessageQueue:** Holds messages to be executed
-
-**Relationship:**
-
-```
-Message → MessageQueue → Looper → Handler
-```
-
-**Common use:** Update UI from background thread
+### Key Points
+- Stores data as **primitive types, Strings, Parcelable, or Serializable objects**.  
+- Often used with:
+  - **Intents** to pass data between Activities.
+  - **Fragments** via `setArguments()` or `getArguments()`.
+  - **onSaveInstanceState()`** to save Activity state.
 
 ---
 
-## **32. What is a memory leak?**
+### Example with Intent
+```kotlin
+val bundle = Bundle()
+bundle.putString("username", "Aasim")
 
-**Memory Leak:** Occurs when objects are no longer needed but still referenced, preventing garbage collection.
+val intent = Intent(this, SecondActivity::class.java)
+intent.putExtras(bundle)
+startActivity(intent)
+````
 
-**Common causes:**
-
-* Static references to Context
-* Long-running background tasks
-* Anonymous inner classes
-* Unregistered listeners
-
----
-
-## **33. How do you detect memory leaks?**
-
-**Tools:**
-
-* LeakCanary
-* Android Studio Profiler
-* Heap dumps
-* MAT (Memory Analyzer Tool)
-
-**Signs:**
-
-* Increasing memory usage
-* OutOfMemoryError
-* Sluggish app behavior
-
----
-
-## **34. What is garbage collection in Android?**
-
-**Garbage Collection (GC):**
-
-* Automatically reclaims memory of unused objects
-* Managed by ART runtime
-* Pauses app execution briefly
-* Frequent GC → performance issues
-
----
-
-## **35. What is StrictMode?**
-
-**StrictMode:** Developer tool to detect bad practices during development.
-
-**Detects:**
-
-* Disk I/O on main thread
-* Network calls on UI thread
-* Leaked resources
-
-**Example:**
+### Example in Fragment
 
 ```kotlin
-StrictMode.setThreadPolicy(
-    StrictMode.ThreadPolicy.Builder()
-        .detectAll()
-        .penaltyLog()
-        .build()
-)
+val fragment = MyFragment()
+val bundle = Bundle()
+bundle.putInt("userId", 101)
+fragment.arguments = bundle
+```
+
+
+### Lifecycle Order When Activity A Starts Activity B
+
+When **Activity A** starts **Activity B**, both Activities go through specific lifecycle callbacks as the system manages focus and visibility.
+
+---
+
+### Activity A (Current Activity)
+1. **onPause()** – Activity A **loses focus** because Activity B is coming to the foreground.  
+2. **onStop()** – Called if Activity B **fully covers Activity A**. Activity A is now **in the background**.
+
+---
+
+### Activity B (New Activity)
+1. **onCreate()** – Activity B is **created** and UI is initialized.  
+2. **onStart()** – Activity B becomes **visible**.  
+3. **onResume()** – Activity B **gains focus** and user can interact with it.
+
+
+
+### Lifecycle Flow (Simplified)
+
+```
+Activity A: onPause → onStop
+Activity B: onCreate → onStart → onResume
+```
+
+### Key Points
+- Activity A is **paused or stopped** but not destroyed.  
+- Activity B starts fresh and becomes the **foreground Activity**.  
+- Pressing **Back** from Activity B will **resume Activity A** using `onRestart() → onStart() → onResume()`.
+
+
+### How to Declare Launch Mode in Android
+
+In Android, you can declare an Activity's **launch mode** in the **`AndroidManifest.xml`** file using the `android:launchMode` attribute.
+
+---
+
+### Steps to Declare Launch Mode
+
+1. Open `AndroidManifest.xml`.  
+2. Inside the `<activity>` tag, add `android:launchMode` with one of the following values:  
+   - `standard` (default)  
+   - `singleTop`  
+   - `singleTask`  
+   - `singleInstance`
+
+---
+
+### Example
+```xml
+<activity
+    android:name=".MainActivity"
+    android:launchMode="singleTop" />
+````
+
+* This ensures that if `MainActivity` is already at the **top of the stack**, no new instance is created; `onNewIntent()` is called instead.
+
+---
+
+### Key Points
+
+* Launch mode controls **Activity instance creation** and **back stack behavior**.
+* Declaring it in the manifest applies **system-wide** for that Activity.
+* Useful for preventing **duplicate screens** and managing **navigation flow**.
+
+
+
+### Detecting Configuration Changes in `onDestroy()`
+
+In Android, an Activity may be **destroyed either due to user action or a configuration change** (like screen rotation). To differentiate in `onDestroy()`, use `isChangingConfigurations()`.
+
+---
+
+### How It Works
+- `isChangingConfigurations()` returns **true** if the Activity is being destroyed due to a **configuration change**.  
+- Returns **false** if destroyed for other reasons (e.g., user finishing the Activity or system reclaiming memory).
+
+---
+
+### Example
+```kotlin
+override fun onDestroy() {
+    super.onDestroy()
+    if (isChangingConfigurations) {
+        Log.d("ActivityLifecycle", "Destroyed due to configuration change")
+    } else {
+        Log.d("ActivityLifecycle", "Destroyed permanently")
+    }
+}
+````
+
+---
+
+### Key Points
+
+* Helps decide whether to **save resources** or **release them permanently**.
+* Often used with **ViewModel** to retain data across configuration changes.
+* Works reliably with screen rotation, locale changes, or theme changes.
+
+
+
+### What is a Fragment in Android
+
+A **Fragment** is a **modular portion of an Activity** that has its own **lifecycle, UI, and behavior**. Fragments allow developers to create **reusable and flexible UI components** that can be combined in different ways within an Activity.
+
+---
+
+### Key Features
+- Represents a **part of a screen**, not a full screen.  
+- Can be **added, removed, or replaced dynamically** using `FragmentManager`.  
+- Has its **own lifecycle**, which is closely tied to the host Activity.  
+- Supports **UI layouts**, user interactions, and logic independent of the Activity.
+
+---
+
+### Example
+```kotlin
+class MyFragment : Fragment() {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_my, container, false)
+    }
+}
+````
+
+* Add to Activity:
+
+```kotlin
+supportFragmentManager.beginTransaction()
+    .replace(R.id.container, MyFragment())
+    .commit()
 ```
 
 ---
 
-## **36. What is ANR watchdog?**
+### Key Points
 
-**ANR Watchdog:** Monitors the main thread to detect freezes before system ANR occurs.
-
-**Purpose:**
-
-* Detect UI thread blocks early
-* Log stack traces
-
-**Example library:**
-
-* ANR-WatchDog by Salomon Brys
+* Fragments are **reusable UI components**.
+* Allow **flexible layouts** for phones, tablets, and multi-pane screens.
+* Lifecycle depends on the **host Activity** but has **independent callbacks**.
 
 ---
 
-## **37. How do you improve app startup time?**
 
-**Techniques:**
 
-* Reduce work in `onCreate()`
-* Lazy initialization
-* Use SplashScreen API
-* Defer heavy tasks
-* Optimize layouts
-* Remove unused dependencies
-* Use Baseline Profiles
+### Fragment Lifecycle Methods in Android
+
+A **Fragment** has its **own lifecycle** that is closely tied to the host Activity. Understanding these methods helps manage UI and resources efficiently.
 
 ---
 
-## **38. What is WorkManager and when to use it?**
+### Key Lifecycle Methods
 
-**WorkManager:** Jetpack library for deferrable, guaranteed background work.
+1. **onAttach(Context)**  
+   - Called when the Fragment is **attached to its host Activity**.  
+   - Use for **context-related initializations**.
 
-**Use when:**
+2. **onCreate(Bundle?)**  
+   - Called to **initialize Fragment** (non-UI tasks).  
+   - Use for **data setup**.
 
-* Work must complete even if app exits
-* Needs constraints (network, charging)
-* Sync tasks, uploads
+3. **onCreateView(LayoutInflater, ViewGroup?, Bundle?)**  
+   - Inflate the Fragment **UI layout**.  
 
-**Not for:** Immediate or UI-related tasks
+4. **onViewCreated(View, Bundle?)**  
+   - Called after the **view hierarchy is created**.  
+   - Use for **binding views and setting listeners**.
 
----
+5. **onStart()**  
+   - Fragment becomes **visible**.  
 
-## **39. Difference between AsyncTask and Executor**
+6. **onResume()**  
+   - Fragment **gains focus** and is interactive.
 
-| Feature        | AsyncTask  | Executor    |
-| -------------- | ---------- | ----------- |
-| Status         | Deprecated | Recommended |
-| Control        | Limited    | Full        |
-| Thread mgmt    | Auto       | Custom      |
-| Performance    | Poor       | Better      |
-| Modern support | ❌ No       | ✅ Yes       |
+7. **onPause()**  
+   - Fragment **loses focus** but is still visible.  
+   - Use to **pause UI updates or animations**.
 
-**Modern replacements:**
+8. **onStop()**  
+   - Fragment is **no longer visible**.  
+   - Release resources not needed when hidden.
 
-* Kotlin Coroutines
-* WorkManager
-* ExecutorService
+9. **onDestroyView()**  
+   - Fragment’s **view hierarchy is destroyed**.  
+   - Clean up **binding references**.
 
----
+10. **onDestroy()**  
+    - Called to **cleanup Fragment instance**.  
 
-## **40. Different data storage options in Android**
+11. **onDetach()**  
+    - Fragment is **detached from Activity**.  
+    - Final cleanup of references to Activity.
 
-**Storage options:**
 
-1. **SharedPreferences / DataStore**
+### Why Use Only the Default Constructor in a Fragment
 
-   * Key–value pairs
-   * Small data (settings, flags)
-2. **Internal Storage**
-
-   * App-private files
-   * Removed when app uninstalled
-3. **External Storage**
-
-   * Public or app-specific
-   * Needs permission (older Android)
-4. **SQLite Database**
-
-   * Structured relational data
-5. **Room Database**
-
-   * Abstraction over SQLite
-6. **Network / Cloud Storage**
-
-   * Firebase, REST APIs
+In Android, it is **recommended to use only the default (no-argument) constructor** for Fragments. This ensures the system can **recreate the Fragment properly** during configuration changes or process recreation.
 
 ---
 
-## **41. Difference between SharedPreferences and database**
+### Reasons
 
-| Feature       | SharedPreferences | Database          |
-| ------------- | ----------------- | ----------------- |
-| Data type     | Key–Value         | Structured tables |
-| Size          | Small             | Large             |
-| Query support | ❌ No              | ✅ Yes             |
-| Performance   | Fast              | Slower            |
-| Use case      | Settings, flags   | User data, cache  |
+1. **System Recreation**
+   - Android may **destroy and recreate Fragments** (e.g., on rotation or low memory).  
+   - The system uses the **default constructor** to re-instantiate the Fragment.  
+   - Custom constructors with arguments **will not be called**, causing crashes or lost data.
 
----
-
-## **42. What is SQLite and Room?**
-
-**SQLite**
-
-* Lightweight relational database
-* Embedded in Android
-* Uses SQL queries
-
-**Room**
-
-* Jetpack ORM on top of SQLite
-* Compile-time query validation
-* Less boilerplate
-
-**Room components:**
-
-* **Entity** – table
-* **DAO** – queries
-* **Database** – holder
+2. **Safe Data Passing**
+   - Data should be passed using a **Bundle via `setArguments()`** instead of constructor parameters.  
+   - `setArguments()` is preserved across **configuration changes**.
 
 ---
 
-## **43. How does Android handle network operations?**
+### Recommended Approach
+```kotlin
+class MyFragment : Fragment() {
+    companion object {
+        fun newInstance(userId: Int): MyFragment {
+            val fragment = MyFragment()
+            val args = Bundle()
+            args.putInt("userId", userId)
+            fragment.arguments = args
+            return fragment
+        }
+    }
+}
+````
 
-**Key rules:**
+* Access data in Fragment:
 
-* Network calls **not allowed on main thread**
-* Must use background threads
-
-**Common approaches:**
-
-* Retrofit / OkHttp
-* Volley
-* Coroutines (Dispatchers.IO)
-* WorkManager (for background sync)
-
-**Threading:** Background thread → UI thread update
-
----
-
-## **44. What is BroadcastReceiver?**
-
-**BroadcastReceiver:** Listens for system or app-wide broadcast messages.
-
-**Examples:**
-
-* Battery low
-* Network change
-* SMS received
-
-**Types:**
-
-* Manifest-declared
-* Dynamic (runtime)
-
----
-
-## **45. Difference between local and global broadcasts**
-
-| Feature     | Local Broadcast | Global Broadcast |
-| ----------- | --------------- | ---------------- |
-| Scope       | Within app      | System-wide      |
-| Security    | High            | Lower            |
-| Performance | Fast            | Slower           |
-| Use case    | App events      | System events    |
-
-> ⚠️ `LocalBroadcastManager` is deprecated → use LiveData / Flow instead.
-
----
-
-## **46. What is deep linking?**
-
-**Deep Linking:** Allows a URL to open a specific screen inside an app.
-
-**Types:**
-
-* **Deep Link** – basic
-* **App Link** – verified domain
-* **Deferred Deep Link** – after install
-
-**Example:**
-
-```
-myapp://profile/123
+```kotlin
+val userId = arguments?.getInt("userId")
 ```
 
 ---
 
-## **47. How does Android handle runtime permissions?**
+### Key Points
 
-**Runtime permissions:** Introduced in Android 6.0 (API 23)
+* Always use the **default constructor**.
+* Use `setArguments()` / `Bundle` to pass data.
+* Ensures **reliable Fragment recreation** by the system.
 
-**Flow:**
 
-1. Declare permission in Manifest
-2. Check permission at runtime
-3. Request permission
-4. Handle user response
 
-**Permission types:**
 
-* Normal (auto granted)
-* Dangerous (user approval required)
+### Fragment Lifecycle When Launched
+
+When a **Fragment is added to an Activity**, it goes through a series of **lifecycle callbacks** as it becomes visible and interactive.
 
 ---
 
-## **48. What is ProGuard / R8?**
+### Lifecycle Sequence
 
-**ProGuard / R8:** Tools to optimize and secure APK.
+1. **onAttach(Context)**  
+   - Fragment is **attached to its host Activity**.  
+   - Can access the Activity context.
 
-**Features:**
+2. **onCreate(Bundle?)**  
+   - Fragment **initializes non-UI components** and data.  
 
-* Code shrinking
-* Obfuscation
-* Resource optimization
-* Removes unused code
+3. **onCreateView(LayoutInflater, ViewGroup?, Bundle?)**  
+   - Fragment **inflates its UI layout**.  
 
-**R8:** Faster, more efficient replacement for ProGuard
+4. **onViewCreated(View, Bundle?)**  
+   - UI is created; **views can be initialized and listeners set**.
+
+5. **onStart()**  
+   - Fragment becomes **visible** to the user.
+
+6. **onResume()**  
+   - Fragment is now **active and interactive**.
 
 ---
 
-## **49. How do you secure sensitive data in Android?**
+### Simplified Flow Diagram
 
-**Best practices:**
+onAttach → onCreate → onCreateView → onViewCreated → onStart → onResume
 
-* Use EncryptedSharedPreferences
-* Use Android Keystore
-* Avoid hardcoding secrets
-* Use HTTPS with SSL pinning
-* Encrypt local database
-* Use biometric authentication
-
-**Never store:**
-
-* API keys in plain text
-* Passwords without encryption
+### Key Points
+- Lifecycle is **closely tied to the host Activity**.  
+- Proper handling ensures **UI is ready** and resources are efficiently managed.  
+- After `onResume()`, the Fragment can **interact with the user**.
 
 
-![demo](https://raw.githubusercontent.com/MohdAsim71/Courses/main/Test/media/test.png)
+
+### Fragment Lifecycle When Back Button Is Pressed
+
+When the **Back button** is pressed and a Fragment is removed or replaced, it goes through the **destruction phase** of its lifecycle.
+
+---
+
+### Lifecycle Sequence
+
+1. **onPause()**  
+   - Fragment **loses focus** and stops interacting with the user.  
+
+2. **onStop()**  
+   - Fragment is **no longer visible**.  
+
+3. **onDestroyView()**  
+   - Fragment’s **view hierarchy is destroyed**.  
+   - Release UI-related resources here.
+
+4. **onDestroy()**  
+   - Fragment instance is **destroyed**, cleaning up non-UI resources.
+
+5. **onDetach()**  
+   - Fragment is **detached from its host Activity**.  
+   - Final cleanup and references to Activity are cleared.
+
+---
+
+### Simplified Flow Diagram
+
+onPause → onStop → onDestroyView → onDestroy → onDetach
+
+### Key Points
+- Back press triggers **removal of the Fragment’s UI and instance**.  
+- Proper handling prevents **memory leaks**.  
+- Any data that needs to persist should be saved in **ViewModel or savedInstanceState**.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
